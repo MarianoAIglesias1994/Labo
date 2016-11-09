@@ -1,0 +1,30 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.6</VERSION>
+ <DEVICE>"ATmega88PA"</DEVICE>
+ <WORKING_DIR>C:\Users\MarianoAgustín\Desktop\Test081116\testalarma\testalarma\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\MarianoAgustín\Desktop\Test081116\testalarma\testalarma\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m88padef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\MarianoAgustín\Desktop\Test081116\testalarma\testalarma\Debug\testalarma.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>testalarma.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>testalarma.map</FILE>
+  <FILE>testalarma.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <PARPADEO><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\testalarma\testalarma\main.asm</FILE><LINE>22</LINE></PARPADEO>
+  <RETARDO><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\testalarma\testalarma\main.asm</FILE><LINE>35</LINE></RETARDO>
+  <LOOP1><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\testalarma\testalarma\main.asm</FILE><LINE>37</LINE></LOOP1>
+  <LOOP2><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\testalarma\testalarma\main.asm</FILE><LINE>38</LINE></LOOP2>
+ </LABELS>
+</ASSEMBLER_INFO>

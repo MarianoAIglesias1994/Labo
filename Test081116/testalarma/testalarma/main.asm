@@ -1,0 +1,43 @@
+;
+; testalarma.asm
+;
+; Created: 08/11/2016 09:20:32 p.m.
+; Author : MarianoAgustín
+;
+
+.org 0000
+
+	LDI R21, HIGH(RAMEND)	;Configura el STACK
+	OUT SPH, R21
+	LDI R21, LOW(RAMEND)
+	OUT SPL, R21
+
+/*PRENDE Y APAGA LED (EQUIVALENTE A SONAR ALARMA) Y GAURDAR DATOS EN RTC*/
+LDI R20, 0b00001100
+OUT DDRC,R20	;el port C esta como salida
+LDI R21,255	;valor a ajustar tiempo 
+
+
+
+PARPADEO:
+		LDI R20, 0b00001100
+		OUT PORTC,R20	;los pines de port C estan en 1
+		RCALL RETARDO
+		LDI R20, 0b00000000
+		OUT PORTC,R20	;los pines de port C estan en 0
+		RCALL RETARDO
+
+		DEC R21
+		CPI R21, 0
+		BRNE PARPADEO
+		RJMP PARPADEO
+
+RETARDO:
+		LDI R16, 50
+LOOP1:	LDI R17, 50
+LOOP2:	DEC R17
+		BRNE LOOP2
+		DEC R16
+		BRNE LOOP1
+		RET
+
