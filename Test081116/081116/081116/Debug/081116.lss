@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\MarianoAgust韓\Documents\GitHub\Labo\Test081116\081116\081116\main.asm Sat Nov 12 22:12:08 2016
+AVRASM ver. 2.2.6  C:\Users\MarianoAgust韓\Documents\GitHub\Labo\Test081116\081116\081116\main.asm Sun Nov 13 20:33:18 2016
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m88padef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m88padef.inc'
@@ -999,110 +999,123 @@ AVRASM ver. 2.2.6  C:\Users\MarianoAgust韓\Documents\GitHub\Labo\Test081116\0811
                                  
                                  ***************************************************************/
                                  
-                                 
                                  .cseg
                                  .org 0x00
-000000 c03d                      rjmp INICIO
-                                 ;ver ubicaci贸n de INT0 en Vector de Interrupciones Atmel
-                                 .org 0x02
-000002 c07f                      rjmp ISR_INT0_INACTIVITY	
-                                 ;Idem INT1
-                                 .org 0x04
-000004 c085                      rjmp ISR_INT1_BLUETOOTH	
-                                 .org 0x3E
+000000 c002                      rjmp INICIO
+                                 ;.org 0x02
+000001 c069                      rjmp ISR_INT0_INACTIVITY	
+                                 ;.org 0x04
+000002 c06c                      rjmp ISR_INT1_BLUETOOTH	
+                                 
                                  
                                  INICIO:
                                  
-00003e e054                      	LDI R21, HIGH(RAMEND)	;Configura el STACK
-00003f bf5e                      	OUT SPH, R21
-000040 ef5f                      	LDI R21, LOW(RAMEND)
-000041 bf5d                      	OUT SPL, R21
+000003 e054                      	LDI R21, HIGH(RAMEND)	;Configura el STACK
+000004 bf5e                      	OUT SPH, R21
+000005 ef5f                      	LDI R21, LOW(RAMEND)
+000006 bf5d                      	OUT SPL, R21
+                                 
+                                 	
+000007 e048                      LDI R20, 0b00001000
+000008 b947                      OUT DDRC, R20	;
+000009 e048                      LDI R20, 0b00001000
+00000a b948                      OUT PORTC, R20	;
+                                 
+00000b e140                      LDI R20, 0b00010000
+00000c b94a                      OUT DDRD, R20	;
+00000d e140                      LDI R20, 0b00010000
+00000e b94b                      OUT PORTD, R20	;
                                  
                                  /**************************************************************
                                  CONFIGURACION INTERRUPCIONES EXTERNAS
                                  ***************************************************************/
                                  CONFIG_INT:
-000042 94f8                      	cli
-000043 9478                      	sei
+                                 
+                                 	;EICRA si se configura por flanco o por nivel, hablarlo, depende de la interrupcion INT0 o INT1 utilizada en la seccion de arriba
+                                 	;out R18, EICRA      ;me fijo que hay en eicra
+00000f e005                      	ldi R16,0b00000101		;ldi R16,0b00000001 para INT0;;;;; ldi R16,0b00000101 para INT0 e INT1 
+000010 9300 0069                 	sts EICRA, R16		;habilito todo despues lo cambio
                                  
                                  	;EIMSK
                                  	;out R18, EIMSK      ;me fijo que hay en eimsk
-000044 e003                      	ldi R16,0b00000011 		; 	ldi R16,0b00000001 para INT0;;;;; ldi R16,0b00000011 para INT0 e INT1 
-000045 bb0d                      	out EIMSK,R16		;habilito las dos interrupciones externas del mcu. INT0 e INT1
-                                 
-                                 	
-                                 	;EICRA si se configura por flanco o por nivel, hablarlo, depende de la interrupcion INT0 o INT1 utilizada en la seccion de arriba
-                                 	;out R18, EICRA      ;me fijo que hay en eicra
-000046 e005                      	ldi R16,0b00000101		;ldi R16,0b00000001 para INT0;;;;; ldi R16,0b00000101 para INT0 e INT1 
-000047 9300 0069                 	sts EICRA, R16		;habilito todo despues lo cambio
-                                 
+000012 e003                      	ldi R16,0b00000011 		; 	ldi R16,0b00000001 para INT0;;;;; ldi R16,0b00000011 para INT0 e INT1 
+000013 bb0d                      	out EIMSK,R16		;habilito las dos interrupciones externas del mcu. INT0 e INT1
                                  
                                  	;EIFR tiene que estar seteado junto con el bit de interrupcion globar para que al momento de suceder la interrupcion 
                                  	;in R18, EIFR      ;me fijo que hay en eifr
-000049 e003                      	ldi R16,0b00000011		; 	ldi R16,0b00000001 para INT0;;;;; ldi R16,0b00000011 para INT0 e INT1 
-00004a bb0c                      	out EIFR,R16		;habilito todo despues lo cambio
-                                 		
+000014 e003                      	ldi R16,0b00000011		; 	ldi R16,0b00000001 para INT0;;;;; ldi R16,0b00000011 para INT0 e INT1 
+000015 bb0c                      	out EIFR,R16		;habilito todo despues lo cambio
+                                 
+000016 9478                      	SEI
                                  /**************************************************************
                                  CONFIGURACION BAJO CONSUMO
                                  ***************************************************************/
                                  	;por ahora lo comento, despues probamos
                                  CONFIG_BAJO_CONSUMO:
                                  	;configuro el consumo de energia, PSM o PDM
-00004b e005                      	ldi R16,0x05	;0000 0101 ;;;; 010 es de power down mode y el lsb es para activar el sleep mode
-00004c bf03                      	out SMCR,R16
+000017 e004                      	ldi R16,0b00000100	;0000 0101 ;;;; 010 es de power down mode y el lsb es para activar el sleep mode
+000018 bf03                      	out SMCR,R16
                                  
                                  	
                                  /**************************************************************
                                  INCIALIZO I2C
                                  ***************************************************************/
                                  
-00004d d044                      RCALL I2C_INIT
-                                 
-                                 
+000019 d059                      RCALL I2C_INIT
                                  
                                  
                                  /**************************************************************
                                  CONFIGURACION ACELEROMETRO
                                  ***************************************************************/
-                                 /*CONFIG_ACELEROMETRO:
+                                 CONFIG_ACELEROMETRO:
                                  ;Informaci贸n sacada de la data sheet del ADXL345
+                                 ;Arduino Pin	ADXL345 Pin		Placa CdR 88papu
+                                 ;GND				GND				8,22
+                                 ;3V3				VCC				7,20
+                                 ;3V3				CS				
+                                 ;GND				SDO				
+                                 ;A4					SDA				27
+                                 ;A5					SCL				28
+                                 ;					INT1			4
                                  
-                                 	LDI R24, 0b10100110	;Direcci贸n del esclavo SLA(1010011) + Write(0)
-                                 	LDI R25, 0b00011001	;Direcci贸n del registro a escribir ;THRESH_INACT 0x25 0b00011001
-                                 	LDI R26, 0b10000000	;Dato a transmitir ;THRESH_INACT  8 bit unsigned no dejar en 0x00 umbral de inactividad (62.5 mg/LSB) 
+00001a ea86                      	LDI R24, 0b10100110	;Direcci贸n del esclavo SLA(1010011) + Write(0)
+00001b e199                      	LDI R25, 0b00011001	;Direcci贸n del registro a escribir ;THRESH_INACT 0x25 0b00011001
+00001c e8a0                      	LDI R26, 0b10000000	;Dato a transmitir ;THRESH_INACT  8 bit unsigned no dejar en 0x00 umbral de inactividad (62.5 mg/LSB) 
                                  				;en 128 despues hacer ajuste fino
-                                 	RCALL SINGLE_BYTE_WRITE
+00001d d076                      	RCALL SINGLE_BYTE_WRITE
                                  
-                                 	LDI R25, 0b00011010	;Direcci贸n del registro a escribir ;TIME_INACT 0x26 0b00011010 umbral de tiempo de inactividad
-                                 	LDI R26, 0b00001010	;Dato a transmitir ;TIME_INACT  (m谩ximo 255 segundos) (1 sec/LSB)
+                                 	
+                                 	
+00001e e19a                      	LDI R25, 0b00011010	;Direcci贸n del registro a escribir ;TIME_INACT 0x26 0b00011010 umbral de tiempo de inactividad
+00001f e0aa                      	LDI R26, 0b00001010	;Dato a transmitir ;TIME_INACT  (m谩ximo 255 segundos) (1 sec/LSB)
                                  				;en 10s despues hacer ajuste fino
-                                 	RCALL SINGLE_BYTE_WRITE
+000020 d073                      	RCALL SINGLE_BYTE_WRITE
                                  
-                                 	LDI R25, 0b00011011	;Direcci贸n del registro a escribir ;ACT_INACT_CTL 0x27 0b00011011 controla los ejes que intervienen
-                                 	LDI R26, 0b00001111	;Dato a transmitir ;ACT_INACT_CTL 
+000021 e19b                      	LDI R25, 0b00011011	;Direcci贸n del registro a escribir ;ACT_INACT_CTL 0x27 0b00011011 controla los ejes que intervienen
+000022 e0af                      	LDI R26, 0b00001111	;Dato a transmitir ;ACT_INACT_CTL 
                                  				;en 0b00001111 (D3 en 1=ac coupled)(D2D1D0 = 111 enable en los tres ejes)
-                                 	RCALL SINGLE_BYTE_WRITE
+000023 d070                      	RCALL SINGLE_BYTE_WRITE
                                  
-                                 	LDI R25, 0b00101100	;Direcci贸n del registro a escribir ;BW_RATE 0x2C 0b00101100 Data rate and power mode control
-                                 	LDI R26, 0b00001010	;Dato a transmitir ;BW_RATE
+000024 e29c                      	LDI R25, 0b00101100	;Direcci贸n del registro a escribir ;BW_RATE 0x2C 0b00101100 Data rate and power mode control
+000025 e0aa                      	LDI R26, 0b00001010	;Dato a transmitir ;BW_RATE
                                  				;en lo que viene por defecto (D4=0 sin Low Power)(Rate D3D2D1D0 = 1010 : BW=50Hz) podria disminuirse
-                                 	RCALL SINGLE_BYTE_WRITE
+000026 d06d                      	RCALL SINGLE_BYTE_WRITE
                                  
-                                 	LDI R25, 0b00101111	;Direcci贸n del registro a escribir ;INT_MAP 0x2F 0b00101100 Interrupt mapping control
-                                 	LDI R26, 0b11110111	;Dato a transmitir ;INT_MAP
+000027 e29f                      	LDI R25, 0b00101111	;Direcci贸n del registro a escribir ;INT_MAP 0x2F 0b00101100 Interrupt mapping control
+000028 efa7                      	LDI R26, 0b11110111	;Dato a transmitir ;INT_MAP
                                  				;s贸lo la inactividad conectada al pin INT1, el resto conectadas al pin INT2
                                  				;Por defecto en active high, se puede cambiar con INT_INVERT bit en DATA_FORMAT 0x31
-                                 	RCALL SINGLE_BYTE_WRITE
+000029 d06a                      	RCALL SINGLE_BYTE_WRITE
                                  
-                                 	LDI R25, 0b00101110	;Direcci贸n del registro a escribir ;INT_MAP 0x2E 0b00101110 Interrupt enable control
-                                 	LDI R26, 0b00001000	;Dato a transmitir ;INT_ENABLE
+00002a e29e                      	LDI R25, 0b00101110	;Direcci贸n del registro a escribir ;INT_MAP 0x2E 0b00101110 Interrupt enable control
+00002b e0a8                      	LDI R26, 0b00001000	;Dato a transmitir ;INT_ENABLE
                                  				;se habilita s贸lo la interrupci贸n por inactividad
-                                 	RCALL SINGLE_BYTE_WRITE
+00002c d067                      	RCALL SINGLE_BYTE_WRITE
                                  
                                  ;S贸lo queda la duda de si en Reg 0x2D POWER_CTL hay que poner el (Measure)D3 en 1 para que anden las interrupciones o no. Por defecto est谩 en 0
                                  
                                  
-                                 */
+                                 
                                  
                                  /**************************************************************
                                  CONFIGURACION RTC
@@ -1118,17 +1131,72 @@ AVRASM ver. 2.2.6  C:\Users\MarianoAgust韓\Documents\GitHub\Labo\Test081116\0811
                                  /**************************************************************
                                  BLOQUE PRINCIPAL
                                  ***************************************************************/
+00002d e048                      LDI R20, 0b00001000
+00002e b947                      OUT DDRC, R20	;
+00002f e048                      LDI R20, 0b00001000
+000030 b948                      OUT PORTC, R20	;
+                                 
+000031 e140                      LDI R20, 0b00010000
+000032 b94a                      OUT DDRD, R20	;
+000033 e140                      LDI R20, 0b00010000
+000034 b94b                      OUT PORTD, R20	;
                                  
                                  ;se queda esperando que haya una interrupcion 
                                  SLEEP_MODE:
-00004e 9588                      			SLEEP
-00004f 3031                      			CPI R19,1
-000050 f019                      			BREQ ALARMA
+000035 e005                      			ldi R16,0b00000101	;0000 0101 ;;;; 010 es de power down mode y el lsb es para activar el sleep mode
+000036 bf03                      			out SMCR,R16
+000037 9588                      			SLEEP
+000038 e004                      			ldi R16,0b00000100	;0000 0100 ;;;; 010 es de power down mode y el lsb es para activar el sleep mode
+000039 bf03                      			out SMCR,R16
+                                 			
+00003a 3031                      			CPI R19,1
+00003b f0c9                      			BREQ ALARMA;_WRAPPER
                                  RETORNO_ALARMA:
-000051 3032                      			CPI R19,2
-000052 f0c1                      			BREQ BLUETOOTH
+00003c 3032                      			CPI R19,2
+00003d f009                      			BREQ BLUETOOTH;_WRAPPER
                                  RETORNO_BLUETOOTH:
-000053 cffa                      			RJMP SLEEP_MODE
+00003e cff6                      			RJMP SLEEP_MODE
+                                 
+                                 /*
+                                 ALARMA_WRAPPER:
+                                 RCALL ALARMA
+                                 RJMP SLEEP_MODE
+                                 
+                                 BLUETOOTH_WRAPPER:
+                                 RCALL BLUETOOTH
+                                 RJMP SLEEP_MODE
+                                 */
+                                 /**************************************************************
+                                 RUTINA ENVIO DE ENVIO DE DATOS POR BLUETOOTH 
+                                 ***************************************************************/
+                                 BLUETOOTH:
+00003f e05a                      LDI R21, 10	;valor a ajustar tiempo 
+                                 
+                                 PARPADEO2:
+000040 e040                      		LDI R20, 0b00000000
+000041 b94b                      		OUT PORTD, R20	
+000042 d008                      		RCALL RETARDO2
+000043 e140                      		LDI R20, 0b00010000
+000044 b94b                      		OUT PORTD, R20	
+000045 d005                      		RCALL RETARDO2
+000046 955a                      		DEC R21
+000047 3050                      		CPI R21, 0
+000048 f7b9                      		BRNE PARPADEO2
+                                 		;ver si falta algo m谩s
+000049 e030                      		LDI R19,0
+00004a cff3                      		RJMP RETORNO_BLUETOOTH
+                                 
+                                 RETARDO2:
+00004b e00a                      		LDI R16, 10
+00004c ef1f                      LOOP12:	LDI R17, 255
+00004d ef2f                      LOOP22:	LDI R18, 255
+00004e 952a                      LOOP32:  DEC R18
+00004f f7f1                      		BRNE LOOP32			
+000050 951a                      		DEC R17
+000051 f7d9                      		BRNE LOOP22
+000052 950a                      		DEC R16
+000053 f7c1                      		BRNE LOOP12
+000054 9508                      		RET
                                  
                                  
                                  /**************************************************************
@@ -1136,23 +1204,21 @@ AVRASM ver. 2.2.6  C:\Users\MarianoAgust韓\Documents\GitHub\Labo\Test081116\0811
                                  ***************************************************************/
                                  ALARMA:
                                  /*PRENDE Y APAGA LED (EQUIVALENTE A SONAR ALARMA) Y GAURDAR DATOS EN RTC*/
-000054 e048                      LDI R20, 0b00001000
-000055 b947                      OUT DDRC, R20	;el port C esta como salida
-000056 e05a                      LDI R21, 10	;valor a ajustar tiempo 
+000055 e05a                      LDI R21, 10	;valor a ajustar tiempo 
                                  
                                  PARPADEO:
-000057 e040                      		LDI R20, 0b00000000
-000058 b948                      		OUT PORTC, R20	;los pines de port C estan en 0
-000059 d007                      		RCALL RETARDO
-00005a e048                      		LDI R20, 0b00001000
-00005b b948                      		OUT PORTC, R20	;los pines de port C estan en 1
-00005c d004                      		RCALL RETARDO
-00005d 955a                      		DEC R21
-00005e 3050                      		CPI R21, 0
-00005f f7b9                      		BRNE PARPADEO
+000056 e040                      		LDI R20, 0b00000000
+000057 b948                      		OUT PORTC, R20	
+000058 d008                      		RCALL RETARDO
+000059 e048                      		LDI R20, 0b00001000
+00005a b948                      		OUT PORTC, R20	
+00005b d005                      		RCALL RETARDO
+00005c 955a                      		DEC R21
+00005d 3050                      		CPI R21, 0
+00005e f7b9                      		BRNE PARPADEO
                                  		;ver si falta algo m谩s
-                                 		;LDI R19,0
-000060 cff0                      		RJMP RETORNO_ALARMA
+00005f e030                      		LDI R19,0
+000060 cfdb                      		RJMP RETORNO_ALARMA
                                  
                                  RETARDO:
 000061 e00a                      		LDI R16, 10
@@ -1167,70 +1233,38 @@ AVRASM ver. 2.2.6  C:\Users\MarianoAgust韓\Documents\GitHub\Labo\Test081116\0811
 00006a 9508                      		RET
                                  
                                  
-                                 /**************************************************************
-                                 RUTINA ENVIO DE ENVIO DE DATOS POR BLUETOOTH 
-                                 ***************************************************************/
-                                 BLUETOOTH:
-00006b e140                      LDI R20, 0b00010000
-00006c b94a                      OUT DDRD, R20	;el port C esta como salida
-00006d e05a                      LDI R21, 10	;valor a ajustar tiempo 
                                  
-                                 PARPADEO2:
-00006e e040                      		LDI R20, 0b00000000
-00006f b94b                      		OUT PORTD, R20	;los pines de port C estan en 0
-000070 d007                      		RCALL RETARDO2
-000071 e140                      		LDI R20, 0b00010000
-000072 b94b                      		OUT PORTD, R20	;los pines de port C estan en 1
-000073 d004                      		RCALL RETARDO2
-000074 955a                      		DEC R21
-000075 3050                      		CPI R21, 0
-000076 f7b9                      		BRNE PARPADEO2
-                                 		;ver si falta algo m谩s
-                                 		;LDI R19,0
-000077 cfdb                      		RJMP RETORNO_BLUETOOTH
-                                 
-                                 
-                                 RETARDO2:
-000078 e00a                      		LDI R16, 10
-000079 ef1f                      LOOP12:	LDI R17, 255
-00007a ef2f                      LOOP22:	LDI R18, 255
-00007b 952a                      LOOP32:  DEC R18
-00007c f7f1                      		BRNE LOOP32			
-00007d 951a                      		DEC R17
-00007e f7d9                      		BRNE LOOP22
-00007f 950a                      		DEC R16
-000080 f7c1                      		BRNE LOOP12
-000081 9508                      		RET
-                                 
-                                 
-                                 ;RJMP RETORNO_BLUETOOTH
                                  
                                  /**************************************************************
                                  RUTINA DE SERVICIO DE INTERRUPCION POR INACTIVIDAD DEL ACELEROMETRO
                                  ***************************************************************/
                                  ISR_INT0_INACTIVITY:
-000082 930f                      PUSH R16; se guarda para que no se pise lo que habia en r16 antes de la interrupcion
-000083 b70f                      IN R16, SREG
-000084 930f                      PUSH R16
-000085 910f                      POP R16
-000086 bf0f                      OUT SREG, R16
-000087 910f                      POP R16
-000088 e031                      LDI R19,1	
-000089 9518                      RETI
+00006b 94f8                      CLI
+                                 /*PUSH R16
+                                 IN R16, SREG
+                                 PUSH R16
+                                 POP R16
+                                 OUT SREG, R16
+                                 POP R16*/
+00006c 9478                      SEI
+00006d e031                      LDI R19,1	
+00006e 9518                      RETI
                                  
                                  
                                  /**************************************************************
                                  RUTINA DE SERVICIO DE INTERRUPCION POR ACTIVACION DEL BLUETOOTH
                                  ***************************************************************/
                                  ISR_INT1_BLUETOOTH:
-00008a 930f                      PUSH R16; se guarda para que no se pise lo que habia en r16 antes de la interrupcion
-00008b b70f                      IN R16, SREG
-00008c 930f                      PUSH R16
-00008d 910f                      POP R16
-00008e bf0f                      OUT SREG, R16
-00008f 910f                      POP R16
-000090 e032                      LDI R19,2	
-000091 9518                      RETI
+00006f 94f8                      CLI
+                                 /*PUSH R16
+                                 IN R16, SREG
+                                 PUSH R16
+                                 POP R16
+                                 OUT SREG, R16
+                                 POP R16*/
+000070 9478                      SEI
+000071 e032                      LDI R19,2	
+000072 9518                      RETI
                                  
                                  
                                  
@@ -1247,13 +1281,13 @@ AVRASM ver. 2.2.6  C:\Users\MarianoAgust韓\Documents\GitHub\Labo\Test081116\0811
                                  CONFIG_I2C:
                                  
                                  I2C_INIT:
-000092 e050                      	LDI R21, 0		
-000093 9350 00b9                 	STS TWSR, R21		;Preescaler 1 en TWI Status Reg
-000095 e457                      	LDI R21, 0x47
-000096 9350 00b8                 	STS TWBR, R21		;Setea la frecuencia a 50k (8MHz XTAL)
-000098 e054                      	LDI R21, (1<<TWEN)	;0x04 a R21 (TWEN: Enable bit)
-000099 9350 00bc                 	STS TWCR, R21		;Habilita el TWI 
-00009b 9508                      	RET
+000073 e050                      	LDI R21, 0		
+000074 9350 00b9                 	STS TWSR, R21		;Preescaler 1 en TWI Status Reg
+000076 ef5f                      	LDI R21, 0b11111111		;0x47
+000077 9350 00b8                 	STS TWBR, R21		;Setea la frecuencia a 50k (8MHz XTAL)
+000079 e054                      	LDI R21, (1<<TWEN)	;0x04 a R21 (TWEN: Enable bit)
+00007a 9350 00bc                 	STS TWCR, R21		;Habilita el TWI 
+00007c 9508                      	RET
                                  
                                  	
                                  
@@ -1261,48 +1295,51 @@ AVRASM ver. 2.2.6  C:\Users\MarianoAgust韓\Documents\GitHub\Labo\Test081116\0811
                                  ;TWSTA:TWI Start condition bit
                                  
                                  I2C_START:
-00009c ea54                      	LDI R21, (1<<TWINT)|(1<<TWSTA)|(1<<TWEN);
-00009d 9350 00bc                 	STS TWCR, R21		;Transimitir condici贸n de START
-                                 
+00007d ea54                      	LDI R21, (1<<TWINT)|(1<<TWSTA)|(1<<TWEN);
+00007e 9350 00bc                 	STS TWCR, R21		;Transimitir condici贸n de START
+                                 	
                                  WAIT1:
-00009f 9150 00bc                 	LDS R21, TWCR		;Lee el registro
-0000a1 ff57                      	SBRS R21, TWINT		;Saltea siguiente linea si TWINT es 1(==operaci贸n finalizada)
-0000a2 cffc                      	RJMP WAIT1		;TWINT est谩 en 0
-0000a3 9508                      	RET
+000080 9150 00bc                 	LDS R21, TWCR		;Lee el registro
+000082 ff57                      	SBRS R21, TWINT		;Saltea siguiente linea si TWINT es 1(==operaci贸n finalizada)
+000083 cffc                      	RJMP WAIT1		;TWINT est谩 en 0
+000084 cfba                      	RJMP BLUETOOTH	;problema nada est谩 haciendo que TWINT se ponga en 1
+000085 9508                      	RET
                                  
                                  
                                  ;Se debe cargar el dato a enviar en el registro TWDR (R27)
                                  ;TWDR: TWI Data Register
                                  
                                  I2C_WRITE:
-0000a4 93b0 00bb                 	STS TWDR, R27		;Lleva el byte a TWDR
-0000a6 e854                      	LDI R21, (1<<TWINT)|(1<<TWEN) ;Se setean TWINT y TWEN en el TWCR
-0000a7 9350 00bc                 	STS TWCR, R21		;Configura TWCR para enviar TWDR
+000086 93b0 00bb                 	STS TWDR, R27		;Lleva el byte a TWDR
+000088 e854                      	LDI R21, (1<<TWINT)|(1<<TWEN) ;Se setean TWINT y TWEN en el TWCR
+000089 9350 00bc                 	STS TWCR, R21		;Configura TWCR para enviar TWDR
                                  
                                  WAIT2:
-0000a9 9150 00bc                 	LDS R21, TWCR		;Lee el registro de control a R21
-0000ab ff57                      	SBRS R21, TWINT		;Saltea siguiente l铆nea si TWINT es 1
-0000ac cffc                      	RJMP WAIT2		;Salta a WAIT2 si TWINT es 0
-0000ad 9508                      	RET
+00008b 9150 00bc                 	LDS R21, TWCR		;Lee el registro de control a R21
+00008d ff57                      	SBRS R21, TWINT		;Saltea siguiente l铆nea si TWINT es 1
+00008e cffc                      	RJMP WAIT2		;Salta a WAIT2 si TWINT es 0
+00008f 9508                      	RET
                                  
                                  
                                  ;TWSTO:TWI Stop condition bit
                                  
                                  I2C_STOP:
-0000ae e954                      	LDI R21, (1<<TWINT)|(1<<TWSTO)|(1<<TWEN)
-0000af 9350 00bc                 	STS TWCR, R21		;Transmitir condici贸n de STOP
-0000b1 9508                      	RET
+000090 e954                      	LDI R21, (1<<TWINT)|(1<<TWSTO)|(1<<TWEN)
+000091 9350 00bc                 	STS TWCR, R21		;Transmitir condici贸n de STOP
+000093 9508                      	RET
                                  
                                  
                                  SINGLE_BYTE_WRITE:
-0000b2 dfe9                      	RCALL I2C_START		;Transmite la condici贸n de START
-0000b3 2fb8                      	MOV R27, R24		;Carga la direcci贸n del esclavo + configuraci贸n R/W
-0000b4 dfef                      	RCALL I2C_WRITE		;Escribe R27 al bus I2C
-0000b5 2fb9                      	MOV R27, R25		;Direcci贸n del registro a escribir
-0000b6 dfed                      	RCALL I2C_WRITE		;Escribe R27 al bus I2C
-0000b7 2fba                      	MOV R27, R26		;Dato a transmitir 
-0000b8 dfeb                      	RCALL I2C_WRITE		;Escribe R27 al bus I2C
-0000b9 dff4                      	RCALL I2C_STOP 		;Transmite la condici贸n de STOP
+000094 dfe8                      	RCALL I2C_START		;Transmite la condici贸n de START
+                                 	
+000095 2fb8                      	MOV R27, R24		;Carga la direcci贸n del esclavo + configuraci贸n R/W
+000096 dfef                      	RCALL I2C_WRITE		;Escribe R27 al bus I2C
+                                 
+000097 2fb9                      	MOV R27, R25		;Direcci贸n del registro a escribir
+000098 dfed                      	RCALL I2C_WRITE		;Escribe R27 al bus I2C
+000099 2fba                      	MOV R27, R26		;Dato a transmitir 
+00009a dfeb                      	RCALL I2C_WRITE		;Escribe R27 al bus I2C
+00009b dff4                      	RCALL I2C_STOP 		;Transmite la condici贸n de STOP
 
 
 RESOURCE USE INFORMATION
@@ -1322,8 +1359,8 @@ counted separately from r26..r31 here.
 "ATmega88PA" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  24 r17:   4 r18:   4 r19:   4 r20:  12 
-r21:  26 r22:   0 r23:   0 r24:   1 r25:   1 r26:   1 r27:   4 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:  16 r17:   4 r18:   4 r19:   6 r20:  24 
+r21:  26 r22:   0 r23:   0 r24:   2 r25:   7 r26:   7 r27:   4 r28:   0 
 r29:   0 r30:   0 r31:   0 
 Registers used: 10 out of 35 (28.6%)
 
@@ -1334,25 +1371,25 @@ brcc  :   0 brcs  :   0 break :   0 breq  :   2 brge  :   0 brhc  :   0
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :   8 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 cbi   :   0 cbr   :   0 clc   :   0 
-clh   :   0 cli   :   1 cln   :   0 clr   :   0 cls   :   0 clt   :   0 
+clh   :   0 cli   :   2 cln   :   0 clr   :   0 cls   :   0 clt   :   0 
 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 cpi   :   4 
 cpse  :   0 dec   :   8 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 
-icall :   0 ijmp  :   0 in    :   2 inc   :   0 ld    :   0 ldd   :   0 
-ldi   :  28 lds   :   2 lpm   :   0 lsl   :   0 lsr   :   0 mov   :   3 
+icall :   0 ijmp  :   0 in    :   0 inc   :   0 ld    :   0 ldd   :   0 
+ldi   :  51 lds   :   2 lpm   :   0 lsl   :   0 lsr   :   0 mov   :   3 
 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 
-or    :   0 ori   :   0 out   :  13 pop   :   4 push  :   4 rcall :  10 
-ret   :   7 reti  :   2 rjmp  :   8 rol   :   0 ror   :   0 sbc   :   0 
+or    :   0 ori   :   0 out   :  19 pop   :   0 push  :   0 rcall :  16 
+ret   :   7 reti  :   2 rjmp  :   9 rol   :   0 ror   :   0 sbc   :   0 
 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 sbiw  :   0 sbr   :   0 
-sbrc  :   0 sbrs  :   2 sec   :   0 seh   :   0 sei   :   1 sen   :   0 
+sbrc  :   0 sbrs  :   2 sec   :   0 seh   :   0 sei   :   3 sen   :   0 
 ser   :   0 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   1 
 spm   :   0 st    :   0 std   :   0 sts   :   8 sub   :   0 subi  :   0 
 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 20 out of 111 (18.0%)
+Instructions used: 17 out of 111 (15.3%)
 
 "ATmega88PA" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000176    256      0    256    8192   3.1%
+[.cseg] 0x000000 0x00013a    314      0    314    8192   3.8%
 [.dseg] 0x000100 0x000100      0      0      0    1024   0.0%
 [.eseg] 0x000000 0x000000      0      0      0     512   0.0%
 
