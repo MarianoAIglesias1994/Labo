@@ -1,18 +1,18 @@
 <ASSEMBLER_INFO>
  <VERSION>2.2.6</VERSION>
  <DEVICE>"ATmega88PA"</DEVICE>
- <WORKING_DIR>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\Debug</WORKING_DIR>
+ <WORKING_DIR>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\Debug</WORKING_DIR>
  <INCLUDE_PATH>
   <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc</DIR>
   <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</SOURCE_FILE>
+ <SOURCE_FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m88padef.inc</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
-  <FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\Debug\081116.obj</FILE>
+  <FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\Debug\081116.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
   <FILE>081116.hex</FILE>
@@ -22,30 +22,33 @@
   <FILE>081116.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <INICIO><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>29</LINE></INICIO>
-  <ISR_INT0_INACTIVITY><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>219</LINE></ISR_INT0_INACTIVITY>
-  <ISR_INT1_BLUETOOTH><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>233</LINE></ISR_INT1_BLUETOOTH>
-  <CONFIG_INT><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>47</LINE></CONFIG_INT>
-  <CONFIG_BAJO_CONSUMO><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>70</LINE></CONFIG_BAJO_CONSUMO>
-  <CONFIG_I2C><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>80</LINE></CONFIG_I2C>
-  <I2C_INIT><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>82</LINE></I2C_INIT>
-  <I2C_START><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>95</LINE></I2C_START>
-  <WAIT1><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>99</LINE></WAIT1>
-  <I2C_WRITE><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>109</LINE></I2C_WRITE>
-  <WAIT2><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>114</LINE></WAIT2>
-  <I2C_STOP><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>123</LINE></I2C_STOP>
-  <CONFIG_ACELEROMETRO><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>140</LINE></CONFIG_ACELEROMETRO>
-  <SINGLE_BYTE_WRITE><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>177</LINE></SINGLE_BYTE_WRITE>
-  <CONFIG_RTC><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>193</LINE></CONFIG_RTC>
-  <CONFIG_BLUETOOTH><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>198</LINE></CONFIG_BLUETOOTH>
-  <SLEEP_MODE><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>205</LINE></SLEEP_MODE>
-  <ALARMA><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>248</LINE></ALARMA>
-  <RETORNO_ALARMA><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>209</LINE></RETORNO_ALARMA>
-  <BLUETOOTH><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>284</LINE></BLUETOOTH>
-  <RETORNO_BLUETOOTH><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>212</LINE></RETORNO_BLUETOOTH>
-  <PARPADEO><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>256</LINE></PARPADEO>
-  <RETARDO><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>269</LINE></RETARDO>
-  <LOOP1><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>271</LINE></LOOP1>
-  <LOOP2><FILE>C:\Users\MarianoAgustín\Desktop\Test081116\081116\081116\main.asm</FILE><LINE>272</LINE></LOOP2>
+  <INICIO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>29</LINE></INICIO>
+  <ISR_INT0_INACTIVITY><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>226</LINE></ISR_INT0_INACTIVITY>
+  <ISR_INT1_BLUETOOTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>240</LINE></ISR_INT1_BLUETOOTH>
+  <CONFIG_INT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>39</LINE></CONFIG_INT>
+  <CONFIG_BAJO_CONSUMO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>64</LINE></CONFIG_BAJO_CONSUMO>
+  <I2C_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>264</LINE></I2C_INIT>
+  <SLEEP_MODE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>138</LINE></SLEEP_MODE>
+  <ALARMA><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>152</LINE></ALARMA>
+  <RETORNO_ALARMA><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>142</LINE></RETORNO_ALARMA>
+  <BLUETOOTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>188</LINE></BLUETOOTH>
+  <RETORNO_BLUETOOTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>145</LINE></RETORNO_BLUETOOTH>
+  <PARPADEO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>158</LINE></PARPADEO>
+  <RETARDO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>172</LINE></RETARDO>
+  <LOOP1><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>174</LINE></LOOP1>
+  <LOOP2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>175</LINE></LOOP2>
+  <LOOP3><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>176</LINE></LOOP3>
+  <PARPADEO2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>193</LINE></PARPADEO2>
+  <RETARDO2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>208</LINE></RETARDO2>
+  <LOOP12><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>210</LINE></LOOP12>
+  <LOOP22><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>211</LINE></LOOP22>
+  <LOOP32><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>212</LINE></LOOP32>
+  <CONFIG_I2C><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>262</LINE></CONFIG_I2C>
+  <I2C_START><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>278</LINE></I2C_START>
+  <WAIT1><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>282</LINE></WAIT1>
+  <I2C_WRITE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>292</LINE></I2C_WRITE>
+  <WAIT2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>297</LINE></WAIT2>
+  <I2C_STOP><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>306</LINE></I2C_STOP>
+  <SINGLE_BYTE_WRITE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>312</LINE></SINGLE_BYTE_WRITE>
  </LABELS>
 </ASSEMBLER_INFO>

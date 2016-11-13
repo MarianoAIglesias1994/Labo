@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Desktop\Test081116\testalarma\testalarma\main.asm Tue Nov 08 21:59:09 2016
+AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\testalarma\testalarma\main.asm Sat Nov 12 19:04:27 2016
 
 
 EQU  SIGNATURE_000 0000001e
@@ -698,3 +698,4 @@ CSEG PARPADEO     00000007
 CSEG RETARDO      00000011
 CSEG LOOP1        00000012
 CSEG LOOP2        00000013
+CSEG LOOP3        00000014
