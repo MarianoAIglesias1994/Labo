@@ -30,7 +30,7 @@ INICIO:
 	LDI R21, LOW(RAMEND)
 	OUT SPL, R21
 
-	
+; Configuro los leds para las pruebas
 LDI R20, 0b00001000
 OUT DDRC, R20	;
 LDI R20, 0b00001000
@@ -95,25 +95,30 @@ CONFIG_ACELEROMETRO:
 
 	LDI R24, 0b10100110	;Dirección del esclavo SLA(1010011) + Write(0)
 	LDI R25, 0b00011001	;Dirección del registro a escribir ;THRESH_INACT 0x25 0b00011001
-	LDI R26, 0b10000000	;Dato a transmitir ;THRESH_INACT  8 bit unsigned no dejar en 0x00 umbral de inactividad (62.5 mg/LSB) 
-				;en 128 despues hacer ajuste fino
+	LDI R26, 0b11111111	;Dato a transmitir ;THRESH_INACT  8 bit unsigned no dejar en 0x00 umbral de inactividad (62.5 mg/LSB) 
+				;en 17 = 0b00010001 despues hacer ajuste fino
 	RCALL SINGLE_BYTE_WRITE
 
 	
 	
 	LDI R25, 0b00011010	;Dirección del registro a escribir ;TIME_INACT 0x26 0b00011010 umbral de tiempo de inactividad
-	LDI R26, 0b00001010	;Dato a transmitir ;TIME_INACT  (máximo 255 segundos) (1 sec/LSB)
-				;en 10s despues hacer ajuste fino
+	LDI R26, 0b00000001	;Dato a transmitir ;TIME_INACT  (máximo 255 segundos) (1 sec/LSB)
+				;en 1s despues hacer ajuste fino
 	RCALL SINGLE_BYTE_WRITE
 
 	LDI R25, 0b00011011	;Dirección del registro a escribir ;ACT_INACT_CTL 0x27 0b00011011 controla los ejes que intervienen
 	LDI R26, 0b00001111	;Dato a transmitir ;ACT_INACT_CTL 
 				;en 0b00001111 (D3 en 1=ac coupled)(D2D1D0 = 111 enable en los tres ejes)
 	RCALL SINGLE_BYTE_WRITE
-
+	/*
 	LDI R25, 0b00101100	;Dirección del registro a escribir ;BW_RATE 0x2C 0b00101100 Data rate and power mode control
 	LDI R26, 0b00001010	;Dato a transmitir ;BW_RATE
 				;en lo que viene por defecto (D4=0 sin Low Power)(Rate D3D2D1D0 = 1010 : BW=50Hz) podria disminuirse
+	RCALL SINGLE_BYTE_WRITE
+	*/
+	LDI R25, 0b00101100	;Dirección del registro a escribir ;BW_RATE 0x2C 0b00101100 Data rate and power mode control
+	LDI R26, 0b00000110	;Dato a transmitir ;BW_RATE
+				;en lo que viene por defecto (D4=0 sin Low Power)(Rate D3D2D1D0 = 0110 : BW=3.13Hz) 
 	RCALL SINGLE_BYTE_WRITE
 
 	LDI R25, 0b00101111	;Dirección del registro a escribir ;INT_MAP 0x2F 0b00101100 Interrupt mapping control
@@ -129,7 +134,11 @@ CONFIG_ACELEROMETRO:
 
 ;Sólo queda la duda de si en Reg 0x2D POWER_CTL hay que poner el (Measure)D3 en 1 para que anden las interrupciones o no. Por defecto está en 0
 
-
+	LDI R25, 0b00101101	;Dirección del registro a escribir ;0x2D POWER_CTL 0b00101101 
+	LDI R26, 0b00001000	;Dato a transmitir ; MEASURE ON
+				;se pone en 1 el bit de Measure, por defecto se prende en modo standby, no queda claro si es necesario
+				;ponerlo en modo medición para que anden las interrupciones
+	RCALL SINGLE_BYTE_WRITE
 
 
 /**************************************************************
@@ -146,6 +155,7 @@ CONFIGURACION BLUETOOTH
 /**************************************************************
 BLOQUE PRINCIPAL
 ***************************************************************/
+/* Configuro los leds
 LDI R20, 0b00001000
 OUT DDRC, R20	;
 LDI R20, 0b00001000
@@ -155,7 +165,9 @@ LDI R20, 0b00010000
 OUT DDRD, R20	;
 LDI R20, 0b00010000
 OUT PORTD, R20	;
-
+*/
+LDI R20, 0b00000000
+OUT PORTD, R20	;
 ;se queda esperando que haya una interrupcion 
 SLEEP_MODE:
 			ldi R16,0b00000101	;0000 0101 ;;;; 010 es de power down mode y el lsb es para activar el sleep mode
@@ -298,7 +310,7 @@ CONFIG_I2C:
 I2C_INIT:
 	LDI R21, 0		
 	STS TWSR, R21		;Preescaler 1 en TWI Status Reg
-	LDI R21, 0b11111111		;0x47
+	LDI R21, 0xB0		;0x47
 	STS TWBR, R21		;Setea la frecuencia a 50k (8MHz XTAL)
 	LDI R21, (1<<TWEN)	;0x04 a R21 (TWEN: Enable bit)
 	STS TWCR, R21		;Habilita el TWI 
@@ -317,7 +329,6 @@ WAIT1:
 	LDS R21, TWCR		;Lee el registro
 	SBRS R21, TWINT		;Saltea siguiente linea si TWINT es 1(==operación finalizada)
 	RJMP WAIT1		;TWINT está en 0
-	RJMP BLUETOOTH	;problema nada está haciendo que TWINT se ponga en 1
 	RET
 
 
@@ -328,6 +339,7 @@ I2C_WRITE:
 	STS TWDR, R27		;Lleva el byte a TWDR
 	LDI R21, (1<<TWINT)|(1<<TWEN) ;Se setean TWINT y TWEN en el TWCR
 	STS TWCR, R21		;Configura TWCR para enviar TWDR
+	
 
 WAIT2:
 	LDS R21, TWCR		;Lee el registro de control a R21
@@ -346,10 +358,8 @@ I2C_STOP:
 
 SINGLE_BYTE_WRITE:
 	RCALL I2C_START		;Transmite la condición de START
-	
 	MOV R27, R24		;Carga la dirección del esclavo + configuración R/W
 	RCALL I2C_WRITE		;Escribe R27 al bus I2C
-
 	MOV R27, R25		;Dirección del registro a escribir
 	RCALL I2C_WRITE		;Escribe R27 al bus I2C
 	MOV R27, R26		;Dato a transmitir 
