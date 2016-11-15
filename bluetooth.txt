@@ -1,0 +1,24 @@
+USART_INIT:
+
+;configuro el baud rate en 9600
+LDI R16, 0X33
+LDI R17, 0X00
+OUT UBRR0H, R17
+OUT UBRR0L, R16
+
+;habilito el tx  solamente ya que el modulo se encarga de enviar la fecha del evento, no de recibir cualquier tipo de informacion
+
+LDI R16, (1<<TXEN0)|(0<<RXEN0)
+OUT UCSR0B, R16
+
+LDI R16, (1<<USBS)|(3<<UCSZ0); 8 bits por dato, 2bits de stop
+OUT UCRSC, R16
+RET
+
+
+USART_TRANSMISION:
+IN	R17,UCRS0A		;se fija que el buffer este listo para la transmision
+SBRS	R17,UDRE
+RJMP	USART_TRANSMISION
+OUT	UDR0,R19		;manda la informacion que hay en el registro 16 al buffer para ser enviada
+RET
