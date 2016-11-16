@@ -96,48 +96,62 @@ CONFIG_ACELEROMETRO:
 ;A5					SCL				28
 ;					INT1			4
 
-	LDI R24, 0b10100110	;Dirección del esclavo SLA(1010011) + Write(0)
-	LDI R25, 0b00100101	;Dirección del registro a escribir ;THRESH_INACT 0x25 0b0010010
-	LDI R26, 0b11111111	;Dato a transmitir ;THRESH_INACT  8 bit unsigned no dejar en 0x00 umbral de inactividad (62.5 mg/LSB) 
+
+
+	LDI R24, 0xA6;0x3A;0b10100110	;Dirección del esclavo SLA(1010011) + Write(0)
+	LDI R25, 0xA7;0b00100101	;Dirección del registro a escribir ;THRESH_INACT 0x25 0b0010010
+	LDI R26, 0b00010000	;Dato a transmitir ;THRESH_INACT  8 bit unsigned no dejar en 0x00 umbral de inactividad (62.5 mg/LSB) 
 				;en 17 = 0b00010001 despues hacer ajuste fino
-	RCALL SINGLE_BYTE_WRITE
+	RCALL MULTIPLE_BYTE_WRITE
 
 	;%%%%%%%%%% Se va a realizar la lectura del registro configurado para ver si efectivamente se escribió
-	LDI R28, 0b10100111	;Dirección del esclavo SLA(1010011) + Write(1)
+	LDI R24, 0xA6;0x3A; 0b10100110	;Dirección del esclavo SLA(1010011) + Write(0)
+	LDI R28, 0xA7;0x3B;	;Dirección del esclavo SLA(1010011) + Read(1)
+	LDI R25, 0b00100101	;Dirección del registro a leer ;THRESH_INACT 0x25 0b0010010
+	LDI R26, 0b00010000	;Dato a transmitir ;THRESH_INACT  8 bit unsigned no dejar en 0x00 umbral de inactividad (62.5 mg/LSB) 
 	RCALL SINGLE_BYTE_READ 
-	CP R23, 
+	CP R23, R26
+	BREQ WRITE_OK
+	RJMP CONTINUE
+WRITE_OK:
+	LDI R20, 0b00000100
+	OUT DDRC, R20	;	LED ROJO 2
+	LDI R20, 0b00000000
+	OUT PORTC, R20	;
+CONTINUE:
 	;%%%%%%%%%
+	
 
 	LDI R25, 0b00100110	;Dirección del registro a escribir ;TIME_INACT 0x26 0b00100110 umbral de tiempo de inactividad
 	LDI R26, 0b00000001	;Dato a transmitir ;TIME_INACT  (máximo 255 segundos) (1 sec/LSB)
 				;en 1s despues hacer ajuste fino
-	RCALL SINGLE_BYTE_WRITE
+	RCALL MULTIPLE_BYTE_WRITE
 
 	LDI R25, 0b00100111	;Dirección del registro a escribir ;ACT_INACT_CTL 0x27 0b00100111 controla los ejes que intervienen
 	LDI R26, 0b00000111	;Dato a transmitir ;ACT_INACT_CTL 
 				;en 0b00001111 (D3 en 1=ac coupled)(D2D1D0 = 111 enable en los tres ejes)******lo cambie
-	RCALL SINGLE_BYTE_WRITE
+	RCALL MULTIPLE_BYTE_WRITE
 	/*
 	LDI R25, 0b00101100	;Dirección del registro a escribir ;BW_RATE 0x2C 0b00101100 Data rate and power mode control
 	LDI R26, 0b00001010	;Dato a transmitir ;BW_RATE
 				;en lo que viene por defecto (D4=0 sin Low Power)(Rate D3D2D1D0 = 1010 : BW=50Hz) podria disminuirse
-	RCALL SINGLE_BYTE_WRITE
+	RCALL MULTIPLE_BYTE_WRITE
 	*/
 	LDI R25, 0b00101100	;Dirección del registro a escribir ;BW_RATE 0x2C 0b00101100 Data rate and power mode control
 	LDI R26, 0b00000110	;Dato a transmitir ;BW_RATE
 				;en lo que viene por defecto (D4=0 sin Low Power)(Rate D3D2D1D0 = 0110 : BW=3.13Hz) 
-	RCALL SINGLE_BYTE_WRITE
+	RCALL MULTIPLE_BYTE_WRITE
 
 	LDI R25, 0b00101111	;Dirección del registro a escribir ;INT_MAP 0x2F 0b00101111 Interrupt mapping control
 	LDI R26, 0b11110111	;Dato a transmitir ;INT_MAP
 				;sólo la inactividad conectada al pin INT1, el resto conectadas al pin INT2
 				;Por defecto en active high, se puede cambiar con INT_INVERT bit en DATA_FORMAT 0x31
-	RCALL SINGLE_BYTE_WRITE
+	RCALL MULTIPLE_BYTE_WRITE
 
 	LDI R25, 0b00101110	;Dirección del registro a escribir ;INT_MAP 0x2E 0b00101110 Interrupt enable control
 	LDI R26, 0b00001000	;Dato a transmitir ;INT_ENABLE
 				;se habilita sólo la interrupción por inactividad
-	RCALL SINGLE_BYTE_WRITE
+	RCALL MULTIPLE_BYTE_WRITE
 
 ;Sólo queda la duda de si en Reg 0x2D POWER_CTL hay que poner el (Measure)D3 en 1 para que anden las interrupciones o no. Por defecto está en 0
 
@@ -145,7 +159,7 @@ CONFIG_ACELEROMETRO:
 	LDI R26, 0b00001000	;Dato a transmitir ; MEASURE ON
 				;se pone en 1 el bit de Measure, por defecto se prende en modo standby, no queda claro si es necesario
 				;ponerlo en modo medición para que anden las interrupciones
-	RCALL SINGLE_BYTE_WRITE
+	RCALL MULTIPLE_BYTE_WRITE
 
 
 /**************************************************************
@@ -164,12 +178,12 @@ BLOQUE PRINCIPAL
 ***************************************************************/
 /* Configuro los leds
 LDI R20, 0b00001000
-OUT DDRC, R20	;
+OUT DDRC, R20	;	LED ROJO
 LDI R20, 0b00001000
 OUT PORTC, R20	;
 
 LDI R20, 0b00010000
-OUT DDRD, R20	;
+OUT DDRD, R20	;	LED VERDE
 LDI R20, 0b00010000
 OUT PORTD, R20	;
 */
@@ -203,7 +217,7 @@ RJMP SLEEP_MODE
 /**************************************************************
 RUTINA ENVIO DE ENVIO DE DATOS POR BLUETOOTH 
 ***************************************************************/
-BLUETOOTH:
+BLUETOOTH: ;LED VERDE
 LDI R21, 10	;valor a ajustar tiempo 
 
 PARPADEO2:
@@ -236,7 +250,7 @@ LOOP32:  DEC R18
 /**************************************************************
 RUTINA DE ALARMA
 ***************************************************************/
-ALARMA:
+ALARMA:	;LED ROJO
 /*PRENDE Y APAGA LED (EQUIVALENTE A SONAR ALARMA) Y GAURDAR DATOS EN RTC*/
 LDI R21, 10	;valor a ajustar tiempo 
 
@@ -317,7 +331,7 @@ CONFIG_I2C:
 I2C_INIT:
 	LDI R21, 0		
 	STS TWSR, R21		;Preescaler 1 en TWI Status Reg
-	LDI R21, 0x47		;0x47 xC5
+	LDI R21, 0x10		;0x47 xC5
 	STS TWBR, R21		;Setea la frecuencia a 50k (8MHz XTAL)
 	LDI R21, (1<<TWEN)	;0x04 a R21 (TWEN: Enable bit)
 	STS TWCR, R21		;Habilita el TWI 
@@ -339,6 +353,7 @@ WAIT1:
 	RET
 
 
+
 ;Se debe cargar el dato a enviar en el registro TWDR (R27)
 ;TWDR: TWI Data Register
 
@@ -355,7 +370,7 @@ WAIT2:
 
 
 I2C_READ:
-	LDI R21, (1<<TWINT)|(1<<TWEN)
+	LDI R21, (1<<TWINT)|(1<<TWEN);|(1<<TWEA)
 	STS TWCR, R21
 
 WAIT3:
@@ -375,26 +390,74 @@ I2C_STOP:
 	RET
 
 
-SINGLE_BYTE_WRITE:		;La probé separando en START_WRITE_STOP vs START_WRITE_WRITE_WRITE_STOP y parece no cambiar
+CHECK_TWI_ST_REG:
+	LDS R16,TWSR			;Check value of TWI status register. Mask prescaler bits. If
+	ANDI R16, 0xF8		;status different from START go to ERROR
+	CP R16, R17
+	BRNE ERROR
+	RJMP NO_ERROR
+ERROR:
+	LDI R20, 0b10010000
+	OUT DDRD, R20	;	LED VERDE 3
+	LDI R20, 0b00000000
+	OUT PORTD, R20	;	
+	RET
+NO_ERROR:
+	RET
+
+
+MULTIPLE_BYTE_WRITE:		
 	RCALL I2C_START		;Transmite la condición de START
+;	LDI R17, 0x08		;
+;	RCALL CHECK_TWI_ST_REG; Chequea que esté OK el status reg del TWI, recibe previamente el status en R17
+	
 	MOV R27, R24		;Carga la dirección del esclavo + configuración R/W
 	RCALL I2C_WRITE		;Escribe R27 al bus I2C
-	;RCALL I2C_STOP 
+;	LDI R17, 0x18	;
+;	RCALL CHECK_TWI_ST_REG;
+	
 
-	;RCALL I2C_START		;Transmite la condición de START
 	MOV R27, R25		;Dirección del registro a escribir
 	RCALL I2C_WRITE		;Escribe R27 al bus I2C
-	;RCALL I2C_STOP 		;Transmite la condición de STOP
-
-	;RCALL I2C_START		;Transmite la condición de START
+;	LDI R17, 0x28	;
+;	RCALL CHECK_TWI_ST_REG;
+	
 	MOV R27, R26		;Dato a transmitir 
 	RCALL I2C_WRITE		;Escribe R27 al bus I2C
+;	LDI R17, 0x28	;
+;	RCALL CHECK_TWI_ST_REG;
+
 	RCALL I2C_STOP 		;Transmite la condición de STOP
 	RET
 
+
+
 SINGLE_BYTE_READ:
 	RCALL I2C_START
+;	LDI R17, 0x08		;
+;	RCALL CHECK_TWI_ST_REG; Chequea que esté OK el status reg del TWI, recibe previamente el status en R17
+	
+	MOV R27, R24		;Carga la dirección del esclavo + configuración W
+	RCALL I2C_WRITE		;Escribe R27 al bus I2C
+;	LDI R17, 0x18	;
+;	RCALL CHECK_TWI_ST_REG;
+
+	MOV R27, R25		;Dirección del registro a escribir
+	RCALL I2C_WRITE		;Escribe R27 al bus I2C
+;	LDI R17, 0x28	;
+;	RCALL CHECK_TWI_ST_REG;
+
+	RCALL I2C_STOP
+
+	RCALL I2C_START
+;	LDI R17, 0x08		;
+;	RCALL CHECK_TWI_ST_REG; Chequea que esté OK el status reg del TWI, recibe previamente el status en R17
+	
+	MOV R27, R28		;Carga la dirección del esclavo + configuración R
 	RCALL I2C_READ
+;	LDI R17, 0x50		;
+;	RCALL CHECK_TWI_ST_REG;
 	MOV R23, R27
+
 	RCALL I2C_STOP 		
 	RET
