@@ -41,6 +41,8 @@ OUT DDRD, R20	;
 LDI R20, 0b00010000
 OUT PORTD, R20	;
 
+LDI R20,0
+
 /**************************************************************
 CONFIGURACION INTERRUPCIONES EXTERNAS
 ***************************************************************/
@@ -76,6 +78,7 @@ CONFIG_BAJO_CONSUMO:
 INCIALIZO I2C
 ***************************************************************/
 
+
 RCALL I2C_INIT
 
 
@@ -94,21 +97,25 @@ CONFIG_ACELEROMETRO:
 ;					INT1			4
 
 	LDI R24, 0b10100110	;Dirección del esclavo SLA(1010011) + Write(0)
-	LDI R25, 0b00011001	;Dirección del registro a escribir ;THRESH_INACT 0x25 0b00011001
+	LDI R25, 0b00100101	;Dirección del registro a escribir ;THRESH_INACT 0x25 0b0010010
 	LDI R26, 0b11111111	;Dato a transmitir ;THRESH_INACT  8 bit unsigned no dejar en 0x00 umbral de inactividad (62.5 mg/LSB) 
 				;en 17 = 0b00010001 despues hacer ajuste fino
 	RCALL SINGLE_BYTE_WRITE
 
-	
-	
-	LDI R25, 0b00011010	;Dirección del registro a escribir ;TIME_INACT 0x26 0b00011010 umbral de tiempo de inactividad
+	;%%%%%%%%%% Se va a realizar la lectura del registro configurado para ver si efectivamente se escribió
+	LDI R28, 0b10100111	;Dirección del esclavo SLA(1010011) + Write(1)
+	RCALL SINGLE_BYTE_READ 
+	CP R23, 
+	;%%%%%%%%%
+
+	LDI R25, 0b00100110	;Dirección del registro a escribir ;TIME_INACT 0x26 0b00100110 umbral de tiempo de inactividad
 	LDI R26, 0b00000001	;Dato a transmitir ;TIME_INACT  (máximo 255 segundos) (1 sec/LSB)
 				;en 1s despues hacer ajuste fino
 	RCALL SINGLE_BYTE_WRITE
 
-	LDI R25, 0b00011011	;Dirección del registro a escribir ;ACT_INACT_CTL 0x27 0b00011011 controla los ejes que intervienen
-	LDI R26, 0b00001111	;Dato a transmitir ;ACT_INACT_CTL 
-				;en 0b00001111 (D3 en 1=ac coupled)(D2D1D0 = 111 enable en los tres ejes)
+	LDI R25, 0b00100111	;Dirección del registro a escribir ;ACT_INACT_CTL 0x27 0b00100111 controla los ejes que intervienen
+	LDI R26, 0b00000111	;Dato a transmitir ;ACT_INACT_CTL 
+				;en 0b00001111 (D3 en 1=ac coupled)(D2D1D0 = 111 enable en los tres ejes)******lo cambie
 	RCALL SINGLE_BYTE_WRITE
 	/*
 	LDI R25, 0b00101100	;Dirección del registro a escribir ;BW_RATE 0x2C 0b00101100 Data rate and power mode control
@@ -121,7 +128,7 @@ CONFIG_ACELEROMETRO:
 				;en lo que viene por defecto (D4=0 sin Low Power)(Rate D3D2D1D0 = 0110 : BW=3.13Hz) 
 	RCALL SINGLE_BYTE_WRITE
 
-	LDI R25, 0b00101111	;Dirección del registro a escribir ;INT_MAP 0x2F 0b00101100 Interrupt mapping control
+	LDI R25, 0b00101111	;Dirección del registro a escribir ;INT_MAP 0x2F 0b00101111 Interrupt mapping control
 	LDI R26, 0b11110111	;Dato a transmitir ;INT_MAP
 				;sólo la inactividad conectada al pin INT1, el resto conectadas al pin INT2
 				;Por defecto en active high, se puede cambiar con INT_INVERT bit en DATA_FORMAT 0x31
@@ -310,7 +317,7 @@ CONFIG_I2C:
 I2C_INIT:
 	LDI R21, 0		
 	STS TWSR, R21		;Preescaler 1 en TWI Status Reg
-	LDI R21, 0xB0		;0x47
+	LDI R21, 0x47		;0x47 xC5
 	STS TWBR, R21		;Setea la frecuencia a 50k (8MHz XTAL)
 	LDI R21, (1<<TWEN)	;0x04 a R21 (TWEN: Enable bit)
 	STS TWCR, R21		;Habilita el TWI 
@@ -339,13 +346,25 @@ I2C_WRITE:
 	STS TWDR, R27		;Lleva el byte a TWDR
 	LDI R21, (1<<TWINT)|(1<<TWEN) ;Se setean TWINT y TWEN en el TWCR
 	STS TWCR, R21		;Configura TWCR para enviar TWDR
-	
 
 WAIT2:
 	LDS R21, TWCR		;Lee el registro de control a R21
 	SBRS R21, TWINT		;Saltea siguiente línea si TWINT es 1
 	RJMP WAIT2		;Salta a WAIT2 si TWINT es 0
 	RET
+
+
+I2C_READ:
+	LDI R21, (1<<TWINT)|(1<<TWEN)
+	STS TWCR, R21
+
+WAIT3:
+	LDS R21, TWCR
+	SBRS R21, TWINT
+	RJMP WAIT2
+	LDS R27, TWDR	; Guarda en R27 el dato leido
+	RET
+
 
 
 ;TWSTO:TWI Stop condition bit
@@ -356,13 +375,26 @@ I2C_STOP:
 	RET
 
 
-SINGLE_BYTE_WRITE:
+SINGLE_BYTE_WRITE:		;La probé separando en START_WRITE_STOP vs START_WRITE_WRITE_WRITE_STOP y parece no cambiar
 	RCALL I2C_START		;Transmite la condición de START
 	MOV R27, R24		;Carga la dirección del esclavo + configuración R/W
 	RCALL I2C_WRITE		;Escribe R27 al bus I2C
+	;RCALL I2C_STOP 
+
+	;RCALL I2C_START		;Transmite la condición de START
 	MOV R27, R25		;Dirección del registro a escribir
 	RCALL I2C_WRITE		;Escribe R27 al bus I2C
+	;RCALL I2C_STOP 		;Transmite la condición de STOP
+
+	;RCALL I2C_START		;Transmite la condición de START
 	MOV R27, R26		;Dato a transmitir 
 	RCALL I2C_WRITE		;Escribe R27 al bus I2C
 	RCALL I2C_STOP 		;Transmite la condición de STOP
+	RET
+
+SINGLE_BYTE_READ:
+	RCALL I2C_START
+	RCALL I2C_READ
+	MOV R23, R27
+	RCALL I2C_STOP 		
 	RET
