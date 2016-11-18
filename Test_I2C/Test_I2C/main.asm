@@ -8,6 +8,7 @@
 /**************************************************************
 DIRECTIVAS
 ***************************************************************/
+;#ifndef F_CPU
 #define F_CPU 18432000UL 
 #include "m88PAdef.inc" ; Lo incluye el AtmelStudio al setear el uC
 
@@ -362,10 +363,10 @@ CONFIG_I2C:
 I2C_INIT:
 	LDI R21, 0		
 	STS TWSR, R21		; Preescaler 1 en TWI Status Reg
-	LDI R21, 0xB0		;
+	LDI R21, 0x54		;  0xB0
 	STS TWBR, R21		; Setea la frecuencia a 50.087 kHz (18.432 MHz XTAL)
-	LDI R21, (1<<TWEN)	; 0x04 a R21 (TWEN: Enable bit)
-	STS TWCR, R21		; Habilita el TWI 
+;	LDI R21, (1<<TWEN)	; 0x04 a R21 (TWEN: Enable bit)
+;	STS TWCR, R21		; Habilita el TWI 
 	RET
 
 	
@@ -468,41 +469,77 @@ MULTIPLE_BYTE_WRITE:
 ; Subrutina de lectura de registros del acelerometro 
 SINGLE_BYTE_READ:
 	RCALL I2C_START		; Transmite la condicion de START
+	RCALL DELAY
+	RCALL DELAY
+	RCALL DELAY
 	LDI R17, 0x08		;  0x08: A START condition has been transmitted
 	RCALL CHECK_TWI_ST_REG; Chequea que este OK el status reg del TWI, recibe previamente el status en R17
 	
+
 	MOV R27, R24		; Carga la direccion del esclavo + configuracion W
 	RCALL I2C_WRITE		; Escribe R27 al bus I2C
+	RCALL DELAY
+	RCALL DELAY
+	RCALL DELAY
 	LDI R17, 0x18		; 0x18: SLA+W has been transmitted ;ACK has been received
 	RCALL CHECK_TWI_ST_REG;
 
+
 	MOV R27, R25		; Direccion del registro a escribir
 	RCALL I2C_WRITE		; Escribe R27 al bus I2C
+	RCALL DELAY
+	RCALL DELAY
+	RCALL DELAY
 	LDI R17, 0x28		; 0x28: Data byte has been transmitted; ACK has been received
 	RCALL CHECK_TWI_ST_REG;
+
+
 
 	RCALL I2C_START		; Retransmite Start
 	LDI R17, 0x10		; 0x10: A repeated START condition has been transmitted
 	RCALL CHECK_TWI_ST_REG
-	
+	RCALL DELAY
+	RCALL DELAY
+	RCALL DELAY
+
+
 	MOV R27, R28		; Carga la direccion del esclavo + configuracion R
 	RCALL I2C_WRITE
+	RCALL DELAY
+	RCALL DELAY
+	RCALL DELAY
 	LDI R17, 0x40		; 0x40: SLA+R has been transmitted; ACK has been received
 	RCALL CHECK_TWI_ST_REG;
 
+
+
 	RCALL I2C_READ
+	RCALL DELAY
+	RCALL DELAY
+	RCALL DELAY
 	LDI R17, 0x58		; 0x58: Data byte has been received; NOT ACK has been returned
 	RCALL CHECK_TWI_ST_REG;
 	MOV R23, R27
 
+
+
 	RCALL I2C_STOP 		
+	RCALL DELAY
+	RCALL DELAY
+	RCALL DELAY
+
 	RET
 
 
 ; En algunos ejemplos del Libro se usaba un Delay
-;DELAY:
-;	LDI R22, 0xFF
-;A1: DEC R22
-;	NOP
-;	BRNE A1
-;	RET
+DELAY:
+		LDI R16, 100
+LOOPD1:	LDI R17, 100
+LOOPD2:	LDI R18, 100
+LOOPD3:  DEC R18
+		BRNE LOOPD3			
+		DEC R17
+		BRNE LOOPD2
+		DEC R16
+		BRNE LOOPD1
+		RET
