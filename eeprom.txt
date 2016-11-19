@@ -1,0 +1,35 @@
+
+.ESEG
+
+EEPROM_INIT:	;este bloque de codigo indica a partir de que lugar de memoria se pueden escribir las fechas de los sucesos
+
+LDI R20,K		
+LDI R21,K
+
+OUT EEARL,R20
+OUT EEARH,R21
+
+EEPROM_WRITE:
+;supongo que en el registro R22 va a estar la fecha del suceso por inactividad en R22 
+SBIC EERC,EEPE
+RJMP EEPROM_WRITE	;se fija que no haya una escritura previa
+
+OUT EEDR, R22  		;escribo en el registro de datos de la eeprom la informacion
+SBI EERC,EEMPE		;habilito el master para poder escribir en la eeprom	
+
+SBI EERC,EEPE		;habilito la escritura en la eeprom
+RET
+
+
+EEPROM_READ:
+
+SBIC EECR,EEPE
+RJMP EEPROM_READ	;se fija que no haya una escritura previa
+
+OUT EEARH, R21
+OUT EEARL, R20
+			
+SBI EECR,EERE		;habilito la lectura en la eeprm 
+
+IN R22,EEDR		;leo lo que hay en el registro de datos de la eeprom
+RET

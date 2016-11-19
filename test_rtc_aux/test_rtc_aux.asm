@@ -1,8 +1,14 @@
-;
+/*
+ * test_rtc_aux.asm
+ *
+ *  Created: 18/11/2016 09:06:38 p.m.
+ *   Author: win7
+ */ 
+ ;
 ; Test_I2C.asm
 ;
 ; Created: 18/11/2016 02:01:48 a.m.
-; Author : MarianoAgustÃ­n
+; Author : MarianoAgustín
 ;
 
 /**************************************************************
@@ -245,10 +251,10 @@ LDI R25,0b00000101
 LDI R26,0b00010001 ;mes noviembre
 RCALL MULTIPLE_BYTE_WRITE
 
-;CONFIGURACION AÃ‘O
+;CONFIGURACION AÑO
 LDI R24,0b11010000
 LDI R25,0b00000110
-LDI R26,0b00010110	;aÃ±o 16
+LDI R26,0b00010110	;año 16
 RCALL MULTIPLE_BYTE_WRITE
 
 RET
@@ -306,7 +312,7 @@ RET
 RTC_READ_YEAR:
 ;lectura de datos
 LDI R24,0b11010000	;direccion del esclavo+escritura
-LDI R25,0b00000110	;direccion del registro del dia del aÃ±o
+LDI R25,0b00000110	;direccion del registro del dia del año
 LDI R28,0b11010001	;direccion del esclavo+lectura
 RCALL SINGLE_BYTE_READ
 RET
@@ -401,7 +407,7 @@ I2C_WRITE:
 
 WAIT2:
 	LDS R21, TWCR		; Lee el registro de control a R21
-	SBRS R21, TWINT		; Saltea siguiente liÂ­nea si TWINT es 1
+	SBRS R21, TWINT		; Saltea siguiente li­nea si TWINT es 1
 	RJMP WAIT2			; TWINT esta en 0
 	RET
 
@@ -443,7 +449,7 @@ ERROR:
 NO_ERROR:
 	RET
 
-/*
+
 ; Subrutina de escritura de registros del acelerometro 
 MULTIPLE_BYTE_WRITE:		
 	RCALL I2C_START		; Transmite la condicion de START
@@ -468,7 +474,7 @@ MULTIPLE_BYTE_WRITE:
 
 	RCALL I2C_STOP 		;Transmite la condicion de STOP
 	RET
-*/
+
 
 
 ; Subrutina de lectura de registros del acelerometro 
@@ -512,3 +518,4 @@ SINGLE_BYTE_READ:
 ;	NOP
 ;	BRNE A1
 ;	RET
+
