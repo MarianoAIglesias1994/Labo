@@ -1,24 +1,22 @@
 
-AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm Fri Nov 18 20:17:26 2016
+AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm Sat Nov 19 19:49:07 2016
 
-[builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m88padef.inc'
-C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m88PAdef.inc'
-[builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m88padef.inc'
-C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m88PAdef.inc'
+[builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328pdef.inc'
+[builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328pdef.inc'
                                  
                                  ;
                                  
-                                 ;***** Created: 2011-02-09 12:03 ******* Source: ATmega88PA.xml **********
+                                 ;***** Created: 2011-02-09 12:03 ******* Source: ATmega328P.xml **********
                                  ;*************************************************************************
                                  ;* A P P L I C A T I O N   N O T E   F O R   T H E   A V R   F A M I L Y
                                  ;* 
                                  ;* Number            : AVR000
-                                 ;* File Name         : "m88PAdef.inc"
-                                 ;* Title             : Register/Bit Definitions for the ATmega88PA
+                                 ;* File Name         : "m328Pdef.inc"
+                                 ;* Title             : Register/Bit Definitions for the ATmega328P
                                  ;* Date              : 2011-02-09
                                  ;* Version           : 2.35
                                  ;* Support E-mail    : avr@atmel.com
-                                 ;* Target MCU        : ATmega88PA
+                                 ;* Target MCU        : ATmega328P
                                  ;* 
                                  ;* DESCRIPTION
                                  ;* When including this file in the assembly program file, all I/O register 
@@ -46,17 +44,17 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  ;* ...                         ;otherwise do something else
                                  ;*************************************************************************
                                  
-                                 #ifndef _M88PADEF_INC_
-                                 #define _M88PADEF_INC_
+                                 #ifndef _M328PDEF_INC_
+                                 #define _M328PDEF_INC_
                                  
                                  
                                  #pragma partinc 0
                                  
                                  ; ***** SPECIFY DEVICE ***************************************************
-                                 .device ATmega88PA
-                                 #pragma AVRPART ADMIN PART_NAME ATmega88PA
+                                 .device ATmega328P
+                                 #pragma AVRPART ADMIN PART_NAME ATmega328P
                                  .equ	SIGNATURE_000	= 0x1e
-                                 .equ	SIGNATURE_001	= 0x93
+                                 .equ	SIGNATURE_001	= 0x95
                                  .equ	SIGNATURE_002	= 0x0f
                                  
                                  #pragma AVRPART CORE CORE_VERSION V2E
@@ -741,39 +739,6 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  .equ	WDIF	= 7	; Watchdog Timeout Interrupt Flag
                                  
                                  
-                                 ; ***** EEPROM ***********************
-                                 ; EEARL - EEPROM Address Register Low Byte
-                                 .equ	EEAR0	= 0	; EEPROM Read/Write Access Bit 0
-                                 .equ	EEAR1	= 1	; EEPROM Read/Write Access Bit 1
-                                 .equ	EEAR2	= 2	; EEPROM Read/Write Access Bit 2
-                                 .equ	EEAR3	= 3	; EEPROM Read/Write Access Bit 3
-                                 .equ	EEAR4	= 4	; EEPROM Read/Write Access Bit 4
-                                 .equ	EEAR5	= 5	; EEPROM Read/Write Access Bit 5
-                                 .equ	EEAR6	= 6	; EEPROM Read/Write Access Bit 6
-                                 .equ	EEAR7	= 7	; EEPROM Read/Write Access Bit 7
-                                 
-                                 ; EEARH - EEPROM Address Register High Byte
-                                 .equ	EEAR8	= 0	; EEPROM Read/Write Access Bit 0
-                                 
-                                 ; EEDR - EEPROM Data Register
-                                 .equ	EEDR0	= 0	; EEPROM Data Register bit 0
-                                 .equ	EEDR1	= 1	; EEPROM Data Register bit 1
-                                 .equ	EEDR2	= 2	; EEPROM Data Register bit 2
-                                 .equ	EEDR3	= 3	; EEPROM Data Register bit 3
-                                 .equ	EEDR4	= 4	; EEPROM Data Register bit 4
-                                 .equ	EEDR5	= 5	; EEPROM Data Register bit 5
-                                 .equ	EEDR6	= 6	; EEPROM Data Register bit 6
-                                 .equ	EEDR7	= 7	; EEPROM Data Register bit 7
-                                 
-                                 ; EECR - EEPROM Control Register
-                                 .equ	EERE	= 0	; EEPROM Read Enable
-                                 .equ	EEPE	= 1	; EEPROM Write Enable
-                                 .equ	EEMPE	= 2	; EEPROM Master Write Enable
-                                 .equ	EERIE	= 3	; EEPROM Ready Interrupt Enable
-                                 .equ	EEPM0	= 4	; EEPROM Programming Mode Bit 0
-                                 .equ	EEPM1	= 5	; EEPROM Programming Mode Bit 1
-                                 
-                                 
                                  ; ***** CPU **************************
                                  ; SREG - Status Register
                                  .equ	SREG_C	= 0	; Carry Flag
@@ -803,13 +768,13 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  .equ	CLKPCE	= 7	; Clock Prescaler Change Enable
                                  
                                  ; SPMCSR - Store Program Memory Control and Status Register
-                                 .equ	SELFPRGEN = 0; Added for backwards compatibility
+                                 .equ    SELFPRGEN = 0; Added for backwards compatibility
                                  .equ	SPMEN	= 0	; Store Program Memory
                                  .equ	PGERS	= 1	; Page Erase
                                  .equ	PGWRT	= 2	; Page Write
                                  .equ	BLBSET	= 3	; Boot Lock Bit Set
                                  .equ	RWWSRE	= 4	; Read-While-Write section read enable
-                                 .equ	SIGRD	= 5 ; Signature Row Read
+                                 .equ    SIGRD   = 5 ; Signature Row Read
                                  .equ	RWWSB	= 6	; Read-While-Write Section Busy
                                  .equ	SPMIE	= 7	; SPM Interrupt Enable
                                  
@@ -873,6 +838,40 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  .equ	PRTWI	= 7	; Power Reduction TWI
                                  
                                  
+                                 ; ***** EEPROM ***********************
+                                 ; EEARL - EEPROM Address Register Low Byte
+                                 .equ	EEAR0	= 0	; EEPROM Read/Write Access Bit 0
+                                 .equ	EEAR1	= 1	; EEPROM Read/Write Access Bit 1
+                                 .equ	EEAR2	= 2	; EEPROM Read/Write Access Bit 2
+                                 .equ	EEAR3	= 3	; EEPROM Read/Write Access Bit 3
+                                 .equ	EEAR4	= 4	; EEPROM Read/Write Access Bit 4
+                                 .equ	EEAR5	= 5	; EEPROM Read/Write Access Bit 5
+                                 .equ	EEAR6	= 6	; EEPROM Read/Write Access Bit 6
+                                 .equ	EEAR7	= 7	; EEPROM Read/Write Access Bit 7
+                                 
+                                 ; EEARH - EEPROM Address Register High Byte
+                                 .equ	EEAR8	= 0	; EEPROM Read/Write Access Bit 8
+                                 .equ	EEAR9	= 1	; EEPROM Read/Write Access Bit 9
+                                 
+                                 ; EEDR - EEPROM Data Register
+                                 .equ	EEDR0	= 0	; EEPROM Data Register bit 0
+                                 .equ	EEDR1	= 1	; EEPROM Data Register bit 1
+                                 .equ	EEDR2	= 2	; EEPROM Data Register bit 2
+                                 .equ	EEDR3	= 3	; EEPROM Data Register bit 3
+                                 .equ	EEDR4	= 4	; EEPROM Data Register bit 4
+                                 .equ	EEDR5	= 5	; EEPROM Data Register bit 5
+                                 .equ	EEDR6	= 6	; EEPROM Data Register bit 6
+                                 .equ	EEDR7	= 7	; EEPROM Data Register bit 7
+                                 
+                                 ; EECR - EEPROM Control Register
+                                 .equ	EERE	= 0	; EEPROM Read Enable
+                                 .equ	EEPE	= 1	; EEPROM Write Enable
+                                 .equ	EEMPE	= 2	; EEPROM Master Write Enable
+                                 .equ	EERIE	= 3	; EEPROM Ready Interrupt Enable
+                                 .equ	EEPM0	= 4	; EEPROM Programming Mode Bit 0
+                                 .equ	EEPM1	= 5	; EEPROM Programming Mode Bit 1
+                                 
+                                 
                                  
                                  ; ***** LOCKSBITS ********************************************************
                                  .equ	LB1	= 0	; Lock bit
@@ -895,9 +894,9 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  .equ	CKDIV8	= 7	; Divide clock by 8
                                  
                                  ; HIGH fuse bits
-                                 .equ	BODLEVEL0	= 0	; Brown-out Detector trigger level
-                                 .equ	BODLEVEL1	= 1	; Brown-out Detector trigger level
-                                 .equ	BODLEVEL2	= 2	; Brown-out Detector trigger level
+                                 .equ	BOOTRST	= 0	; Select reset vector
+                                 .equ	BOOTSZ0	= 1	; Select boot size
+                                 .equ	BOOTSZ1	= 2	; Select boot size
                                  .equ	EESAVE	= 3	; EEPROM memory is preserved through chip erase
                                  .equ	WDTON	= 4	; Watchdog Timer Always On
                                  .equ	SPIEN	= 5	; Enable Serial programming and Data Downloading
@@ -905,9 +904,9 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  .equ	RSTDISBL	= 7	; External reset disable
                                  
                                  ; EXTENDED fuse bits
-                                 .equ	BOOTRST	= 0	; Select reset vector
-                                 .equ	BOOTSZ0	= 1	; Select boot size
-                                 .equ	BOOTSZ1	= 2	; Select boot size
+                                 .equ	BODLEVEL0	= 0	; Brown-out Detector trigger level
+                                 .equ	BODLEVEL1	= 1	; Brown-out Detector trigger level
+                                 .equ	BODLEVEL2	= 2	; Brown-out Detector trigger level
                                  
                                  
                                  
@@ -922,67 +921,67 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  
                                  
                                  ; ***** DATA MEMORY DECLARATIONS *****************************************
-                                 .equ	FLASHEND	= 0x0fff	; Note: Word address
+                                 .equ	FLASHEND	= 0x3fff	; Note: Word address
                                  .equ	IOEND	= 0x00ff
                                  .equ	SRAM_START	= 0x0100
-                                 .equ	SRAM_SIZE	= 1024
-                                 .equ	RAMEND	= 0x04ff
+                                 .equ	SRAM_SIZE	= 2048
+                                 .equ	RAMEND	= 0x08ff
                                  .equ	XRAMEND	= 0x0000
-                                 .equ	E2END	= 0x01ff
-                                 .equ	EEPROMEND	= 0x01ff
-                                 .equ	EEADRBITS	= 9
-                                 #pragma AVRPART MEMORY PROG_FLASH 8192
-                                 #pragma AVRPART MEMORY EEPROM 512
-                                 #pragma AVRPART MEMORY INT_SRAM SIZE 1024
+                                 .equ	E2END	= 0x03ff
+                                 .equ	EEPROMEND	= 0x03ff
+                                 .equ	EEADRBITS	= 10
+                                 #pragma AVRPART MEMORY PROG_FLASH 32768
+                                 #pragma AVRPART MEMORY EEPROM 1024
+                                 #pragma AVRPART MEMORY INT_SRAM SIZE 2048
                                  #pragma AVRPART MEMORY INT_SRAM START_ADDR 0x100
                                  
                                  
                                  
                                  ; ***** BOOTLOADER DECLARATIONS ******************************************
-                                 .equ	NRWW_START_ADDR	= 0xc00
-                                 .equ	NRWW_STOP_ADDR	= 0xfff
+                                 .equ	NRWW_START_ADDR	= 0x3800
+                                 .equ	NRWW_STOP_ADDR	= 0x3fff
                                  .equ	RWW_START_ADDR	= 0x0
-                                 .equ	RWW_STOP_ADDR	= 0xbff
-                                 .equ	PAGESIZE	= 32
-                                 .equ	FIRSTBOOTSTART	= 0xf80
-                                 .equ	SECONDBOOTSTART	= 0xf00
-                                 .equ	THIRDBOOTSTART	= 0xe00
-                                 .equ	FOURTHBOOTSTART	= 0xc00
+                                 .equ	RWW_STOP_ADDR	= 0x37ff
+                                 .equ	PAGESIZE	= 64
+                                 .equ	FIRSTBOOTSTART	= 0x3f00
+                                 .equ	SECONDBOOTSTART	= 0x3e00
+                                 .equ	THIRDBOOTSTART	= 0x3c00
+                                 .equ	FOURTHBOOTSTART	= 0x3800
                                  .equ	SMALLBOOTSTART	= FIRSTBOOTSTART
                                  .equ	LARGEBOOTSTART	= FOURTHBOOTSTART
                                  
                                  
                                  
                                  ; ***** INTERRUPT VECTORS ************************************************
-                                 .equ	INT0addr	= 0x0001	; External Interrupt Request 0
-                                 .equ	INT1addr	= 0x0002	; External Interrupt Request 1
-                                 .equ	PCI0addr	= 0x0003	; Pin Change Interrupt Request 0
-                                 .equ	PCI1addr	= 0x0004	; Pin Change Interrupt Request 0
-                                 .equ	PCI2addr	= 0x0005	; Pin Change Interrupt Request 1
-                                 .equ	WDTaddr	= 0x0006	; Watchdog Time-out Interrupt
-                                 .equ	OC2Aaddr	= 0x0007	; Timer/Counter2 Compare Match A
-                                 .equ	OC2Baddr	= 0x0008	; Timer/Counter2 Compare Match A
-                                 .equ	OVF2addr	= 0x0009	; Timer/Counter2 Overflow
-                                 .equ	ICP1addr	= 0x000a	; Timer/Counter1 Capture Event
-                                 .equ	OC1Aaddr	= 0x000b	; Timer/Counter1 Compare Match A
-                                 .equ	OC1Baddr	= 0x000c	; Timer/Counter1 Compare Match B
-                                 .equ	OVF1addr	= 0x000d	; Timer/Counter1 Overflow
-                                 .equ	OC0Aaddr	= 0x000e	; TimerCounter0 Compare Match A
-                                 .equ	OC0Baddr	= 0x000f	; TimerCounter0 Compare Match B
-                                 .equ	OVF0addr	= 0x0010	; Timer/Couner0 Overflow
-                                 .equ	SPIaddr	= 0x0011	; SPI Serial Transfer Complete
-                                 .equ	URXCaddr	= 0x0012	; USART Rx Complete
-                                 .equ	UDREaddr	= 0x0013	; USART, Data Register Empty
-                                 .equ	UTXCaddr	= 0x0014	; USART Tx Complete
-                                 .equ	ADCCaddr	= 0x0015	; ADC Conversion Complete
-                                 .equ	ERDYaddr	= 0x0016	; EEPROM Ready
-                                 .equ	ACIaddr	= 0x0017	; Analog Comparator
-                                 .equ	TWIaddr	= 0x0018	; Two-wire Serial Interface
-                                 .equ	SPMRaddr	= 0x0019	; Store Program Memory Read
+                                 .equ	INT0addr	= 0x0002	; External Interrupt Request 0
+                                 .equ	INT1addr	= 0x0004	; External Interrupt Request 1
+                                 .equ	PCI0addr	= 0x0006	; Pin Change Interrupt Request 0
+                                 .equ	PCI1addr	= 0x0008	; Pin Change Interrupt Request 0
+                                 .equ	PCI2addr	= 0x000a	; Pin Change Interrupt Request 1
+                                 .equ	WDTaddr	= 0x000c	; Watchdog Time-out Interrupt
+                                 .equ	OC2Aaddr	= 0x000e	; Timer/Counter2 Compare Match A
+                                 .equ	OC2Baddr	= 0x0010	; Timer/Counter2 Compare Match A
+                                 .equ	OVF2addr	= 0x0012	; Timer/Counter2 Overflow
+                                 .equ	ICP1addr	= 0x0014	; Timer/Counter1 Capture Event
+                                 .equ	OC1Aaddr	= 0x0016	; Timer/Counter1 Compare Match A
+                                 .equ	OC1Baddr	= 0x0018	; Timer/Counter1 Compare Match B
+                                 .equ	OVF1addr	= 0x001a	; Timer/Counter1 Overflow
+                                 .equ	OC0Aaddr	= 0x001c	; TimerCounter0 Compare Match A
+                                 .equ	OC0Baddr	= 0x001e	; TimerCounter0 Compare Match B
+                                 .equ	OVF0addr	= 0x0020	; Timer/Couner0 Overflow
+                                 .equ	SPIaddr	= 0x0022	; SPI Serial Transfer Complete
+                                 .equ	URXCaddr	= 0x0024	; USART Rx Complete
+                                 .equ	UDREaddr	= 0x0026	; USART, Data Register Empty
+                                 .equ	UTXCaddr	= 0x0028	; USART Tx Complete
+                                 .equ	ADCCaddr	= 0x002a	; ADC Conversion Complete
+                                 .equ	ERDYaddr	= 0x002c	; EEPROM Ready
+                                 .equ	ACIaddr	= 0x002e	; Analog Comparator
+                                 .equ	TWIaddr	= 0x0030	; Two-wire Serial Interface
+                                 .equ	SPMRaddr	= 0x0032	; Store Program Memory Read
                                  
-                                 .equ	INT_VECTORS_SIZE	= 26	; size in words
+                                 .equ	INT_VECTORS_SIZE	= 52	; size in words
                                  
-                                 #endif  /* _M88PADEF_INC_ */
+                                 #endif  /* _M328PDEF_INC_ */
                                  
                                  ; ***** END OF FILE ******************************************************
                                  
@@ -992,87 +991,48 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  ; Author : MarianoAgustÃ­n
                                  ;
                                  
+                                 ; Este codigo esta andando en la placa CdR, hace titilar las ISR por separado OK
+                                 
                                  /**************************************************************
                                  DIRECTIVAS
                                  ***************************************************************/
                                  ;#ifndef F_CPU
                                  #define F_CPU 18432000UL 
-                                 #include "m88PAdef.inc" ; Lo incluye el AtmelStudio al setear el uC
-                                 
-                                 ;***** Created: 2011-02-09 12:03 ******* Source: ATmega88PA.xml **********
-                                 ;*************************************************************************
-                                 ;* A P P L I C A T I O N   N O T E   F O R   T H E   A V R   F A M I L Y
-                                 ;* 
-                                 ;* Number            : AVR000
-                                 ;* File Name         : "m88PAdef.inc"
-                                 ;* Title             : Register/Bit Definitions for the ATmega88PA
-                                 ;* Date              : 2011-02-09
-                                 ;* Version           : 2.35
-                                 ;* Support E-mail    : avr@atmel.com
-                                 ;* Target MCU        : ATmega88PA
-                                 ;* 
-                                 ;* DESCRIPTION
-                                 ;* When including this file in the assembly program file, all I/O register 
-                                 ;* names and I/O register bit names appearing in the data book can be used.
-                                 ;* In addition, the six registers forming the three data pointers X, Y and 
-                                 ;* Z have been assigned names XL - ZH. Highest RAM address for Internal 
-                                 ;* SRAM is also defined 
-                                 ;* 
-                                 ;* The Register names are represented by their hexadecimal address.
-                                 ;* 
-                                 ;* The Register Bit names are represented by their bit number (0-7).
-                                 ;* 
-                                 ;* Please observe the difference in using the bit names with instructions
-                                 ;* such as "sbr"/"cbr" (set/clear bit in register) and "sbrs"/"sbrc"
-                                 ;* (skip if bit in register set/cleared). The following example illustrates
-                                 ;* this:
-                                 ;* 
-                                 ;* in    r16,PORTB             ;read PORTB latch
-                                 ;* sbr   r16,(1<<PB6)+(1<<PB5) ;set PB6 and PB5 (use masks, not bit#)
-                                 ;* out   PORTB,r16             ;output to PORTB
-                                 ;* 
-                                 ;* in    r16,TIFR              ;read the Timer Interrupt Flag Register
-                                 ;* sbrc  r16,TOV0              ;test the overflow flag (use bit#)
-                                 ;* rjmp  TOV0_is_set           ;jump if set
-                                 ;* ...                         ;otherwise do something else
-                                 ;*************************************************************************
-                                 
-                                 #ifndef _M88PADEF_INC_
-                                 #endif  /* _M88PADEF_INC_ */
-                                 
-                                 ; ***** END OF FILE ******************************************************
+                                 ;#include "m88PAdef.inc" ; Lo incluye el AtmelStudio al setear el uC
                                  
                                  
-                                 .cseg
+                                 
+                                 
+                                 ;.cseg
                                  /**************************************************************
                                  VECTORES DE INTERRUPCION
                                  ***************************************************************/
-                                 .org 0x00
-000000 c000                      rjmp INICIO
-                                 /*
+                                 ;.org 0x00
+000000 c002                      rjmp main
+                                 
                                  ;.org 0x02				; Por alguna razon traen problemas
-                                 rjmp ISR_INT0_INACTIVITY	
+000001 c04b                      rjmp ISR_INT0_INACTIVITY	
                                  ;.org 0x04				; Por alguna razon traen problemas
-                                 rjmp ISR_INT1_BLUETOOTH	
-                                 */
+000002 c04c                      rjmp ISR_INT1_BLUETOOTH	
                                  
-                                 INICIO:
                                  
-000001 e054                      	LDI R21, HIGH(RAMEND)	; Configura el STACK
-000002 bf5e                      	OUT SPH, R21
-000003 ef5f                      	LDI R21, LOW(RAMEND)
-000004 bf5d                      	OUT SPL, R21
-                                 
+                                 main:
+                                 /*
+                                 	LDI R21, HIGH(RAMEND)	; Configura el STACK
+                                 	OUT SPH, R21
+                                 	LDI R21, LOW(RAMEND)
+                                 	OUT SPL, R21
+                                 	*/
                                  ; LEDs para las pruebas (Puerto C: Rojos; Puerto D: Verdes)
-000005 e04c                      LDI R20, 0b00001100			; Hay LEDs conectados a los bits seteados en dichos puertos
-000006 b947                      OUT DDRC, R20			
-000007 e04c                      LDI R20, 0b00001100			; Con un 1 quedan apagados por la logica de la placa Club de Robotica
-000008 b948                      OUT PORTC, R20	
+000003 e04c                      LDI R20, 0b00001100			; Hay LEDs conectados a los bits seteados en dichos puertos
+000004 b947                      OUT DDRC, R20			
+000005 e04c                      LDI R20, 0b00001100			; Con un 1 quedan apagados por la logica de la placa Club de Robotica
+000006 b948                      OUT PORTC, R20	
                                  
-000009 e940                      LDI R20, 0b10010000			; Hay LEDs conectados a los bits seteados en dichos puertos
-00000a b94a                      OUT DDRD, R20	
-00000b e940                      LDI R20, 0b10010000			; Con un 1 quedan apagados por la logica de la placa Club de Robotica
-00000c b94b                      OUT PORTD, R20	
+000007 e940                      LDI R20, 0b10010000			; Hay LEDs conectados a los bits seteados en dichos puertos
+000008 b94a                      OUT DDRD, R20	
+000009 e940                      LDI R20, 0b10010000			; Con un 1 quedan apagados por la logica de la placa Club de Robotica
+00000a b94b                      OUT PORTD, R20	
                                  
                                  
                                  
@@ -1080,50 +1040,51 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  CONFIGURACION INTERRUPCIONES EXTERNAS
                                  ***************************************************************/
                                  
-                                 /*
+                                 
                                  CONFIG_INT:
                                  
                                  	;EICRA: Configura por flanco o por nivel
                                  	;out R18, EICRA     ; Carga estado previo
-                                 	ldi R16,0b00000101	; ldi R16,0b00000001 para INT0; ldi R16,0b00000101 para INT0 e INT1 
-                                 	sts EICRA, R16		;
+00000b e005                      	ldi R16,0b00000101	; ldi R16,0b00000001 para INT0; ldi R16,0b00000101 para INT0 e INT1 
+00000c 9300 0069                 	sts EICRA, R16		;
                                  
                                  	;EIMSK: Habilita las interrupciones seleccionadas
                                  	;out R18, EIMSK     ; Carga estado previo
-                                 	ldi R16,0b00000011 	; ldi R16,0b00000001 para INT0; ldi R16,0b00000011 para INT0 e INT1 
-                                 	out EIMSK,R16		;
+00000e e003                      	ldi R16,0b00000011 	; ldi R16,0b00000001 para INT0; ldi R16,0b00000011 para INT0 e INT1 
+00000f bb0d                      	out EIMSK,R16		;
                                  
                                  	;EIFR: Tiene que estar seteado junto con el bit de interrupcion global al momento de suceder la interrupcion 
                                  	;in R18, EIFR       ; Carga estado previo
-                                 	ldi R16,0b00000011	; ldi R16,0b00000001 para INT0; ldi R16,0b00000011 para INT0 e INT1 
-                                 	out EIFR,R16		;
+000010 e003                      	ldi R16,0b00000011	; ldi R16,0b00000001 para INT0; ldi R16,0b00000011 para INT0 e INT1 
+000011 bb0c                      	out EIFR,R16		;
                                  
-                                 	SEI
-                                 */
+000012 9478                      	SEI
+                                 
                                  
                                  
                                  /**************************************************************
                                  CONFIGURACION BAJO CONSUMO
                                  ***************************************************************/
                                  
-                                 /*
+                                 
                                  CONFIG_BAJO_CONSUMO:
                                  	; Config consumo de energia, PSM o PDM
-                                 	ldi R16,0b00000100	; Nibble inferior D3D2D1 = 010 es de power down mode y el lsb D0 = 1 es para activar el sleep mode
-                                 	out SMCR,R16
-                                 */
+000013 e004                      	ldi R16,0b00000100	; Nibble inferior D3D2D1 = 010 es de power down mode y el lsb D0 = 1 es para activar el sleep mode
+000014 bf03                      	out SMCR,R16
+                                 
                                  	
                                  /**************************************************************
                                  INCIALIZACION I2C
                                  ***************************************************************/
                                  
-00000d d00a                      RCALL I2C_INIT
+                                 ;RCALL I2C_INIT
                                  
                                  
                                  /**************************************************************
                                  CONFIGURACION ACELEROMETRO
                                  ***************************************************************/
-                                 CONFIG_ACELEROMETRO:
+                                 
+                                 /*CONFIG_ACELEROMETRO:
                                  
                                  ;Conexiones hardware:
                                  ;Arduino Pin	ADXL345 Pin		Placa CdR Atmega88pa-pu
@@ -1140,22 +1101,23 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  
                                  
                                  ; Se realiza la lectura del registro DEVID que tiene una direccion: 0x00 y reset value: 11100101
-00000e ea86                      	LDI R24, 0xA6		; Direccion del esclavo SLA(1010011) + Write(0)
-00000f eac7                      	LDI R28, 0xA7		; Direccion del esclavo SLA(1010011) + Read(1)
-000010 e090                      	LDI R25, 0x00		; Direccion del registro a leer DEVID 
-000011 eea5                      	LDI R26, 0b11100101	; Dato contra el que se debe comparar la lectura
-000012 d036                      	RCALL SINGLE_BYTE_READ 
+                                 	LDI R24, 0xA6		; Direccion del esclavo SLA(1010011) + Write(0)
+                                 	LDI R28, 0xA7		; Direccion del esclavo SLA(1010011) + Read(1)
+                                 	LDI R25, 0x00		; Direccion del registro a leer DEVID 
+                                 	LDI R26, 0b11100101	; Dato contra el que se debe comparar la lectura
+                                 	RCALL SINGLE_BYTE_READ 
                                  ;	RCALL DELAY			; Estaba presente en algunos codigos del Libro pero no tuvo efecto aqui
                                  
-000013 177a                      	CP R23, R26
-000014 f009                      	BREQ WRITE_OK		; Se encienden LEDs en caso de lectura exitosa
-000015 c002                      	RJMP CONTINUE		; Si no, se continua
+                                 	CP R23, R26
+                                 	BREQ WRITE_OK		; Se encienden LEDs en caso de lectura exitosa
+                                 	RJMP CONTINUE		; Si no, se continua
                                  WRITE_OK:					
-000016 e040                      	LDI R20, 0b00000000
-000017 b948                      	OUT PORTC, R20	
+                                 	LDI R20, 0b00000000
+                                 	OUT PORTC, R20	
                                  CONTINUE:				
                                  ;
                                  
+                                 */
                                  
                                  /*
                                  
@@ -1233,32 +1195,32 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  BLOQUE PRINCIPAL
                                  ***************************************************************/
                                  
-                                 /*
+                                 
                                  
                                  ; Si entro al bloque principal, se apaga uno de los LEDs del puerto D
-                                 LDI R20, 0b00010000
-                                 OUT PORTD, R20
+000015 e140                      LDI R20, 0b00010000
+000016 b94b                      OUT PORTD, R20
                                   
                                  ; Entra en modo sleep, al suceder una interrupcion se despierta en la instruccion siguiente
                                  SLEEP_MODE:
-                                 			ldi R16,0b00000101	; lsb = 1 para activar el sleep mode
-                                 			out SMCR,R16
-                                 			SLEEP
-                                 			ldi R16,0b00000100	; lsb = 0 para desactivar el sleep mode
-                                 			out SMCR,R16
+000017 e005                      			ldi R16,0b00000101	; lsb = 1 para activar el sleep mode
+000018 bf03                      			out SMCR,R16
+000019 9588                      			SLEEP
+00001a e004                      			ldi R16,0b00000100	; lsb = 0 para desactivar el sleep mode
+00001b bf03                      			out SMCR,R16
                                  			
                                  ; En las rutinas de interrupcion se usa R19 para almacenar un registro indicador del tipo de interrupcion ocurrida
                                  ; Es una analogia del switch/case del lenguaje C
                                  
-                                 			CPI R19,1
-                                 			BREQ ALARMA
+00001c 3031                      			CPI R19,1
+00001d f0c9                      			BREQ ALARMA
                                  RETORNO_ALARMA:
-                                 			CPI R19,2
-                                 			BREQ BLUETOOTH
+00001e 3032                      			CPI R19,2
+00001f f009                      			BREQ BLUETOOTH
                                  RETORNO_BLUETOOTH:
-                                 			RJMP SLEEP_MODE
+000020 cff6                      			RJMP SLEEP_MODE
                                  
-                                 */
+                                 
                                  
                                  
                                  
@@ -1266,84 +1228,84 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  RUTINA ENVIO DE ENVIO DE DATOS POR BLUETOOTH 
                                  ***************************************************************/
                                  
-                                 /*
+                                 
                                  
                                  BLUETOOTH:	; LED Verde
-                                 LDI R21, 10	; Valor de tiempo 
+000021 e05a                      LDI R21, 10	; Valor de tiempo 
                                  
                                  PARPADEO2:
-                                 		LDI R20, 0b00000000	; Prende LED
-                                 		OUT PORTD, R20	
-                                 		RCALL RETARDO2
-                                 		LDI R20, 0b00010000	; Apaga LED
-                                 		OUT PORTD, R20	
-                                 		RCALL RETARDO2
+000022 e040                      		LDI R20, 0b00000000	; Prende LED
+000023 b94b                      		OUT PORTD, R20	
+000024 d008                      		RCALL RETARDO2
+000025 e140                      		LDI R20, 0b00010000	; Apaga LED
+000026 b94b                      		OUT PORTD, R20	
+000027 d005                      		RCALL RETARDO2
                                  
-                                 		DEC R21
-                                 		CPI R21, 0
-                                 		BRNE PARPADEO2
+000028 955a                      		DEC R21
+000029 3050                      		CPI R21, 0
+00002a f7b9                      		BRNE PARPADEO2
                                  
-                                 		LDI R19,0			; Se limpia el registro indicador
-                                 		RJMP RETORNO_BLUETOOTH
+00002b e030                      		LDI R19,0			; Se limpia el registro indicador
+00002c cff3                      		RJMP RETORNO_BLUETOOTH
                                  
                                  RETARDO2:
-                                 		LDI R16, 10
-                                 LOOP12:	LDI R17, 255
-                                 LOOP22:	LDI R18, 255
-                                 LOOP32:  DEC R18
-                                 		BRNE LOOP32			
-                                 		DEC R17
-                                 		BRNE LOOP22
-                                 		DEC R16
-                                 		BRNE LOOP12
-                                 		RET
+00002d e00a                      		LDI R16, 10
+00002e ef1f                      LOOP12:	LDI R17, 255
+00002f ef2f                      LOOP22:	LDI R18, 255
+000030 952a                      LOOP32:  DEC R18
+000031 f7f1                      		BRNE LOOP32			
+000032 951a                      		DEC R17
+000033 f7d9                      		BRNE LOOP22
+000034 950a                      		DEC R16
+000035 f7c1                      		BRNE LOOP12
+000036 9508                      		RET
                                  
-                                 */
+                                 
                                  
                                  /**************************************************************
                                  RUTINA DE ALARMA
                                  ***************************************************************/
                                  
-                                 /*
+                                 
                                  
                                  ALARMA:	; LED Verde
-                                 LDI R21, 10	; Valor de tiempo 
+000037 e05a                      LDI R21, 10	; Valor de tiempo 
                                  
                                  PARPADEO:
-                                 		LDI R20, 0b00000000	; Prende LED
-                                 		OUT PORTC, R20	
-                                 		RCALL RETARDO
-                                 		LDI R20, 0b00001000	; Apaga LED
-                                 		OUT PORTC, R20	
-                                 		RCALL RETARDO
+000038 e040                      		LDI R20, 0b00000000	; Prende LED
+000039 b948                      		OUT PORTC, R20	
+00003a d008                      		RCALL RETARDO
+00003b e048                      		LDI R20, 0b00001000	; Apaga LED
+00003c b948                      		OUT PORTC, R20	
+00003d d005                      		RCALL RETARDO
                                  
-                                 		DEC R21
-                                 		CPI R21, 0
-                                 		BRNE PARPADEO
+00003e 955a                      		DEC R21
+00003f 3050                      		CPI R21, 0
+000040 f7b9                      		BRNE PARPADEO
                                  
-                                 		LDI R19,0			; Se limpia el registro indicador
-                                 		RJMP RETORNO_ALARMA
+000041 e030                      		LDI R19,0			; Se limpia el registro indicador
+000042 cfdb                      		RJMP RETORNO_ALARMA
                                  
                                  RETARDO:
-                                 		LDI R16, 10
-                                 LOOP1:	LDI R17, 255
-                                 LOOP2:	LDI R18, 255
-                                 LOOP3:  DEC R18
-                                 		BRNE LOOP3			
-                                 		DEC R17
-                                 		BRNE LOOP2
-                                 		DEC R16
-                                 		BRNE LOOP1
-                                 		RET
+000043 e00a                      		LDI R16, 10
+000044 ef1f                      LOOP1:	LDI R17, 255
+000045 ef2f                      LOOP2:	LDI R18, 255
+000046 952a                      LOOP3:  DEC R18
+000047 f7f1                      		BRNE LOOP3			
+000048 951a                      		DEC R17
+000049 f7d9                      		BRNE LOOP2
+00004a 950a                      		DEC R16
+00004b f7c1                      		BRNE LOOP1
+00004c 9508                      		RET
                                  
                                  
-                                 */
+                                 
                                  
                                  
                                  /**************************************************************
                                  RUTINA DE SERVICIO DE INTERRUPCION POR INACTIVIDAD DEL ACELEROMETRO
                                  ***************************************************************/
-                                 /*
+                                 
                                  
                                  ISR_INT0_INACTIVITY:
                                  ;CLI
@@ -1354,15 +1316,15 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  ;OUT SREG, R16
                                  ;POP R16
                                  ;SEI
-                                 LDI R19,1	
-                                 RETI
+00004d e031                      LDI R19,1	
+00004e 9518                      RETI
                                  
-                                 */
+                                 
                                  
                                  /**************************************************************
                                  RUTINA DE SERVICIO DE INTERRUPCION POR ACTIVACION DEL BLUETOOTH
                                  ***************************************************************/
-                                 /*
+                                 
                                  
                                  ISR_INT1_BLUETOOTH:
                                  ;CLI
@@ -1373,10 +1335,10 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  ;OUT SREG, R16
                                  ;POP R16
                                  ;SEI
-                                 LDI R19,2	
-                                 RETI
+00004f e032                      LDI R19,2	
+000050 9518                      RETI
                                  
-                                 */
+                                 
                                  
                                  
                                  
@@ -1388,16 +1350,18 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  /**************************************************************
                                  CONFIGURACION I2C
                                  ***************************************************************/
+                                 /*
+                                 
                                  CONFIG_I2C:
                                  
                                  I2C_INIT:
-000018 e050                      	LDI R21, 0		
-000019 9350 00b9                 	STS TWSR, R21		; Preescaler 1 en TWI Status Reg
-00001b e554                      	LDI R21, 0x54		;  0xB0
-00001c 9350 00b8                 	STS TWBR, R21		; Setea la frecuencia a 50.087 kHz (18.432 MHz XTAL)
+                                 	LDI R21, 0		
+                                 	STS TWSR, R21		; Preescaler 1 en TWI Status Reg
+                                 	LDI R21, 0x54		;  0xB0
+                                 	STS TWBR, R21		; Setea la frecuencia a 50.087 kHz (18.432 MHz XTAL)
                                  ;	LDI R21, (1<<TWEN)	; 0x04 a R21 (TWEN: Enable bit)
                                  ;	STS TWCR, R21		; Habilita el TWI 
-00001e 9508                      	RET
+                                 	RET
                                  
                                  	
                                  
@@ -1405,14 +1369,14 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  ; TWSTA:TWI Start condition bit
                                  
                                  I2C_START:
-00001f ea54                      	LDI R21, (1<<TWINT)|(1<<TWSTA)|(1<<TWEN);
-000020 9350 00bc                 	STS TWCR, R21		; Transimitir condicion de START
+                                 	LDI R21, (1<<TWINT)|(1<<TWSTA)|(1<<TWEN);
+                                 	STS TWCR, R21		; Transimitir condicion de START
                                  	
                                  WAIT1:
-000022 9150 00bc                 	LDS R21, TWCR		; Lee el registro
-000024 ff57                      	SBRS R21, TWINT		; Saltea siguiente linea si TWINT es 1(==operacion finalizada)
-000025 cffc                      	RJMP WAIT1			; TWINT esta en 0
-000026 9508                      	RET
+                                 	LDS R21, TWCR		; Lee el registro
+                                 	SBRS R21, TWINT		; Saltea siguiente linea si TWINT es 1(==operacion finalizada)
+                                 	RJMP WAIT1			; TWINT esta en 0
+                                 	RET
                                  
                                  
                                  
@@ -1420,55 +1384,57 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  ; TWDR: TWI Data Register
                                  
                                  I2C_WRITE:
-000027 93b0 00bb                 	STS TWDR, R27		; Lleva el byte a TWDR
-000029 e854                      	LDI R21, (1<<TWINT)|(1<<TWEN) ; Se setean TWINT y TWEN en el TWCR
-00002a 9350 00bc                 	STS TWCR, R21		; Configura TWCR para enviar TWDR
+                                 	STS TWDR, R27		; Lleva el byte a TWDR
+                                 	LDI R21, (1<<TWINT)|(1<<TWEN) ; Se setean TWINT y TWEN en el TWCR
+                                 	STS TWCR, R21		; Configura TWCR para enviar TWDR
                                  
                                  WAIT2:
-00002c 9150 00bc                 	LDS R21, TWCR		; Lee el registro de control a R21
-00002e ff57                      	SBRS R21, TWINT		; Saltea siguiente liÂ­nea si TWINT es 1
-00002f cffc                      	RJMP WAIT2			; TWINT esta en 0
-000030 9508                      	RET
+                                 	LDS R21, TWCR		; Lee el registro de control a R21
+                                 	SBRS R21, TWINT		; Saltea siguiente liÂ­nea si TWINT es 1
+                                 	RJMP WAIT2			; TWINT esta en 0
+                                 	RET
                                  
                                  
                                  I2C_READ:
-000031 e854                      	LDI R21, (1<<TWINT)|(1<<TWEN)
-000032 9350 00bc                 	STS TWCR, R21
+                                 	LDI R21, (1<<TWINT)|(1<<TWEN)
+                                 	STS TWCR, R21
                                  
                                  WAIT3:
-000034 9150 00bc                 	LDS R21, TWCR
-000036 ff57                      	SBRS R21, TWINT
-000037 cff4                      	RJMP WAIT2
-000038 91b0 00bb                 	LDS R27, TWDR		; Guarda en R27 el dato leido
-00003a 9508                      	RET
+                                 	LDS R21, TWCR
+                                 	SBRS R21, TWINT
+                                 	RJMP WAIT2
+                                 	LDS R27, TWDR		; Guarda en R27 el dato leido
+                                 	RET
                                  
                                  
                                  
                                  ;TWSTO:TWI Stop condition bit
                                  
                                  I2C_STOP:
-00003b e954                      	LDI R21, (1<<TWINT)|(1<<TWSTO)|(1<<TWEN)
-00003c 9350 00bc                 	STS TWCR, R21		; Transmitir condicion de STOP
-00003e 9508                      	RET
+                                 	LDI R21, (1<<TWINT)|(1<<TWSTO)|(1<<TWEN)
+                                 	STS TWCR, R21		; Transmitir condicion de STOP
+                                 	RET
                                  
                                  
                                  ; Check value of TWI status register. Mask prescaler bits. If
                                  ; status different from START go to ERROR
                                  
                                  CHECK_TWI_ST_REG:
-00003f 9150 00b9                 	LDS R21,TWSR		; TWSR: TWI status register
-000041 7f58                      	ANDI R21, 0xF8		; Mascara
-000042 1751                      	CP R21, R17			; El status se pasa por R17
-000043 f409                      	BRNE ERROR
-000044 c003                      	RJMP NO_ERROR
+                                 	LDS R21,TWSR		; TWSR: TWI status register
+                                 	ANDI R21, 0xF8		; Mascara
+                                 	CP R21, R17			; El status se pasa por R17
+                                 	BRNE ERROR
+                                 	RJMP NO_ERROR
                                  ERROR:
-000045 e040                      	LDI R20, 0b00000000	; En caso de error del status se prenden los LEDs Verdes
-000046 b94b                      	OUT PORTD, R20		
-000047 9508                      	RET
+                                 	LDI R20, 0b00000000	; En caso de error del status se prenden los LEDs Verdes
+                                 	OUT PORTD, R20		
+                                 	RET
                                  NO_ERROR:
-000048 9508                      	RET
+                                 	RET
                                  
-                                 /*
+                                 
+                                 
+                                 
                                  ; Subrutina de escritura de registros del acelerometro 
                                  MULTIPLE_BYTE_WRITE:		
                                  	RCALL I2C_START		; Transmite la condicion de START
@@ -1493,85 +1459,86 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm(13): In
                                  
                                  	RCALL I2C_STOP 		;Transmite la condicion de STOP
                                  	RET
-                                 */
                                  
                                  
                                  ; Subrutina de lectura de registros del acelerometro 
                                  SINGLE_BYTE_READ:
-000049 dfd5                      	RCALL I2C_START		; Transmite la condicion de START
-00004a d02b                      	RCALL DELAY
-00004b d02a                      	RCALL DELAY
-00004c d029                      	RCALL DELAY
-00004d e018                      	LDI R17, 0x08		;  0x08: A START condition has been transmitted
-00004e dff0                      	RCALL CHECK_TWI_ST_REG; Chequea que este OK el status reg del TWI, recibe previamente el status en R17
+                                 	RCALL I2C_START		; Transmite la condicion de START
+                                 	RCALL DELAY
+                                 	RCALL DELAY
+                                 	RCALL DELAY
+                                 	LDI R17, 0x08		;  0x08: A START condition has been transmitted
+                                 	RCALL CHECK_TWI_ST_REG; Chequea que este OK el status reg del TWI, recibe previamente el status en R17
                                  	
                                  
-00004f 2fb8                      	MOV R27, R24		; Carga la direccion del esclavo + configuracion W
-000050 dfd6                      	RCALL I2C_WRITE		; Escribe R27 al bus I2C
-000051 d024                      	RCALL DELAY
-000052 d023                      	RCALL DELAY
-000053 d022                      	RCALL DELAY
-000054 e118                      	LDI R17, 0x18		; 0x18: SLA+W has been transmitted ;ACK has been received
-000055 dfe9                      	RCALL CHECK_TWI_ST_REG;
+                                 	MOV R27, R24		; Carga la direccion del esclavo + configuracion W
+                                 	RCALL I2C_WRITE		; Escribe R27 al bus I2C
+                                 	RCALL DELAY
+                                 	RCALL DELAY
+                                 	RCALL DELAY
+                                 	LDI R17, 0x18		; 0x18: SLA+W has been transmitted ;ACK has been received
+                                 	RCALL CHECK_TWI_ST_REG;
                                  
                                  
-000056 2fb9                      	MOV R27, R25		; Direccion del registro a escribir
-000057 dfcf                      	RCALL I2C_WRITE		; Escribe R27 al bus I2C
-000058 d01d                      	RCALL DELAY
-000059 d01c                      	RCALL DELAY
-00005a d01b                      	RCALL DELAY
-00005b e218                      	LDI R17, 0x28		; 0x28: Data byte has been transmitted; ACK has been received
-00005c dfe2                      	RCALL CHECK_TWI_ST_REG;
-                                 
-                                 
-                                 
-00005d dfc1                      	RCALL I2C_START		; Retransmite Start
-00005e e110                      	LDI R17, 0x10		; 0x10: A repeated START condition has been transmitted
-00005f dfdf                      	RCALL CHECK_TWI_ST_REG
-000060 d015                      	RCALL DELAY
-000061 d014                      	RCALL DELAY
-000062 d013                      	RCALL DELAY
-                                 
-                                 
-000063 2fbc                      	MOV R27, R28		; Carga la direccion del esclavo + configuracion R
-000064 dfc2                      	RCALL I2C_WRITE
-000065 d010                      	RCALL DELAY
-000066 d00f                      	RCALL DELAY
-000067 d00e                      	RCALL DELAY
-000068 e410                      	LDI R17, 0x40		; 0x40: SLA+R has been transmitted; ACK has been received
-000069 dfd5                      	RCALL CHECK_TWI_ST_REG;
+                                 	MOV R27, R25		; Direccion del registro a escribir
+                                 	RCALL I2C_WRITE		; Escribe R27 al bus I2C
+                                 	RCALL DELAY
+                                 	RCALL DELAY
+                                 	RCALL DELAY
+                                 	LDI R17, 0x28		; 0x28: Data byte has been transmitted; ACK has been received
+                                 	RCALL CHECK_TWI_ST_REG;
                                  
                                  
                                  
-00006a dfc6                      	RCALL I2C_READ
-00006b d00a                      	RCALL DELAY
-00006c d009                      	RCALL DELAY
-00006d d008                      	RCALL DELAY
-00006e e518                      	LDI R17, 0x58		; 0x58: Data byte has been received; NOT ACK has been returned
-00006f dfcf                      	RCALL CHECK_TWI_ST_REG;
-000070 2f7b                      	MOV R23, R27
+                                 	RCALL I2C_START		; Retransmite Start
+                                 	LDI R17, 0x10		; 0x10: A repeated START condition has been transmitted
+                                 	RCALL CHECK_TWI_ST_REG
+                                 	RCALL DELAY
+                                 	RCALL DELAY
+                                 	RCALL DELAY
+                                 
+                                 
+                                 	MOV R27, R28		; Carga la direccion del esclavo + configuracion R
+                                 	RCALL I2C_WRITE
+                                 	RCALL DELAY
+                                 	RCALL DELAY
+                                 	RCALL DELAY
+                                 	LDI R17, 0x40		; 0x40: SLA+R has been transmitted; ACK has been received
+                                 	RCALL CHECK_TWI_ST_REG;
                                  
                                  
                                  
-000071 dfc9                      	RCALL I2C_STOP 		
-000072 d003                      	RCALL DELAY
-000073 d002                      	RCALL DELAY
-000074 d001                      	RCALL DELAY
+                                 	RCALL I2C_READ
+                                 	RCALL DELAY
+                                 	RCALL DELAY
+                                 	RCALL DELAY
+                                 	LDI R17, 0x58		; 0x58: Data byte has been received; NOT ACK has been returned
+                                 	RCALL CHECK_TWI_ST_REG;
+                                 	MOV R23, R27
                                  
-000075 9508                      	RET
+                                 
+                                 
+                                 	RCALL I2C_STOP 		
+                                 	RCALL DELAY
+                                 	RCALL DELAY
+                                 	RCALL DELAY
+                                 
+                                 	RET
                                  
                                  
                                  ; En algunos ejemplos del Libro se usaba un Delay
                                  DELAY:
-000076 e604                      		LDI R16, 100
-000077 e614                      LOOPD1:	LDI R17, 100
-000078 e624                      LOOPD2:	LDI R18, 100
-000079 952a                      LOOPD3:  DEC R18
-00007a f7f1                      		BRNE LOOPD3			
-00007b 951a                      		DEC R17
-00007c f7d9                      		BRNE LOOPD2
-00007d 950a                      		DEC R16
-00007e f7c1                      		BRNE LOOPD1
+                                 		LDI R16, 100
+                                 LOOPD1:	LDI R17, 100
+                                 LOOPD2:	LDI R18, 100
+                                 LOOPD3:  DEC R18
+                                 		BRNE LOOPD3			
+                                 		DEC R17
+                                 		BRNE LOOPD2
+                                 		DEC R16
+                                 		BRNE LOOPD1
+                                 		RET
+                                 
 
 
 RESOURCE USE INFORMATION
@@ -1588,41 +1555,41 @@ counted separately from r26..r31 here.
 
 .dseg memory usage only counts static data declared with .byte
 
-"ATmega88PA" register use summary:
+"ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   2 r17:   9 r18:   2 r19:   0 r20:  12 
-r21:  25 r22:   0 r23:   2 r24:   2 r25:   2 r26:   2 r27:   6 r28:   2 
+r13:   0 r14:   0 r15:   0 r16:  16 r17:   4 r18:   4 r19:   6 r20:  18 
+r21:   6 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 11 out of 35 (31.4%)
+Registers used: 6 out of 35 (17.1%)
 
-"ATmega88PA" instruction use summary:
+"ATmega328P" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
-andi  :   1 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
-brcc  :   0 brcs  :   0 break :   0 breq  :   1 brge  :   0 brhc  :   0 
+andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
+brcc  :   0 brcs  :   0 break :   0 breq  :   2 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :   4 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 cbi   :   0 cbr   :   0 clc   :   0 
-clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 clt   :   0 
-clv   :   0 clz   :   0 com   :   0 cp    :   2 cpc   :   0 cpi   :   0 
-cpse  :   0 dec   :   3 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 
-icall :   0 ijmp  :   0 in    :   0 inc   :   0 ld    :   0 ldd   :   0 
-ldi   :  27 lds   :   5 lpm   :   0 lsl   :   0 lsr   :   0 mov   :   4 
-movw  :   0 mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 
-or    :   0 ori   :   0 out   :   8 pop   :   0 push  :   0 rcall :  36 
-ret   :   9 reti  :   0 rjmp  :   6 rol   :   0 ror   :   0 sbc   :   0 
-sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 sbiw  :   0 sbr   :   0 
-sbrc  :   0 sbrs  :   3 sec   :   0 seh   :   0 sei   :   0 sen   :   0 
-ser   :   0 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 
-spm   :   0 st    :   0 std   :   0 sts   :   7 sub   :   0 subi  :   0 
-swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 14 out of 111 (12.6%)
+brne  :   8 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
+clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
+clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
+cpi   :   4 cpse  :   0 dec   :   8 eor   :   0 fmul  :   0 fmuls :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   0 jmp   :   0 
+ld    :   0 ldd   :   0 ldi   :  27 lds   :   0 lpm   :   0 lsl   :   0 
+lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
+neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :  14 pop   :   0 
+push  :   0 rcall :   4 ret   :   2 reti  :   2 rjmp  :   6 rol   :   0 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
+sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
+sei   :   1 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
+sez   :   0 sleep :   1 spm   :   0 st    :   0 std   :   0 sts   :   1 
+sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
+Instructions used: 13 out of 113 (11.5%)
 
-"ATmega88PA" memory use summary [bytes]:
+"ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000100    256      0    256    8192   3.1%
-[.dseg] 0x000100 0x000100      0      0      0    1024   0.0%
-[.eseg] 0x000000 0x000000      0      0      0     512   0.0%
+[.cseg] 0x000000 0x0000a2    162      0    162   32768   0.5%
+[.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
+[.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
 Assembly complete, 0 errors, 0 warnings

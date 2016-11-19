@@ -14,14 +14,17 @@
 4. Al hacer referencia a un registro de I/O, se lo debe hacer utilizando la macro _SFR_IO_ADDR().
  */
 
+
+
  /**************************************************************
 DIRECTIVAS
 ***************************************************************/
  #include <avr/io.h>
- #define F_CPU 18432000UL 
+ #include <avr/interrupt.h>
+#define F_CPU 18432000UL 
 ;#include "m88PAdef.inc" // Lo incluye el AtmelStudio al setear el uC
 
-
+  
  
 
 .global main
@@ -31,18 +34,18 @@ DIRECTIVAS
 ;.global SLEEP_MODE
 ;.global ISR_INT0_INACTIVITY
 ;.global ISR_INT1_BLUETOOTH
-/**************************************************************
+
+ /**************************************************************
 VECTORES DE INTERRUPCION
 ***************************************************************/
 
 ;.org 0x00
 rjmp main
 ;.org 0x02
-rjmp ISR_INT0_INACTIVITY	
+rjmp ISR_INT0_INACTIVITY
 ;.org 0x04
 rjmp ISR_INT1_BLUETOOTH	
-
-
+;.org 0x3E
 
 
 /**************************************************************
@@ -64,25 +67,14 @@ LDI R20, 0b10010000			; Con un 1 quedan apagados por la logica de la placa Club 
 OUT _SFR_IO_ADDR(PORTD), R20	
 
 
+/*
+; LEDs para las pruebas (Puerto C: Rojos; Puerto D: Verdes) Arduino
+LDI R20, 0b00100000			; Hay LEDs conectados a los bits seteados en dichos puertos
+OUT _SFR_IO_ADDR(DDRB), R20			
+LDI R20, 0b00000000			; Con un 0 quedan apagados
+OUT _SFR_IO_ADDR(PORTB), R20	
 
-
-/**************************************************************
-CONFIGURACION BAJO CONSUMO
-***************************************************************/
-
-
-CONFIG_BAJO_CONSUMO:
-	; Config consumo de energia, PSM o PDM
-	ldi R16,0b00000100	; Nibble inferior D3D2D1 = 010 es de power down mode y el lsb D0 = 1 es para activar el sleep mode
-	out _SFR_IO_ADDR(SMCR),R16
-
-		
-/**************************************************************
-INCIALIZACION I2C, CONFIGURACION ACELEROMETRO Y RTC
-***************************************************************/
-
-;RCALL config_i2cmaster_acel_rtc
-
+*/
 
 /**************************************************************
 CONFIGURACION INTERRUPCIONES EXTERNAS
@@ -107,16 +99,25 @@ CONFIG_INT:
 SEI
 
 
-; LEDs para las pruebas (Puerto C: Rojos; Puerto D: Verdes)
-LDI R20, 0b00001100			; Hay LEDs conectados a los bits seteados en dichos puertos
-OUT _SFR_IO_ADDR(DDRC), R20			
-LDI R20, 0b00001100			; Con un 1 quedan apagados por la logica de la placa Club de Robotica
-OUT _SFR_IO_ADDR(PORTC), R20	
 
-LDI R20, 0b10010000			; Hay LEDs conectados a los bits seteados en dichos puertos
-OUT _SFR_IO_ADDR(DDRD), R20	
-LDI R20, 0b10010000			; Con un 1 quedan apagados por la logica de la placa Club de Robotica
-OUT _SFR_IO_ADDR(PORTD), R20	
+/**************************************************************
+CONFIGURACION BAJO CONSUMO
+***************************************************************/
+
+
+CONFIG_BAJO_CONSUMO:
+	; Config consumo de energia, PSM o PDM
+	ldi R16,0b00000100	; Nibble inferior D3D2D1 = 010 es de power down mode y el lsb D0 = 1 es para activar el sleep mode
+	out _SFR_IO_ADDR(SMCR),R16
+
+		
+/**************************************************************
+INCIALIZACION I2C, CONFIGURACION ACELEROMETRO Y RTC
+***************************************************************/
+
+;RCALL config_i2cmaster_acel_rtc
+
+
 
 /**************************************************************
 CONFIGURACION BLUETOOTH
@@ -130,10 +131,11 @@ CONFIGURACION BLUETOOTH
 BLOQUE PRINCIPAL
 ***************************************************************/
 
-
+/*
 ; Si entro al bloque principal, se prenden los LEDs del puerto D
-			;LDI R20, 0b00000000	
-			;OUT _SFR_IO_ADDR(PORTC), R20
+			LDI R20, 0b00010000
+			OUT _SFR_IO_ADDR(PORTD), R20
+*/
 
 ; Entra en modo sleep, al suceder una interrupcion se despierta en la instruccion siguiente
 SLEEP_MODE:
@@ -235,9 +237,7 @@ RUTINA DE SERVICIO DE INTERRUPCION POR INACTIVIDAD DEL ACELEROMETRO
 ***************************************************************/
 
 ISR_INT0_INACTIVITY:
-CLI
 LDI R19,1	
-SEI
 RETI
 
 /**************************************************************
@@ -245,7 +245,5 @@ RUTINA DE SERVICIO DE INTERRUPCION POR ACTIVACION DEL BLUETOOTH
 ***************************************************************/
 
 ISR_INT1_BLUETOOTH:
-CLI
 LDI R19,2	
-SEI
 RETI

@@ -5,34 +5,38 @@
 ; Author : MarianoAgustín
 ;
 
+; Este codigo esta andando en la placa CdR, hace titilar las ISR por separado OK
+
 /**************************************************************
 DIRECTIVAS
 ***************************************************************/
 ;#ifndef F_CPU
 #define F_CPU 18432000UL 
-#include "m88PAdef.inc" ; Lo incluye el AtmelStudio al setear el uC
+;#include "m88PAdef.inc" ; Lo incluye el AtmelStudio al setear el uC
 
 
-.cseg
+
+
+;.cseg
 /**************************************************************
 VECTORES DE INTERRUPCION
 ***************************************************************/
-.org 0x00
-rjmp INICIO
-/*
+;.org 0x00
+rjmp main
+
 ;.org 0x02				; Por alguna razon traen problemas
 rjmp ISR_INT0_INACTIVITY	
 ;.org 0x04				; Por alguna razon traen problemas
 rjmp ISR_INT1_BLUETOOTH	
-*/
 
-INICIO:
 
+main:
+/*
 	LDI R21, HIGH(RAMEND)	; Configura el STACK
 	OUT SPH, R21
 	LDI R21, LOW(RAMEND)
 	OUT SPL, R21
-
+	*/
 ; LEDs para las pruebas (Puerto C: Rojos; Puerto D: Verdes)
 LDI R20, 0b00001100			; Hay LEDs conectados a los bits seteados en dichos puertos
 OUT DDRC, R20			
@@ -50,7 +54,7 @@ OUT PORTD, R20
 CONFIGURACION INTERRUPCIONES EXTERNAS
 ***************************************************************/
 
-/*
+
 CONFIG_INT:
 
 	;EICRA: Configura por flanco o por nivel
@@ -69,31 +73,32 @@ CONFIG_INT:
 	out EIFR,R16		;
 
 	SEI
-*/
+
 
 
 /**************************************************************
 CONFIGURACION BAJO CONSUMO
 ***************************************************************/
 
-/*
+
 CONFIG_BAJO_CONSUMO:
 	; Config consumo de energia, PSM o PDM
 	ldi R16,0b00000100	; Nibble inferior D3D2D1 = 010 es de power down mode y el lsb D0 = 1 es para activar el sleep mode
 	out SMCR,R16
-*/
+
 	
 /**************************************************************
 INCIALIZACION I2C
 ***************************************************************/
 
-RCALL I2C_INIT
+;RCALL I2C_INIT
 
 
 /**************************************************************
 CONFIGURACION ACELEROMETRO
 ***************************************************************/
-CONFIG_ACELEROMETRO:
+
+/*CONFIG_ACELEROMETRO:
 
 ;Conexiones hardware:
 ;Arduino Pin	ADXL345 Pin		Placa CdR Atmega88pa-pu
@@ -126,6 +131,7 @@ WRITE_OK:
 CONTINUE:				
 ;
 
+*/
 
 /*
 
@@ -203,7 +209,7 @@ CONFIGURACION BLUETOOTH
 BLOQUE PRINCIPAL
 ***************************************************************/
 
-/*
+
 
 ; Si entro al bloque principal, se apaga uno de los LEDs del puerto D
 LDI R20, 0b00010000
@@ -228,7 +234,7 @@ RETORNO_ALARMA:
 RETORNO_BLUETOOTH:
 			RJMP SLEEP_MODE
 
-*/
+
 
 
 
@@ -236,7 +242,7 @@ RETORNO_BLUETOOTH:
 RUTINA ENVIO DE ENVIO DE DATOS POR BLUETOOTH 
 ***************************************************************/
 
-/*
+
 
 BLUETOOTH:	; LED Verde
 LDI R21, 10	; Valor de tiempo 
@@ -268,13 +274,13 @@ LOOP32:  DEC R18
 		BRNE LOOP12
 		RET
 
-*/
+
 
 /**************************************************************
 RUTINA DE ALARMA
 ***************************************************************/
 
-/*
+
 
 ALARMA:	; LED Verde
 LDI R21, 10	; Valor de tiempo 
@@ -307,13 +313,13 @@ LOOP3:  DEC R18
 		RET
 
 
-*/
+
 
 
 /**************************************************************
 RUTINA DE SERVICIO DE INTERRUPCION POR INACTIVIDAD DEL ACELEROMETRO
 ***************************************************************/
-/*
+
 
 ISR_INT0_INACTIVITY:
 ;CLI
@@ -327,12 +333,12 @@ ISR_INT0_INACTIVITY:
 LDI R19,1	
 RETI
 
-*/
+
 
 /**************************************************************
 RUTINA DE SERVICIO DE INTERRUPCION POR ACTIVACION DEL BLUETOOTH
 ***************************************************************/
-/*
+
 
 ISR_INT1_BLUETOOTH:
 ;CLI
@@ -346,7 +352,7 @@ ISR_INT1_BLUETOOTH:
 LDI R19,2	
 RETI
 
-*/
+
 
 
 
@@ -358,6 +364,8 @@ RETI
 /**************************************************************
 CONFIGURACION I2C
 ***************************************************************/
+/*
+
 CONFIG_I2C:
 
 I2C_INIT:
@@ -438,7 +446,9 @@ ERROR:
 NO_ERROR:
 	RET
 
-/*
+
+
+
 ; Subrutina de escritura de registros del acelerometro 
 MULTIPLE_BYTE_WRITE:		
 	RCALL I2C_START		; Transmite la condicion de START
@@ -463,7 +473,6 @@ MULTIPLE_BYTE_WRITE:
 
 	RCALL I2C_STOP 		;Transmite la condicion de STOP
 	RET
-*/
 
 
 ; Subrutina de lectura de registros del acelerometro 
@@ -543,3 +552,5 @@ LOOPD3:  DEC R18
 		DEC R16
 		BRNE LOOPD1
 		RET
+
+*/
