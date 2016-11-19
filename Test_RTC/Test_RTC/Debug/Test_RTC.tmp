@@ -1,0 +1,53 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.6</VERSION>
+ <DEVICE>"ATmega88PA"</DEVICE>
+ <WORKING_DIR>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m88padef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m88PAdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\Debug\Test_RTC.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Test_RTC.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Test_RTC.map</FILE>
+  <FILE>Test_RTC.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <INICIO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>28</LINE></INICIO>
+  <I2C_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>365</LINE></I2C_INIT>
+  <RTC_CONFIG><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>201</LINE></RTC_CONFIG>
+  <RTC_READ_YEAR><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>303</LINE></RTC_READ_YEAR>
+  <ERROR_I2C><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>100</LINE></ERROR_I2C>
+  <OK><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>95</LINE></OK>
+  <HERE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>98</LINE></HERE>
+  <MULTIPLE_BYTE_WRITE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>445</LINE></MULTIPLE_BYTE_WRITE>
+  <RTC_READ_SECONDS><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>253</LINE></RTC_READ_SECONDS>
+  <SINGLE_BYTE_READ><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>472</LINE></SINGLE_BYTE_READ>
+  <RTC_READ_MINUTES><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>262</LINE></RTC_READ_MINUTES>
+  <RTC_READ_HOURS><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>271</LINE></RTC_READ_HOURS>
+  <RTC_READ_DAY_OT_WEEK><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>279</LINE></RTC_READ_DAY_OT_WEEK>
+  <RTC_READ_DAY_OT_MONTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>287</LINE></RTC_READ_DAY_OT_MONTH>
+  <RTC_READ_MONTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>295</LINE></RTC_READ_MONTH>
+  <CONFIG_I2C><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>363</LINE></CONFIG_I2C>
+  <I2C_START><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>379</LINE></I2C_START>
+  <WAIT1><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>383</LINE></WAIT1>
+  <I2C_WRITE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>394</LINE></I2C_WRITE>
+  <WAIT2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>399</LINE></WAIT2>
+  <I2C_READ><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>406</LINE></I2C_READ>
+  <WAIT3><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>410</LINE></WAIT3>
+  <I2C_STOP><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>421</LINE></I2C_STOP>
+  <CHECK_TWI_ST_REG><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>430</LINE></CHECK_TWI_ST_REG>
+  <ERROR><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>436</LINE></ERROR>
+  <NO_ERROR><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_RTC\Test_RTC\main.asm</FILE><LINE>440</LINE></NO_ERROR>
+ </LABELS>
+</ASSEMBLER_INFO>

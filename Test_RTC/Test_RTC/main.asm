@@ -92,16 +92,13 @@ LDI R18,0b00010110
 RCALL RTC_READ_YEAR
 CP	R18,R23
 BRNE ERROR_I2C
-RCALL OK
+OK:
+LDI R20, 0b00000000	;Prende los rojos
+OUT PORTC, R20		
+HERE: RJMP HERE
 
 ERROR_I2C:		
-LDI R20, 0b00010000			; Con un 1 quedan apagados por la logica de la placa Club de Robotica
-OUT PORTD, R20	
-
-OK:
-LDI R20, 0b00000000	; En caso de error del status se prenden los LEDs Verdes
-OUT PORTC, R20		
-RET
+RJMP ERROR_I2C
 /**************************************************************
 CONFIGURACION ACELEROMETRO
 ***************************************************************/

@@ -1,0 +1,29 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.6</VERSION>
+ <DEVICE>"ATmega88PA"</DEVICE>
+ <WORKING_DIR>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m88padef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\Debug\Test_BT.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Test_BT.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Test_BT.map</FILE>
+  <FILE>Test_BT.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <USART_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>17</LINE></USART_INIT>
+  <TRANS><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>11</LINE></TRANS>
+  <USART_TRANSMISION><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>36</LINE></USART_TRANSMISION>
+ </LABELS>
+</ASSEMBLER_INFO>
