@@ -9,6 +9,7 @@ Discarded input sections
  .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.0.106/gcc/dev/atmega88pa/avr4/crtatmega88pa.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
+ .avr.prop      0x00000000        0xe main.o
  .text          0x00000000        0x0 twimaster.o
  .data          0x00000000        0x0 twimaster.o
  .bss           0x00000000        0x0 twimaster.o

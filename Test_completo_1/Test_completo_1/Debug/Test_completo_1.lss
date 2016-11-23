@@ -64,13 +64,13 @@ Disassembly of section .text:
 VECTORES DE INTERRUPCION
 ***************************************************************/
 
-;.org 0x00
+.org 0x00
 rjmp main
   46:	02 c0       	rjmp	.+4      	; 0x4c <main>
-;.org 0x02
+.org 0x02
 rjmp ISR_INT0_INACTIVITY	
   48:	51 c0       	rjmp	.+162    	; 0xec <ISR_INT0_INACTIVITY>
-;.org 0x04
+.org 0x04
 rjmp ISR_INT1_BLUETOOTH	
   4a:	54 c0       	rjmp	.+168    	; 0xf4 <ISR_INT1_BLUETOOTH>
 
@@ -110,25 +110,21 @@ CONFIG_BAJO_CONSUMO:
   5e:	03 bf       	out	0x33, r16	; 51
 
 00000060 <CONFIG_INT>:
+
+/**************************************************************
+CONFIGURACION INTERRUPCIONES EXTERNAS
 ***************************************************************/
 CONFIG_INT:
-
-	;EICRA: Configura por flanco o por nivel
-	;out R18, EICRA     ; Carga estado previo
 	ldi R16,0b00000101	; ldi R16,0b00000001 para INT0; ldi R16,0b00000101 para INT0 e INT1 
   60:	05 e0       	ldi	r16, 0x05	; 5
 	sts EICRA, R16		;
   62:	00 93 69 00 	sts	0x0069, r16	; 0x800069 <__EEPROM_REGION_LENGTH__+0x7f0069>
 
-	;EIMSK: Habilita las interrupciones seleccionadas
-	;out R18, EIMSK     ; Carga estado previo
 	ldi R16,0b00000011 	; ldi R16,0b00000001 para INT0; ldi R16,0b00000011 para INT0 e INT1 
   66:	03 e0       	ldi	r16, 0x03	; 3
 	out EIMSK,R16		;
   68:	0d bf       	out	0x3d, r16	; 61
 
-	;EIFR: Tiene que estar seteado junto con el bit de interrupcion global al momento de suceder la interrupcion 
-	;in R18, EIFR       ; Carga estado previo
 	ldi R16,0b00000101	; ldi R16,0b00000001 para INT0; ldi R16,0b00000011 para INT0 e INT1 
   6a:	05 e0       	ldi	r16, 0x05	; 5
 	out EIFR,R16		;

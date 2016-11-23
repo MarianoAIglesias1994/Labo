@@ -11,22 +11,22 @@
 DIRECTIVAS
 ***************************************************************/
 ;#ifndef F_CPU
-#define F_CPU 18432000UL 
+#define F_CPU 16000000UL 
 ;#include "m88PAdef.inc" ; Lo incluye el AtmelStudio al setear el uC
 
 
 
 
-;.cseg
 /**************************************************************
 VECTORES DE INTERRUPCION
 ***************************************************************/
-;.org 0x00
+.cseg
+.org 0x00
 rjmp main
 
-;.org 0x02				; Por alguna razon traen problemas
+.org 0x02				; Por alguna razon traen problemas
 rjmp ISR_INT0_INACTIVITY	
-;.org 0x04				; Por alguna razon traen problemas
+.org 0x04				; Por alguna razon traen problemas
 rjmp ISR_INT1_BLUETOOTH	
 
 
@@ -37,23 +37,21 @@ main:
 	LDI R21, LOW(RAMEND)
 	OUT SPL, R21
 	*/
+
 ; LEDs para las pruebas (Puerto C: Rojos; Puerto D: Verdes)
-LDI R20, 0b00001100			; Hay LEDs conectados a los bits seteados en dichos puertos
+LDI R20, 0b00000001		; Hay LEDs conectados a los bits seteados en dichos puertos
 OUT DDRC, R20			
-LDI R20, 0b00001100			; Con un 1 quedan apagados por la logica de la placa Club de Robotica
+LDI R20, 0b00000000			; Con un 1 quedan apagados por la logica de la placa Club de Robotica
 OUT PORTC, R20	
 
-LDI R20, 0b10010000			; Hay LEDs conectados a los bits seteados en dichos puertos
-OUT DDRD, R20	
-LDI R20, 0b10010000			; Con un 1 quedan apagados por la logica de la placa Club de Robotica
+LDI R20, 0b00110000		; Hay LEDs conectados a los bits seteados en dichos puertos
+OUT DDRD, R20
+LDI R20, 0b00000000			; Con un 1 quedan apagados por la logica de la placa Club de Robotica
 OUT PORTD, R20	
-
-
 
 /**************************************************************
 CONFIGURACION INTERRUPCIONES EXTERNAS
 ***************************************************************/
-
 
 CONFIG_INT:
 
@@ -91,14 +89,14 @@ CONFIG_BAJO_CONSUMO:
 INCIALIZACION I2C
 ***************************************************************/
 
-;RCALL I2C_INIT
+RCALL I2C_INIT
 
 
 /**************************************************************
 CONFIGURACION ACELEROMETRO
 ***************************************************************/
 
-/*CONFIG_ACELEROMETRO:
+CONFIG_ACELEROMETRO:
 
 ;Conexiones hardware:
 ;Arduino Pin	ADXL345 Pin		Placa CdR Atmega88pa-pu
@@ -117,23 +115,12 @@ CONFIGURACION ACELEROMETRO
 ; Se realiza la lectura del registro DEVID que tiene una direccion: 0x00 y reset value: 11100101
 	LDI R24, 0xA6		; Direccion del esclavo SLA(1010011) + Write(0)
 	LDI R28, 0xA7		; Direccion del esclavo SLA(1010011) + Read(1)
-	LDI R25, 0x00		; Direccion del registro a leer DEVID 
-	LDI R26, 0b11100101	; Dato contra el que se debe comparar la lectura
-	RCALL SINGLE_BYTE_READ 
-;	RCALL DELAY			; Estaba presente en algunos codigos del Libro pero no tuvo efecto aqui
+	;LDI R25, 0x00		; Direccion del registro a leer DEVID 
+	;LDI R26, 0b11100101	; Dato contra el que se debe comparar la lectura
+	
 
-	CP R23, R26
-	BREQ WRITE_OK		; Se encienden LEDs en caso de lectura exitosa
-	RJMP CONTINUE		; Si no, se continua
-WRITE_OK:					
-	LDI R20, 0b00000000
-	OUT PORTC, R20	
-CONTINUE:				
-;
 
-*/
 
-/*
 
 ; Se comienza la secuencia de seteo del acelerometro en los valores necesarios
 
@@ -153,7 +140,7 @@ CONTINUE:
 
 	LDI R25, 0x27		;Direccion del registro a escribir ;ACT_INACT_CTL 0x27 0b00100111 controla los ejes que intervienen
 	LDI R26, 0b00001111	;Dato a transmitir ;ACT_INACT_CTL 
-				;en 0b00001111 (D3 en 1=ac coupled)(D2D1D0 = 111 enable en los tres ejes)
+				;en 0b00000111 (D3 en 1=ac coupled)(D2D1D0 = 111 enable en los tres ejes)
 	RCALL MULTIPLE_BYTE_WRITE
 ;	RCALL DELAY
 
@@ -189,18 +176,74 @@ CONTINUE:
 	RCALL MULTIPLE_BYTE_WRITE
 ;	RCALL DELAY
 
+			
 
-*/
 
 /**************************************************************
 CONFIGURACION RTC
 ***************************************************************/
-;CONFIG_RTC:
+CONFIG_RTC:
+
+;CONFIGURACION REGISTRO DE CONTROL
+LDI R24, 0b11010000
+LDI R28, 0b11010001
+LDI R25, 0x0E 
+LDI R26, 0x00
+RCALL MULTIPLE_BYTE_WRITE
+
+;CONFIGURACION SEGUNDOS
+LDI R25, 0b00000000
+LDI R26, 0b00000000	;0 seconds
+RCALL MULTIPLE_BYTE_WRITE
+
+;CONFIGURACION MINUTOS
+LDI R25, 0b00000001
+LDI R26, 0b00000000 ;0minutos
+RCALL MULTIPLE_BYTE_WRITE
+
+;CONFIGURACION HORA
+LDI R25, 0b00000010
+LDI R26, 0b00011001 ;19 horas
+RCALL MULTIPLE_BYTE_WRITE
+
+;CONFIGURACION DIA DE LA SEMANA
+LDI R25, 0b00000011
+LDI R26, 0b00000101 ;dia 5 de la semana, viernes
+RCALL MULTIPLE_BYTE_WRITE
+
+;CONFIGURACION DIA DEL MES
+LDI R25, 0b00000100
+LDI R26, 0b00011000 ;dia 18 del mes
+RCALL MULTIPLE_BYTE_WRITE
+
+;CONFIGURACION MES
+LDI R25, 0b00000101
+LDI R26, 0b00010001 ;mes noviembre
+RCALL MULTIPLE_BYTE_WRITE
+
+;CONFIGURACION AÑO
+LDI R25,0b00000110
+LDI R26,0b00010110	;año 16
+RCALL MULTIPLE_BYTE_WRITE
+
+
+
+	
 
 /**************************************************************
 CONFIGURACION BLUETOOTH
 ***************************************************************/
-;CONFIG_BLUETOOTH:
+LDI R16, 0x33
+LDI R17, 0x00
+RCALL USART_INIT
+
+
+/**************************************************************
+CONFIGURACION EEPROM
+***************************************************************/
+LDI R20, 0		
+LDI R21, 0
+RCALL EEPROM_INIT
 
 
 
@@ -209,11 +252,6 @@ CONFIGURACION BLUETOOTH
 BLOQUE PRINCIPAL
 ***************************************************************/
 
-
-
-; Si entro al bloque principal, se apaga uno de los LEDs del puerto D
-LDI R20, 0b00010000
-OUT PORTD, R20
  
 ; Entra en modo sleep, al suceder una interrupcion se despierta en la instruccion siguiente
 SLEEP_MODE:
@@ -244,7 +282,7 @@ RUTINA ENVIO DE ENVIO DE DATOS POR BLUETOOTH
 
 
 
-BLUETOOTH:	; LED Verde
+BLUETOOTH:	; D4
 LDI R21, 10	; Valor de tiempo 
 
 PARPADEO2:
@@ -258,6 +296,32 @@ PARPADEO2:
 		DEC R21
 		CPI R21, 0
 		BRNE PARPADEO2
+
+		
+		LDI R21,0		;en R20 Y R21 estan las direcciones de eeprom
+		LDI R20,0		;que se usa en la funcion EEPROM_READ
+		RCALL BT_SEND_DATA
+
+		LDI R21,0		;en R20 Y R21 estan las direcciones de eeprom
+		LDI R20,1		;que se usa en la funcion EEPROM_READ
+		RCALL BT_SEND_DATA
+
+		LDI R21,0		;en R20 Y R21 estan las direcciones de eeprom
+		LDI R20,2		;que se usa en la funcion EEPROM_READ
+		RCALL BT_SEND_DATA
+
+		LDI R21,0		;en R20 Y R21 estan las direcciones de eeprom
+		LDI R20,3		;que se usa en la funcion EEPROM_READ
+		RCALL BT_SEND_DATA
+
+		LDI R21,0		;en R20 Y R21 estan las direcciones de eeprom
+		LDI R20,4		;que se usa en la funcion EEPROM_READ
+		RCALL BT_SEND_DATA
+
+		LDI R21,0		;en R20 Y R21 estan las direcciones de eeprom
+		LDI R20,5		;que se usa en la funcion EEPROM_READ
+		RCALL BT_SEND_DATA
+
 
 		LDI R19,0			; Se limpia el registro indicador
 		RJMP RETORNO_BLUETOOTH
@@ -275,6 +339,17 @@ LOOP32:  DEC R18
 		RET
 
 
+BT_SEND_DATA:
+RCALL READ_TIMESTAMP
+MOV R19,R23	;copio lo que me devuevle READ_TIMESTAMP para ser usada en USART_TRANSIMISION
+RCALL USART_TRANSMISION	;envio la informacion al bluetooth
+RET
+
+READ_TIMESTAMP:
+;en R22 esta el dato a leer
+RCALL EEPROM_READ
+MOV R23,R22
+RET
 
 /**************************************************************
 RUTINA DE ALARMA
@@ -282,23 +357,59 @@ RUTINA DE ALARMA
 
 
 
-ALARMA:	; LED Verde
+ALARMA:	; D5 Verde
 LDI R21, 10	; Valor de tiempo 
 
 PARPADEO:
 		LDI R20, 0b00000000	; Prende LED
-		OUT PORTC, R20	
+		OUT PORTD, R20	
 		RCALL RETARDO
-		LDI R20, 0b00001000	; Apaga LED
-		OUT PORTC, R20	
+		LDI R20, 0b00100000	; Apaga LED
+		OUT PORTD, R20	
 		RCALL RETARDO
 
 		DEC R21
 		CPI R21, 0
 		BRNE PARPADEO
 
+
+
+
+		LDI R24, 0b11010000		;direccion del esclavo+escritura
+		LDI R25, 0b00000000	;va a ser utilizada por RTC_READ
+		LDI R28, 0b11010001	;direccion del esclavo+lectura
+		LDI R21,0		;en R20 Y R21 estan las direcciones de eeprom
+		LDI R20,0		;que se usa en la funcion EEPROM_WRITE
+		RCALL WRITE_TIMESTAMP  ; la funcion guarda en eeprom lo que se lee desde RTC_READ	
+
+		LDI R25, 0b00000001	;va a ser utilizada por RTC_READ
+		LDI R21,0		;en R20 Y R21 estan las direcciones de eeprom
+		LDI R20,1		;que se usa en la funcion EEPROM_WRITE
+		RCALL WRITE_TIMESTAMP  ; la funcion guarda en eeprom lo que se lee desde RTC_READ
+
+		LDI R25, 0b00000010	;va a ser utilizada por RTC_READ
+		LDI R21,0		;en R20 Y R21 estan las direcciones de eeprom
+		LDI R20,2		;que se usa en la funcion EEPROM_WRITE
+		RCALL WRITE_TIMESTAMP  ; la funcion guarda en eeprom lo que se lee desde RTC_READ
+		
+		LDI R25, 0b00000100	;va a ser utilizada por RTC_READ
+		LDI R21,0		;en R20 Y R21 estan las direcciones de eeprom
+		LDI R20,3		;que se usa en la funcion EEPROM_WRITE
+		RCALL WRITE_TIMESTAMP  ; la funcion guarda en eeprom lo que se lee desde RTC_READ
+
+		LDI R25, 0b00000101	;va a ser utilizada por RTC_READ
+		LDI R21,0		;en R20 Y R21 estan las direcciones de eeprom
+		LDI R20,4		;que se usa en la funcion EEPROM_WRITE
+		RCALL WRITE_TIMESTAMP  ; la funcion guarda en eeprom lo que se lee desde RTC_READ
+
+		LDI R25, 0b00000110	;va a ser utilizada por RTC_READ
+		LDI R21,0		;en R20 Y R21 estan las direcciones de eeprom
+		LDI R20,5		;que se usa en la funcion EEPROM_WRITE
+		RCALL WRITE_TIMESTAMP  ; la funcion guarda en eeprom lo que se lee desde RTC_READ
+
 		LDI R19,0			; Se limpia el registro indicador
 		RJMP RETORNO_ALARMA
+
 
 RETARDO:
 		LDI R16, 10
@@ -313,8 +424,16 @@ LOOP3:  DEC R18
 		RET
 
 
+WRITE_TIMESTAMP:
+		RCALL RTC_READ	;obtengo el dato del rtc
+			;en R22 esta el dato que se va a guardar
+		RCALL EEPROM_WRITE	;guardo el dato en la eeprom
+		RET
 
-
+RTC_READ:
+RCALL SINGLE_BYTE_READ
+MOV R22,R23 	;copio lo que me devuelve SINGLE_BYTE_READ en R22
+RET
 
 /**************************************************************
 RUTINA DE SERVICIO DE INTERRUPCION POR INACTIVIDAD DEL ACELEROMETRO
@@ -322,14 +441,6 @@ RUTINA DE SERVICIO DE INTERRUPCION POR INACTIVIDAD DEL ACELEROMETRO
 
 
 ISR_INT0_INACTIVITY:
-;CLI
-;PUSH R16
-;IN R16, SREG
-;PUSH R16
-;POP R16
-;OUT SREG, R16
-;POP R16
-;SEI
 LDI R19,1	
 RETI
 
@@ -341,14 +452,6 @@ RUTINA DE SERVICIO DE INTERRUPCION POR ACTIVACION DEL BLUETOOTH
 
 
 ISR_INT1_BLUETOOTH:
-;CLI
-;PUSH R16
-;IN R16, SREG
-;PUSH R16
-;POP R16
-;OUT SREG, R16
-;POP R16
-;SEI
 LDI R19,2	
 RETI
 
@@ -364,17 +467,17 @@ RETI
 /**************************************************************
 CONFIGURACION I2C
 ***************************************************************/
-/*
+
 
 CONFIG_I2C:
 
 I2C_INIT:
 	LDI R21, 0		
 	STS TWSR, R21		; Preescaler 1 en TWI Status Reg
-	LDI R21, 0x54		;  0xB0
+	LDI R21, 0xB0		;  0xB0
 	STS TWBR, R21		; Setea la frecuencia a 50.087 kHz (18.432 MHz XTAL)
-;	LDI R21, (1<<TWEN)	; 0x04 a R21 (TWEN: Enable bit)
-;	STS TWCR, R21		; Habilita el TWI 
+	LDI R21, (1<<TWEN)	; 0x04 a R21 (TWEN: Enable bit)
+	STS TWCR, R21		; Habilita el TWI 
 	RET
 
 	
@@ -416,7 +519,7 @@ I2C_READ:
 WAIT3:
 	LDS R21, TWCR
 	SBRS R21, TWINT
-	RJMP WAIT2
+	RJMP WAIT3
 	LDS R27, TWDR		; Guarda en R27 el dato leido
 	RET
 
@@ -430,46 +533,20 @@ I2C_STOP:
 	RET
 
 
-; Check value of TWI status register. Mask prescaler bits. If
-; status different from START go to ERROR
-
-CHECK_TWI_ST_REG:
-	LDS R21,TWSR		; TWSR: TWI status register
-	ANDI R21, 0xF8		; Mascara
-	CP R21, R17			; El status se pasa por R17
-	BRNE ERROR
-	RJMP NO_ERROR
-ERROR:
-	LDI R20, 0b00000000	; En caso de error del status se prenden los LEDs Verdes
-	OUT PORTD, R20		
-	RET
-NO_ERROR:
-	RET
-
-
 
 
 ; Subrutina de escritura de registros del acelerometro 
 MULTIPLE_BYTE_WRITE:		
 	RCALL I2C_START		; Transmite la condicion de START
-	LDI R17, 0x10		; 0x08: A START condition has been transmitted
-						; 0x10: A repeated START condition has been transmitted
-	RCALL CHECK_TWI_ST_REG; Chequea que este OK el status reg del TWI, recibe previamente el status en R17
 	
 	MOV R27, R24		; Carga la direccion del esclavo + configuracion W
 	RCALL I2C_WRITE		; Escribe R27 al bus I2C
-	LDI R17, 0x18		; 0x18: SLA+W has been transmitted ;ACK has been received
-	RCALL CHECK_TWI_ST_REG;
 	
 	MOV R27, R25		; Direccion del registro a escribir
 	RCALL I2C_WRITE		; Escribe R27 al bus I2C
-	LDI R17, 0x28		; 0x28: Data byte has been transmitted; ACK has been received
-	RCALL CHECK_TWI_ST_REG;
 	
 	MOV R27, R26		; Dato a transmitir 
 	RCALL I2C_WRITE		; Escribe R27 al bus I2C
-	LDI R17, 0x28		; 0x28: Data byte has been transmitted; ACK has been received
-	RCALL CHECK_TWI_ST_REG;
 
 	RCALL I2C_STOP 		;Transmite la condicion de STOP
 	RET
@@ -478,79 +555,94 @@ MULTIPLE_BYTE_WRITE:
 ; Subrutina de lectura de registros del acelerometro 
 SINGLE_BYTE_READ:
 	RCALL I2C_START		; Transmite la condicion de START
-	RCALL DELAY
-	RCALL DELAY
-	RCALL DELAY
-	LDI R17, 0x08		;  0x08: A START condition has been transmitted
-	RCALL CHECK_TWI_ST_REG; Chequea que este OK el status reg del TWI, recibe previamente el status en R17
-	
 
 	MOV R27, R24		; Carga la direccion del esclavo + configuracion W
 	RCALL I2C_WRITE		; Escribe R27 al bus I2C
-	RCALL DELAY
-	RCALL DELAY
-	RCALL DELAY
-	LDI R17, 0x18		; 0x18: SLA+W has been transmitted ;ACK has been received
-	RCALL CHECK_TWI_ST_REG;
 
-
-	MOV R27, R25		; Direccion del registro a escribir
+	MOV R27, R25		; Direccion del registro a leer
 	RCALL I2C_WRITE		; Escribe R27 al bus I2C
-	RCALL DELAY
-	RCALL DELAY
-	RCALL DELAY
-	LDI R17, 0x28		; 0x28: Data byte has been transmitted; ACK has been received
-	RCALL CHECK_TWI_ST_REG;
-
 
 
 	RCALL I2C_START		; Retransmite Start
-	LDI R17, 0x10		; 0x10: A repeated START condition has been transmitted
-	RCALL CHECK_TWI_ST_REG
-	RCALL DELAY
-	RCALL DELAY
-	RCALL DELAY
 
 
 	MOV R27, R28		; Carga la direccion del esclavo + configuracion R
 	RCALL I2C_WRITE
-	RCALL DELAY
-	RCALL DELAY
-	RCALL DELAY
-	LDI R17, 0x40		; 0x40: SLA+R has been transmitted; ACK has been received
-	RCALL CHECK_TWI_ST_REG;
 
-
+	LDI R27,0
 
 	RCALL I2C_READ
-	RCALL DELAY
-	RCALL DELAY
-	RCALL DELAY
-	LDI R17, 0x58		; 0x58: Data byte has been received; NOT ACK has been returned
-	RCALL CHECK_TWI_ST_REG;
 	MOV R23, R27
 
-
-
-	RCALL I2C_STOP 		
-	RCALL DELAY
-	RCALL DELAY
-	RCALL DELAY
-
+	RCALL I2C_STOP
 	RET
 
 
-; En algunos ejemplos del Libro se usaba un Delay
-DELAY:
-		LDI R16, 100
-LOOPD1:	LDI R17, 100
-LOOPD2:	LDI R18, 100
-LOOPD3:  DEC R18
-		BRNE LOOPD3			
-		DEC R17
-		BRNE LOOPD2
-		DEC R16
-		BRNE LOOPD1
-		RET
 
-*/
+
+/**************************************************************
+CONFIGURACION BLUETOOTH
+***************************************************************/
+
+USART_INIT:
+
+;baud rate en 9600
+STS UBRR0H, R17
+STS UBRR0L, R16
+
+;habilito el tx  solamente ya que el modulo se encarga de enviar la fecha del evento, no de recibir cualquier tipo de informacion
+
+LDI R16, (1<<TXEN0)|(0<<RXEN0)
+STS UCSR0B, R16
+
+LDI R16, (1<<USBS0)|(3<<UCSZ00); 8 bits por dato, 2bits de stop
+STS UCSR0C, R16
+RET
+
+USART_TRANSMISION:
+LDS	R17,UCSR0A		;se fija que el buffer este listo para la transmision
+SBRS	R17,UDRE0
+RJMP	USART_TRANSMISION
+STS	UDR0,R19		;manda la informacion que hay en el registro 19 al buffer para ser enviada
+RET
+
+
+
+/**************************************************************
+CONFIGURACION EEPROM
+***************************************************************/
+
+EEPROM_INIT:	;este bloque de codigo indica a partir de que lugar de memoria se pueden escribir las fechas de los sucesos
+
+STS EEARL,R20
+STS EEARH,R21
+RET
+
+
+EEPROM_WRITE:
+;supongo que en el registro R22 va a estar la fecha del suceso por inactividad en R22 
+SBIC EECR,EEPE
+RJMP EEPROM_WRITE	;se fija que no haya una escritura previa
+
+STS EEDR, R22  		;escribo en el registro de datos de la eeprom la informacion
+SBI EECR,EEMPE		;habilito el master para poder escribir en la eeprom	
+
+SBI EECR,EEPE		;habilito la escritura en la eeprom
+RET
+
+
+EEPROM_READ:
+
+SBIC EECR,EEPE
+RJMP EEPROM_READ	;se fija que no haya una escritura previa
+
+STS EEARH, R21
+STS EEARL, R20
+			
+SBI EECR,EERE		;habilito la lectura en la eeprm 
+
+LDS R22,EEDR		;leo lo que hay en el registro de datos de la eeprom
+RET
+
+
+

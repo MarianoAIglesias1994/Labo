@@ -18,28 +18,25 @@
 DIRECTIVAS
 ***************************************************************/
  #include <avr/io.h>
+ #include <avr/interrupt.h>
  #define F_CPU 18432000UL 
 ;#include "m88PAdef.inc" // Lo incluye el AtmelStudio al setear el uC
 
 
- 
 
 .global main
 .extern config_i2cmaster_acel_rtc
 
-//??
-;.global SLEEP_MODE
-;.global ISR_INT0_INACTIVITY
-;.global ISR_INT1_BLUETOOTH
+
 /**************************************************************
 VECTORES DE INTERRUPCION
 ***************************************************************/
 
-;.org 0x00
+.org 0x00
 rjmp main
-;.org 0x02
+.org 0x02
 rjmp ISR_INT0_INACTIVITY	
-;.org 0x04
+.org 0x04
 rjmp ISR_INT1_BLUETOOTH	
 
 
@@ -88,19 +85,12 @@ INCIALIZACION I2C, CONFIGURACION ACELEROMETRO Y RTC
 CONFIGURACION INTERRUPCIONES EXTERNAS
 ***************************************************************/
 CONFIG_INT:
-
-	;EICRA: Configura por flanco o por nivel
-	;out R18, EICRA     ; Carga estado previo
 	ldi R16,0b00000101	; ldi R16,0b00000001 para INT0; ldi R16,0b00000101 para INT0 e INT1 
 	sts EICRA, R16		;
 
-	;EIMSK: Habilita las interrupciones seleccionadas
-	;out R18, EIMSK     ; Carga estado previo
 	ldi R16,0b00000011 	; ldi R16,0b00000001 para INT0; ldi R16,0b00000011 para INT0 e INT1 
 	out EIMSK,R16		;
 
-	;EIFR: Tiene que estar seteado junto con el bit de interrupcion global al momento de suceder la interrupcion 
-	;in R18, EIFR       ; Carga estado previo
 	ldi R16,0b00000101	; ldi R16,0b00000001 para INT0; ldi R16,0b00000011 para INT0 e INT1 
 	out EIFR,R16		;
 

@@ -29,39 +29,7 @@ int main(void)
     DDRD  = 0x90;                              // LEDs Verdes 
     PORTD = 0x90;                              // (active low LED's )
 
-/*
-; LEDs para las pruebas (Puerto C: Rojos; Puerto D: Verdes)
-LDI R20, 0b00001100         ; Hay LEDs conectados a los bits seteados en dichos puertos
-OUT DDRC, R20           
-LDI R20, 0b00001100         ; Con un 1 quedan apagados por la logica de la placa Club de Robotica
-OUT PORTC, R20  
-
-LDI R20, 0b10010000         ; Hay LEDs conectados a los bits seteados en dichos puertos
-OUT DDRD, R20   
-LDI R20, 0b10010000         ; Con un 1 quedan apagados por la logica de la placa Club de Robotica
-OUT PORTD, R20  
-*/
-
-
     i2c_init();                                // init I2C interface
-
-/*
-; Se realiza la lectura del registro DEVID que tiene una direccion: 0x00 y reset value: 11100101
-    LDI R24, 0xA6       ; Direccion del esclavo SLA(1010011) + Write(0)
-    LDI R28, 0xA7       ; Direccion del esclavo SLA(1010011) + Read(1)
-    LDI R25, 0x00       ; Direccion del registro a leer DEVID 
-    LDI R26, 0b11100101 ; Dato contra el que se debe comparar la lectura
-    RCALL SINGLE_BYTE_READ 
-;   RCALL DELAY         ; Estaba presente en algunos codigos del Libro pero no tuvo efecto aqui
-
-    CP R23, R26
-    BREQ WRITE_OK       ; Se encienden LEDs en caso de lectura exitosa
-    RJMP CONTINUE       ; Si no, se continua
-WRITE_OK:                   
-    LDI R20, 0b00000000
-    OUT PORTC, R20  
-CONTINUE:               
-*/
 
     ret = i2c_start(DevADXL345+I2C_WRITE);       // set device address and write mode
     if ( ret ) {
@@ -79,6 +47,7 @@ CONTINUE:
             PORTC = 0x00;                      // Prende LEDs Rojos en caso de Lectura correcta
     
 	//
+	/*
 	 i2c_start_wait(DevADXL345+I2C_WRITE);     // set device address and write mode
 	 i2c_write(0x25);                        // write address = 5
 	 i2c_write(0b00010001);
@@ -93,6 +62,7 @@ CONTINUE:
 	
 	if(ret == 0xE5)
 	PORTC = 0x00;                      // Prende LEDs Rojos en caso de Lectura correcta
+	*/
 	//
 	
 	

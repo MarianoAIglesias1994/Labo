@@ -23,44 +23,20 @@
   <FILE>081116.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <INICIO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>31</LINE></INICIO>
-  <ISR_INT0_INACTIVITY><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>339</LINE></ISR_INT0_INACTIVITY>
-  <ISR_INT1_BLUETOOTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>355</LINE></ISR_INT1_BLUETOOTH>
-  <CONFIG_INT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>54</LINE></CONFIG_INT>
-  <CONFIG_BAJO_CONSUMO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>76</LINE></CONFIG_BAJO_CONSUMO>
-  <I2C_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>381</LINE></I2C_INIT>
-  <CONFIG_ACELEROMETRO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>93</LINE></CONFIG_ACELEROMETRO>
-  <MULTIPLE_BYTE_WRITE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>465</LINE></MULTIPLE_BYTE_WRITE>
-  <DELAY><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>525</LINE></DELAY>
-  <SINGLE_BYTE_READ><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>491</LINE></SINGLE_BYTE_READ>
-  <WRITE_OK><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>125</LINE></WRITE_OK>
-  <CONTINUE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>130</LINE></CONTINUE>
-  <SLEEP_MODE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>243</LINE></SLEEP_MODE>
-  <ALARMA><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>303</LINE></ALARMA>
-  <RETORNO_ALARMA><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>252</LINE></RETORNO_ALARMA>
-  <BLUETOOTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>270</LINE></BLUETOOTH>
-  <RETORNO_BLUETOOTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>255</LINE></RETORNO_BLUETOOTH>
-  <PARPADEO2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>273</LINE></PARPADEO2>
-  <RETARDO2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>287</LINE></RETARDO2>
-  <LOOP12><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>289</LINE></LOOP12>
-  <LOOP22><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>290</LINE></LOOP22>
-  <LOOP32><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>291</LINE></LOOP32>
-  <PARPADEO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>307</LINE></PARPADEO>
-  <RETARDO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>321</LINE></RETARDO>
-  <LOOP1><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>323</LINE></LOOP1>
-  <LOOP2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>324</LINE></LOOP2>
-  <LOOP3><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>325</LINE></LOOP3>
-  <CONFIG_I2C><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>379</LINE></CONFIG_I2C>
-  <I2C_START><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>395</LINE></I2C_START>
-  <WAIT1><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>399</LINE></WAIT1>
-  <I2C_WRITE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>411</LINE></I2C_WRITE>
-  <WAIT2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>416</LINE></WAIT2>
-  <I2C_READ><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>425</LINE></I2C_READ>
-  <WAIT3><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>429</LINE></WAIT3>
-  <I2C_STOP><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>441</LINE></I2C_STOP>
-  <CHECK_TWI_ST_REG><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>448</LINE></CHECK_TWI_ST_REG>
-  <ERROR><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>454</LINE></ERROR>
-  <NO_ERROR><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>460</LINE></NO_ERROR>
-  <A1><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>527</LINE></A1>
+  <INICIO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>26</LINE></INICIO>
+  <I2C_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>99</LINE></I2C_INIT>
+  <CONFIG_ACELEROMETRO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>58</LINE></CONFIG_ACELEROMETRO>
+  <SINGLE_BYTE_READ><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>182</LINE></SINGLE_BYTE_READ>
+  <OK><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>80</LINE></OK>
+  <NOK><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>84</LINE></NOK>
+  <CONFIG_I2C><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>97</LINE></CONFIG_I2C>
+  <I2C_START><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>113</LINE></I2C_START>
+  <WAIT1><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>117</LINE></WAIT1>
+  <I2C_WRITE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>128</LINE></I2C_WRITE>
+  <WAIT2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>134</LINE></WAIT2>
+  <I2C_READ><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>141</LINE></I2C_READ>
+  <WAIT3><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>145</LINE></WAIT3>
+  <I2C_STOP><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>156</LINE></I2C_STOP>
+  <MULTIPLE_BYTE_WRITE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test081116\081116\081116\main.asm</FILE><LINE>164</LINE></MULTIPLE_BYTE_WRITE>
  </LABELS>
 </ASSEMBLER_INFO>
