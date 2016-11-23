@@ -1,0 +1,37 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.6</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_EEPROM\Test_EEPROM\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_EEPROM\Test_EEPROM\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_EEPROM\Test_EEPROM\Debug\Test_EEPROM.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Test_EEPROM.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Test_EEPROM.map</FILE>
+  <FILE>Test_EEPROM.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <main><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_EEPROM\Test_EEPROM\main.asm</FILE><LINE>27</LINE></main>
+  <EEPROM_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_EEPROM\Test_EEPROM\main.asm</FILE><LINE>72</LINE></EEPROM_INIT>
+  <EEPROM_WRITE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_EEPROM\Test_EEPROM\main.asm</FILE><LINE>78</LINE></EEPROM_WRITE>
+  <EEPROM_READ><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_EEPROM\Test_EEPROM\main.asm</FILE><LINE>95</LINE></EEPROM_READ>
+  <OK><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_EEPROM\Test_EEPROM\main.asm</FILE><LINE>61</LINE></OK>
+  <CONTINUE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_EEPROM\Test_EEPROM\main.asm</FILE><LINE>65</LINE></CONTINUE>
+  <END><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_EEPROM\Test_EEPROM\main.asm</FILE><LINE>64</LINE></END>
+  <RETARDO_EEPROM><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_EEPROM\Test_EEPROM\main.asm</FILE><LINE>111</LINE></RETARDO_EEPROM>
+  <LOOP1EEPROM><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_EEPROM\Test_EEPROM\main.asm</FILE><LINE>113</LINE></LOOP1EEPROM>
+  <LOOP2EEPROM><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_EEPROM\Test_EEPROM\main.asm</FILE><LINE>114</LINE></LOOP2EEPROM>
+  <LOOP3EEPROM><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_EEPROM\Test_EEPROM\main.asm</FILE><LINE>115</LINE></LOOP3EEPROM>
+ </LABELS>
+</ASSEMBLER_INFO>

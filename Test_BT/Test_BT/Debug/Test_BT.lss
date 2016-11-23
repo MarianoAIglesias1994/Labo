@@ -1,22 +1,22 @@
 
-AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm Fri Nov 18 22:06:50 2016
+AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm Wed Nov 23 02:28:52 2016
 
-[builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m88padef.inc'
-[builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m88padef.inc'
+[builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328pdef.inc'
+[builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328pdef.inc'
                                  
                                  ;
                                  
-                                 ;***** Created: 2011-02-09 12:03 ******* Source: ATmega88PA.xml **********
+                                 ;***** Created: 2011-02-09 12:03 ******* Source: ATmega328P.xml **********
                                  ;*************************************************************************
                                  ;* A P P L I C A T I O N   N O T E   F O R   T H E   A V R   F A M I L Y
                                  ;* 
                                  ;* Number            : AVR000
-                                 ;* File Name         : "m88PAdef.inc"
-                                 ;* Title             : Register/Bit Definitions for the ATmega88PA
+                                 ;* File Name         : "m328Pdef.inc"
+                                 ;* Title             : Register/Bit Definitions for the ATmega328P
                                  ;* Date              : 2011-02-09
                                  ;* Version           : 2.35
                                  ;* Support E-mail    : avr@atmel.com
-                                 ;* Target MCU        : ATmega88PA
+                                 ;* Target MCU        : ATmega328P
                                  ;* 
                                  ;* DESCRIPTION
                                  ;* When including this file in the assembly program file, all I/O register 
@@ -44,17 +44,17 @@ AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT
                                  ;* ...                         ;otherwise do something else
                                  ;*************************************************************************
                                  
-                                 #ifndef _M88PADEF_INC_
-                                 #define _M88PADEF_INC_
+                                 #ifndef _M328PDEF_INC_
+                                 #define _M328PDEF_INC_
                                  
                                  
                                  #pragma partinc 0
                                  
                                  ; ***** SPECIFY DEVICE ***************************************************
-                                 .device ATmega88PA
-                                 #pragma AVRPART ADMIN PART_NAME ATmega88PA
+                                 .device ATmega328P
+                                 #pragma AVRPART ADMIN PART_NAME ATmega328P
                                  .equ	SIGNATURE_000	= 0x1e
-                                 .equ	SIGNATURE_001	= 0x93
+                                 .equ	SIGNATURE_001	= 0x95
                                  .equ	SIGNATURE_002	= 0x0f
                                  
                                  #pragma AVRPART CORE CORE_VERSION V2E
@@ -739,39 +739,6 @@ AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT
                                  .equ	WDIF	= 7	; Watchdog Timeout Interrupt Flag
                                  
                                  
-                                 ; ***** EEPROM ***********************
-                                 ; EEARL - EEPROM Address Register Low Byte
-                                 .equ	EEAR0	= 0	; EEPROM Read/Write Access Bit 0
-                                 .equ	EEAR1	= 1	; EEPROM Read/Write Access Bit 1
-                                 .equ	EEAR2	= 2	; EEPROM Read/Write Access Bit 2
-                                 .equ	EEAR3	= 3	; EEPROM Read/Write Access Bit 3
-                                 .equ	EEAR4	= 4	; EEPROM Read/Write Access Bit 4
-                                 .equ	EEAR5	= 5	; EEPROM Read/Write Access Bit 5
-                                 .equ	EEAR6	= 6	; EEPROM Read/Write Access Bit 6
-                                 .equ	EEAR7	= 7	; EEPROM Read/Write Access Bit 7
-                                 
-                                 ; EEARH - EEPROM Address Register High Byte
-                                 .equ	EEAR8	= 0	; EEPROM Read/Write Access Bit 0
-                                 
-                                 ; EEDR - EEPROM Data Register
-                                 .equ	EEDR0	= 0	; EEPROM Data Register bit 0
-                                 .equ	EEDR1	= 1	; EEPROM Data Register bit 1
-                                 .equ	EEDR2	= 2	; EEPROM Data Register bit 2
-                                 .equ	EEDR3	= 3	; EEPROM Data Register bit 3
-                                 .equ	EEDR4	= 4	; EEPROM Data Register bit 4
-                                 .equ	EEDR5	= 5	; EEPROM Data Register bit 5
-                                 .equ	EEDR6	= 6	; EEPROM Data Register bit 6
-                                 .equ	EEDR7	= 7	; EEPROM Data Register bit 7
-                                 
-                                 ; EECR - EEPROM Control Register
-                                 .equ	EERE	= 0	; EEPROM Read Enable
-                                 .equ	EEPE	= 1	; EEPROM Write Enable
-                                 .equ	EEMPE	= 2	; EEPROM Master Write Enable
-                                 .equ	EERIE	= 3	; EEPROM Ready Interrupt Enable
-                                 .equ	EEPM0	= 4	; EEPROM Programming Mode Bit 0
-                                 .equ	EEPM1	= 5	; EEPROM Programming Mode Bit 1
-                                 
-                                 
                                  ; ***** CPU **************************
                                  ; SREG - Status Register
                                  .equ	SREG_C	= 0	; Carry Flag
@@ -801,13 +768,13 @@ AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT
                                  .equ	CLKPCE	= 7	; Clock Prescaler Change Enable
                                  
                                  ; SPMCSR - Store Program Memory Control and Status Register
-                                 .equ	SELFPRGEN = 0; Added for backwards compatibility
+                                 .equ    SELFPRGEN = 0; Added for backwards compatibility
                                  .equ	SPMEN	= 0	; Store Program Memory
                                  .equ	PGERS	= 1	; Page Erase
                                  .equ	PGWRT	= 2	; Page Write
                                  .equ	BLBSET	= 3	; Boot Lock Bit Set
                                  .equ	RWWSRE	= 4	; Read-While-Write section read enable
-                                 .equ	SIGRD	= 5 ; Signature Row Read
+                                 .equ    SIGRD   = 5 ; Signature Row Read
                                  .equ	RWWSB	= 6	; Read-While-Write Section Busy
                                  .equ	SPMIE	= 7	; SPM Interrupt Enable
                                  
@@ -871,6 +838,40 @@ AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT
                                  .equ	PRTWI	= 7	; Power Reduction TWI
                                  
                                  
+                                 ; ***** EEPROM ***********************
+                                 ; EEARL - EEPROM Address Register Low Byte
+                                 .equ	EEAR0	= 0	; EEPROM Read/Write Access Bit 0
+                                 .equ	EEAR1	= 1	; EEPROM Read/Write Access Bit 1
+                                 .equ	EEAR2	= 2	; EEPROM Read/Write Access Bit 2
+                                 .equ	EEAR3	= 3	; EEPROM Read/Write Access Bit 3
+                                 .equ	EEAR4	= 4	; EEPROM Read/Write Access Bit 4
+                                 .equ	EEAR5	= 5	; EEPROM Read/Write Access Bit 5
+                                 .equ	EEAR6	= 6	; EEPROM Read/Write Access Bit 6
+                                 .equ	EEAR7	= 7	; EEPROM Read/Write Access Bit 7
+                                 
+                                 ; EEARH - EEPROM Address Register High Byte
+                                 .equ	EEAR8	= 0	; EEPROM Read/Write Access Bit 8
+                                 .equ	EEAR9	= 1	; EEPROM Read/Write Access Bit 9
+                                 
+                                 ; EEDR - EEPROM Data Register
+                                 .equ	EEDR0	= 0	; EEPROM Data Register bit 0
+                                 .equ	EEDR1	= 1	; EEPROM Data Register bit 1
+                                 .equ	EEDR2	= 2	; EEPROM Data Register bit 2
+                                 .equ	EEDR3	= 3	; EEPROM Data Register bit 3
+                                 .equ	EEDR4	= 4	; EEPROM Data Register bit 4
+                                 .equ	EEDR5	= 5	; EEPROM Data Register bit 5
+                                 .equ	EEDR6	= 6	; EEPROM Data Register bit 6
+                                 .equ	EEDR7	= 7	; EEPROM Data Register bit 7
+                                 
+                                 ; EECR - EEPROM Control Register
+                                 .equ	EERE	= 0	; EEPROM Read Enable
+                                 .equ	EEPE	= 1	; EEPROM Write Enable
+                                 .equ	EEMPE	= 2	; EEPROM Master Write Enable
+                                 .equ	EERIE	= 3	; EEPROM Ready Interrupt Enable
+                                 .equ	EEPM0	= 4	; EEPROM Programming Mode Bit 0
+                                 .equ	EEPM1	= 5	; EEPROM Programming Mode Bit 1
+                                 
+                                 
                                  
                                  ; ***** LOCKSBITS ********************************************************
                                  .equ	LB1	= 0	; Lock bit
@@ -893,9 +894,9 @@ AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT
                                  .equ	CKDIV8	= 7	; Divide clock by 8
                                  
                                  ; HIGH fuse bits
-                                 .equ	BODLEVEL0	= 0	; Brown-out Detector trigger level
-                                 .equ	BODLEVEL1	= 1	; Brown-out Detector trigger level
-                                 .equ	BODLEVEL2	= 2	; Brown-out Detector trigger level
+                                 .equ	BOOTRST	= 0	; Select reset vector
+                                 .equ	BOOTSZ0	= 1	; Select boot size
+                                 .equ	BOOTSZ1	= 2	; Select boot size
                                  .equ	EESAVE	= 3	; EEPROM memory is preserved through chip erase
                                  .equ	WDTON	= 4	; Watchdog Timer Always On
                                  .equ	SPIEN	= 5	; Enable Serial programming and Data Downloading
@@ -903,9 +904,9 @@ AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT
                                  .equ	RSTDISBL	= 7	; External reset disable
                                  
                                  ; EXTENDED fuse bits
-                                 .equ	BOOTRST	= 0	; Select reset vector
-                                 .equ	BOOTSZ0	= 1	; Select boot size
-                                 .equ	BOOTSZ1	= 2	; Select boot size
+                                 .equ	BODLEVEL0	= 0	; Brown-out Detector trigger level
+                                 .equ	BODLEVEL1	= 1	; Brown-out Detector trigger level
+                                 .equ	BODLEVEL2	= 2	; Brown-out Detector trigger level
                                  
                                  
                                  
@@ -920,67 +921,67 @@ AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT
                                  
                                  
                                  ; ***** DATA MEMORY DECLARATIONS *****************************************
-                                 .equ	FLASHEND	= 0x0fff	; Note: Word address
+                                 .equ	FLASHEND	= 0x3fff	; Note: Word address
                                  .equ	IOEND	= 0x00ff
                                  .equ	SRAM_START	= 0x0100
-                                 .equ	SRAM_SIZE	= 1024
-                                 .equ	RAMEND	= 0x04ff
+                                 .equ	SRAM_SIZE	= 2048
+                                 .equ	RAMEND	= 0x08ff
                                  .equ	XRAMEND	= 0x0000
-                                 .equ	E2END	= 0x01ff
-                                 .equ	EEPROMEND	= 0x01ff
-                                 .equ	EEADRBITS	= 9
-                                 #pragma AVRPART MEMORY PROG_FLASH 8192
-                                 #pragma AVRPART MEMORY EEPROM 512
-                                 #pragma AVRPART MEMORY INT_SRAM SIZE 1024
+                                 .equ	E2END	= 0x03ff
+                                 .equ	EEPROMEND	= 0x03ff
+                                 .equ	EEADRBITS	= 10
+                                 #pragma AVRPART MEMORY PROG_FLASH 32768
+                                 #pragma AVRPART MEMORY EEPROM 1024
+                                 #pragma AVRPART MEMORY INT_SRAM SIZE 2048
                                  #pragma AVRPART MEMORY INT_SRAM START_ADDR 0x100
                                  
                                  
                                  
                                  ; ***** BOOTLOADER DECLARATIONS ******************************************
-                                 .equ	NRWW_START_ADDR	= 0xc00
-                                 .equ	NRWW_STOP_ADDR	= 0xfff
+                                 .equ	NRWW_START_ADDR	= 0x3800
+                                 .equ	NRWW_STOP_ADDR	= 0x3fff
                                  .equ	RWW_START_ADDR	= 0x0
-                                 .equ	RWW_STOP_ADDR	= 0xbff
-                                 .equ	PAGESIZE	= 32
-                                 .equ	FIRSTBOOTSTART	= 0xf80
-                                 .equ	SECONDBOOTSTART	= 0xf00
-                                 .equ	THIRDBOOTSTART	= 0xe00
-                                 .equ	FOURTHBOOTSTART	= 0xc00
+                                 .equ	RWW_STOP_ADDR	= 0x37ff
+                                 .equ	PAGESIZE	= 64
+                                 .equ	FIRSTBOOTSTART	= 0x3f00
+                                 .equ	SECONDBOOTSTART	= 0x3e00
+                                 .equ	THIRDBOOTSTART	= 0x3c00
+                                 .equ	FOURTHBOOTSTART	= 0x3800
                                  .equ	SMALLBOOTSTART	= FIRSTBOOTSTART
                                  .equ	LARGEBOOTSTART	= FOURTHBOOTSTART
                                  
                                  
                                  
                                  ; ***** INTERRUPT VECTORS ************************************************
-                                 .equ	INT0addr	= 0x0001	; External Interrupt Request 0
-                                 .equ	INT1addr	= 0x0002	; External Interrupt Request 1
-                                 .equ	PCI0addr	= 0x0003	; Pin Change Interrupt Request 0
-                                 .equ	PCI1addr	= 0x0004	; Pin Change Interrupt Request 0
-                                 .equ	PCI2addr	= 0x0005	; Pin Change Interrupt Request 1
-                                 .equ	WDTaddr	= 0x0006	; Watchdog Time-out Interrupt
-                                 .equ	OC2Aaddr	= 0x0007	; Timer/Counter2 Compare Match A
-                                 .equ	OC2Baddr	= 0x0008	; Timer/Counter2 Compare Match A
-                                 .equ	OVF2addr	= 0x0009	; Timer/Counter2 Overflow
-                                 .equ	ICP1addr	= 0x000a	; Timer/Counter1 Capture Event
-                                 .equ	OC1Aaddr	= 0x000b	; Timer/Counter1 Compare Match A
-                                 .equ	OC1Baddr	= 0x000c	; Timer/Counter1 Compare Match B
-                                 .equ	OVF1addr	= 0x000d	; Timer/Counter1 Overflow
-                                 .equ	OC0Aaddr	= 0x000e	; TimerCounter0 Compare Match A
-                                 .equ	OC0Baddr	= 0x000f	; TimerCounter0 Compare Match B
-                                 .equ	OVF0addr	= 0x0010	; Timer/Couner0 Overflow
-                                 .equ	SPIaddr	= 0x0011	; SPI Serial Transfer Complete
-                                 .equ	URXCaddr	= 0x0012	; USART Rx Complete
-                                 .equ	UDREaddr	= 0x0013	; USART, Data Register Empty
-                                 .equ	UTXCaddr	= 0x0014	; USART Tx Complete
-                                 .equ	ADCCaddr	= 0x0015	; ADC Conversion Complete
-                                 .equ	ERDYaddr	= 0x0016	; EEPROM Ready
-                                 .equ	ACIaddr	= 0x0017	; Analog Comparator
-                                 .equ	TWIaddr	= 0x0018	; Two-wire Serial Interface
-                                 .equ	SPMRaddr	= 0x0019	; Store Program Memory Read
+                                 .equ	INT0addr	= 0x0002	; External Interrupt Request 0
+                                 .equ	INT1addr	= 0x0004	; External Interrupt Request 1
+                                 .equ	PCI0addr	= 0x0006	; Pin Change Interrupt Request 0
+                                 .equ	PCI1addr	= 0x0008	; Pin Change Interrupt Request 0
+                                 .equ	PCI2addr	= 0x000a	; Pin Change Interrupt Request 1
+                                 .equ	WDTaddr	= 0x000c	; Watchdog Time-out Interrupt
+                                 .equ	OC2Aaddr	= 0x000e	; Timer/Counter2 Compare Match A
+                                 .equ	OC2Baddr	= 0x0010	; Timer/Counter2 Compare Match A
+                                 .equ	OVF2addr	= 0x0012	; Timer/Counter2 Overflow
+                                 .equ	ICP1addr	= 0x0014	; Timer/Counter1 Capture Event
+                                 .equ	OC1Aaddr	= 0x0016	; Timer/Counter1 Compare Match A
+                                 .equ	OC1Baddr	= 0x0018	; Timer/Counter1 Compare Match B
+                                 .equ	OVF1addr	= 0x001a	; Timer/Counter1 Overflow
+                                 .equ	OC0Aaddr	= 0x001c	; TimerCounter0 Compare Match A
+                                 .equ	OC0Baddr	= 0x001e	; TimerCounter0 Compare Match B
+                                 .equ	OVF0addr	= 0x0020	; Timer/Couner0 Overflow
+                                 .equ	SPIaddr	= 0x0022	; SPI Serial Transfer Complete
+                                 .equ	URXCaddr	= 0x0024	; USART Rx Complete
+                                 .equ	UDREaddr	= 0x0026	; USART, Data Register Empty
+                                 .equ	UTXCaddr	= 0x0028	; USART Tx Complete
+                                 .equ	ADCCaddr	= 0x002a	; ADC Conversion Complete
+                                 .equ	ERDYaddr	= 0x002c	; EEPROM Ready
+                                 .equ	ACIaddr	= 0x002e	; Analog Comparator
+                                 .equ	TWIaddr	= 0x0030	; Two-wire Serial Interface
+                                 .equ	SPMRaddr	= 0x0032	; Store Program Memory Read
                                  
-                                 .equ	INT_VECTORS_SIZE	= 26	; size in words
+                                 .equ	INT_VECTORS_SIZE	= 52	; size in words
                                  
-                                 #endif  /* _M88PADEF_INC_ */
+                                 #endif  /* _M328PDEF_INC_ */
                                  
                                  ; ***** END OF FILE ******************************************************
                                  
@@ -989,40 +990,65 @@ AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT
                                  ; Created: 18/11/2016 09:51:43 p.m.
                                  ; Author : MarianoAgustÃ­n
                                  ;
+                                 .cseg
+                                 .org 0x00
+000000 c000                      rjmp main
+                                 main:
                                  
-000000 d003                      RCALL USART_INIT
+000001 e340                      LDI R20, 0b00110000		; Hay LEDs conectados a los bits seteados en dichos puertos
+000002 b94a                      OUT DDRD, R20
+000003 e140                      LDI R20, 0b00010000		; Con un 1 quedan apagados por la logica de la placa Club de Robotica
+000004 b94b                      OUT PORTD, R20	
                                  
-000001 ea3a                      LDI R19, 0xAA ;envio 0b10101010 de prueba
-000002 d00e                      TRANS: RCALL USART_TRANSMISION
-000003 cffe                      RJMP TRANS
+000005 d006                      RCALL RETARDO_BT
+000006 d00f                      RCALL USART_INIT
+000007 d004                      RCALL RETARDO_BT
                                  
+000008 e43d                      LDI R19, 0x4D ;envio 0b10101010 de prueba
+000009 d019                      TRANS: RCALL USART_TRANSMISION
+00000a d001                      		RCALL RETARDO_BT
+00000b cffd                      		RJMP TRANS
+                                 
+                                 RETARDO_BT:
+00000c e104                      		LDI R16, 20
+00000d ef1f                      LOOP1:	LDI R17, 255
+00000e ef2f                      LOOP2:	LDI R18, 255
+00000f 952a                      LOOP3:  DEC R18
+000010 f7f1                      		BRNE LOOP3			
+000011 951a                      		DEC R17
+000012 f7d9                      		BRNE LOOP2
+000013 950a                      		DEC R16
+000014 f7c1                      		BRNE LOOP1
+000015 9508                      		RET
                                  
                                  
                                  
                                  USART_INIT:
-                                 
                                  ;configuro el baud rate en 9600
-000004 e303                      LDI R16, 0X33
-000005 e010                      LDI R17, 0X00
-000006 9310 00c5                 STS UBRR0H, R17
-000008 9300 00c4                 STS UBRR0L, R16
+000016 e607                      LDI R16, 0x67
+000017 e010                      LDI R17, 0x00
+000018 9310 00c5                 STS UBRR0H, R17
+00001a 9300 00c4                 STS UBRR0L, R16
                                  
                                  ;habilito el tx  solamente ya que el modulo se encarga de enviar la fecha del evento, no de recibir cualquier tipo de informacion
                                  
-00000a e008                      LDI R16, (1<<TXEN0)|(0<<RXEN0)
-00000b 9300 00c1                 STS UCSR0B, R16
+00001c e008                      LDI R16, (1<<TXEN0)
+00001d 9300 00c1                 STS UCSR0B, R16
                                  
-                                 
-00000d e00e                      LDI R16, (1<<USBS0)|(3<<UCSZ00); 8 bits por dato, 2bits de stop
-00000e 9300 00c2                 STS UCSR0C, R16
-000010 9508                      RET
+00001f e00e                      LDI R16, (1<<USBS0)|(3<<UCSZ00); 8 bits por dato, 2bits de stop
+000020 9300 00c2                 STS UCSR0C, R16
+000022 9508                      RET
                                  
                                  
                                  USART_TRANSMISION:
-000011 9110 00c0                 LDS	R17,UCSR0A		;se fija que el buffer este listo para la transmision
-000013 ff15                      SBRS	R17,UDRE0
-000014 cffc                      RJMP	USART_TRANSMISION
-000015 9330 00c6                 STS	UDR0,R19		;manda la informacion que hay en el registro 19 al buffer para ser enviada
+000023 9110 00c0                 LDS	R17,UCSR0A		;se fija que el buffer este listo para la transmision
+000025 ff15                      SBRS	R17,UDRE0
+                                 ;SBRS UCSR0A,UDRE0
+000026 cffc                      RJMP	USART_TRANSMISION
+000027 e340                      LDI R20, 0b00110000			; Con un 1 quedan apagados por la logica de la placa Club de Robotica
+000028 b94b                      OUT PORTD, R20	
+000029 9330 00c6                 STS	UDR0,R19		;manda la informacion que hay en el registro 19 al buffer para ser enviada
+00002b 9508                      RET
 
 
 RESOURCE USE INFORMATION
@@ -1039,41 +1065,41 @@ counted separately from r26..r31 here.
 
 .dseg memory usage only counts static data declared with .byte
 
-"ATmega88PA" register use summary:
+"ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   6 r17:   4 r18:   0 r19:   2 r20:   0 
+r13:   0 r14:   0 r15:   0 r16:   8 r17:   6 r18:   2 r19:   2 r20:   6 
 r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 3 out of 35 (8.6%)
+Registers used: 5 out of 35 (14.3%)
 
-"ATmega88PA" instruction use summary:
+"ATmega328P" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :   0 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 cbi   :   0 cbr   :   0 clc   :   0 
-clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 clt   :   0 
-clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 cpi   :   0 
-cpse  :   0 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 
-icall :   0 ijmp  :   0 in    :   0 inc   :   0 ld    :   0 ldd   :   0 
-ldi   :   5 lds   :   1 lpm   :   0 lsl   :   0 lsr   :   0 mov   :   0 
-movw  :   0 mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 
-or    :   0 ori   :   0 out   :   0 pop   :   0 push  :   0 rcall :   2 
-ret   :   2 reti  :   0 rjmp  :   2 rol   :   0 ror   :   0 sbc   :   0 
-sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 sbiw  :   0 sbr   :   0 
-sbrc  :   0 sbrs  :   1 sec   :   0 seh   :   0 sei   :   0 sen   :   0 
-ser   :   0 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 
-spm   :   0 st    :   0 std   :   0 sts   :   5 sub   :   0 subi  :   0 
-swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 7 out of 111 (6.3%)
+brne  :   3 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
+clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
+clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
+cpi   :   0 cpse  :   0 dec   :   3 eor   :   0 fmul  :   0 fmuls :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   0 jmp   :   0 
+ld    :   0 ldd   :   0 ldi   :  11 lds   :   1 lpm   :   0 lsl   :   0 
+lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
+neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   3 pop   :   0 
+push  :   0 rcall :   5 ret   :   3 reti  :   0 rjmp  :   3 rol   :   0 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
+sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   1 sec   :   0 seh   :   0 
+sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
+sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   5 
+sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
+Instructions used: 10 out of 113 (8.8%)
 
-"ATmega88PA" memory use summary [bytes]:
+"ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000030     48      0     48    8192   0.6%
-[.dseg] 0x000100 0x000100      0      0      0    1024   0.0%
-[.eseg] 0x000000 0x000000      0      0      0     512   0.0%
+[.cseg] 0x000000 0x000058     88      0     88   32768   0.3%
+[.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
+[.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
 Assembly complete, 0 errors, 0 warnings

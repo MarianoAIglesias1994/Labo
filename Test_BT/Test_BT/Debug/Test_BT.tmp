@@ -1,6 +1,6 @@
 <ASSEMBLER_INFO>
  <VERSION>2.2.6</VERSION>
- <DEVICE>"ATmega88PA"</DEVICE>
+ <DEVICE>"ATmega328P"</DEVICE>
  <WORKING_DIR>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\Debug</WORKING_DIR>
  <INCLUDE_PATH>
   <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc</DIR>
@@ -9,7 +9,7 @@
  </INCLUDE_PATH>
  <SOURCE_FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
-  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m88padef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328pdef.inc</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
   <FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\Debug\Test_BT.obj</FILE>
@@ -22,8 +22,13 @@
   <FILE>Test_BT.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <USART_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>17</LINE></USART_INIT>
-  <TRANS><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>11</LINE></TRANS>
-  <USART_TRANSMISION><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>36</LINE></USART_TRANSMISION>
+  <main><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>10</LINE></main>
+  <RETARDO_BT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>26</LINE></RETARDO_BT>
+  <USART_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>40</LINE></USART_INIT>
+  <TRANS><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>22</LINE></TRANS>
+  <USART_TRANSMISION><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>57</LINE></USART_TRANSMISION>
+  <LOOP1><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>28</LINE></LOOP1>
+  <LOOP2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>29</LINE></LOOP2>
+  <LOOP3><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>30</LINE></LOOP3>
  </LABELS>
 </ASSEMBLER_INFO>

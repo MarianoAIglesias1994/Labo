@@ -23,46 +23,43 @@
  </OUTPUT_FILES>
  <LABELS>
   <main><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>33</LINE></main>
-  <ISR_INT0_INACTIVITY><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>443</LINE></ISR_INT0_INACTIVITY>
-  <ISR_INT1_BLUETOOTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>454</LINE></ISR_INT1_BLUETOOTH>
+  <ISR_INT0_INACTIVITY><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>416</LINE></ISR_INT0_INACTIVITY>
+  <ISR_INT1_BLUETOOTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>427</LINE></ISR_INT1_BLUETOOTH>
   <CONFIG_INT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>56</LINE></CONFIG_INT>
   <CONFIG_BAJO_CONSUMO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>82</LINE></CONFIG_BAJO_CONSUMO>
-  <I2C_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>474</LINE></I2C_INIT>
+  <I2C_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>449</LINE></I2C_INIT>
   <CONFIG_ACELEROMETRO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>99</LINE></CONFIG_ACELEROMETRO>
-  <MULTIPLE_BYTE_WRITE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>539</LINE></MULTIPLE_BYTE_WRITE>
+  <MULTIPLE_BYTE_WRITE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>514</LINE></MULTIPLE_BYTE_WRITE>
   <CONFIG_RTC><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>185</LINE></CONFIG_RTC>
-  <USART_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>587</LINE></USART_INIT>
-  <EEPROM_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>615</LINE></EEPROM_INIT>
-  <SLEEP_MODE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>257</LINE></SLEEP_MODE>
-  <ALARMA><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>360</LINE></ALARMA>
-  <RETORNO_ALARMA><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>269</LINE></RETORNO_ALARMA>
-  <BLUETOOTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>285</LINE></BLUETOOTH>
-  <RETORNO_BLUETOOTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>272</LINE></RETORNO_BLUETOOTH>
-  <PARPADEO2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>288</LINE></PARPADEO2>
-  <RETARDO2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>329</LINE></RETARDO2>
-  <BT_SEND_DATA><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>342</LINE></BT_SEND_DATA>
-  <LOOP12><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>331</LINE></LOOP12>
-  <LOOP22><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>332</LINE></LOOP22>
-  <LOOP32><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>333</LINE></LOOP32>
-  <READ_TIMESTAMP><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>348</LINE></READ_TIMESTAMP>
-  <USART_TRANSMISION><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>602</LINE></USART_TRANSMISION>
-  <EEPROM_READ><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>634</LINE></EEPROM_READ>
-  <PARPADEO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>363</LINE></PARPADEO>
-  <RETARDO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>414</LINE></RETARDO>
-  <WRITE_TIMESTAMP><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>427</LINE></WRITE_TIMESTAMP>
-  <LOOP1><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>416</LINE></LOOP1>
-  <LOOP2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>417</LINE></LOOP2>
-  <LOOP3><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>418</LINE></LOOP3>
-  <RTC_READ><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>433</LINE></RTC_READ>
-  <EEPROM_WRITE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>622</LINE></EEPROM_WRITE>
-  <SINGLE_BYTE_READ><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>556</LINE></SINGLE_BYTE_READ>
-  <CONFIG_I2C><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>472</LINE></CONFIG_I2C>
-  <I2C_START><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>488</LINE></I2C_START>
-  <WAIT1><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>492</LINE></WAIT1>
-  <I2C_WRITE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>503</LINE></I2C_WRITE>
-  <WAIT2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>508</LINE></WAIT2>
-  <I2C_READ><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>515</LINE></I2C_READ>
-  <WAIT3><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>519</LINE></WAIT3>
-  <I2C_STOP><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>530</LINE></I2C_STOP>
+  <RETARDO_BT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>587</LINE></RETARDO_BT>
+  <USART_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>563</LINE></USART_INIT>
+  <SLEEP_MODE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>261</LINE></SLEEP_MODE>
+  <ALARMA><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>346</LINE></ALARMA>
+  <RETORNO_ALARMA><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>273</LINE></RETORNO_ALARMA>
+  <BLUETOOTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>289</LINE></BLUETOOTH>
+  <RETORNO_BLUETOOTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>276</LINE></RETORNO_BLUETOOTH>
+  <PARPADEO2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>292</LINE></PARPADEO2>
+  <RETARDO2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>326</LINE></RETARDO2>
+  <USART_TRANSMISION><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>579</LINE></USART_TRANSMISION>
+  <LOOP12><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>328</LINE></LOOP12>
+  <LOOP22><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>329</LINE></LOOP22>
+  <LOOP32><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>330</LINE></LOOP32>
+  <PARPADEO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>349</LINE></PARPADEO>
+  <RETARDO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>398</LINE></RETARDO>
+  <SINGLE_BYTE_READ><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>531</LINE></SINGLE_BYTE_READ>
+  <LOOP1><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>400</LINE></LOOP1>
+  <LOOP2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>401</LINE></LOOP2>
+  <LOOP3><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>402</LINE></LOOP3>
+  <CONFIG_I2C><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>447</LINE></CONFIG_I2C>
+  <I2C_START><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>463</LINE></I2C_START>
+  <WAIT1><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>467</LINE></WAIT1>
+  <I2C_WRITE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>478</LINE></I2C_WRITE>
+  <WAIT2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>483</LINE></WAIT2>
+  <I2C_READ><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>490</LINE></I2C_READ>
+  <WAIT3><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>494</LINE></WAIT3>
+  <I2C_STOP><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>505</LINE></I2C_STOP>
+  <LOOP1BT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>589</LINE></LOOP1BT>
+  <LOOP2BT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>590</LINE></LOOP2BT>
+  <LOOP3BT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_I2C\Test_I2C\main.asm</FILE><LINE>591</LINE></LOOP3BT>
  </LABELS>
 </ASSEMBLER_INFO>
