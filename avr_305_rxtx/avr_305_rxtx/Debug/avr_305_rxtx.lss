@@ -1,10 +1,8 @@
 
-AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm Wed Nov 23 22:50:06 2016
+AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Documents\GitHub\Labo\avr_305_rxtx\avr_305_rxtx\main.asm Wed Nov 23 18:36:58 2016
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328pdef.inc'
-C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm(8): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328Pdef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328pdef.inc'
-C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm(8): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328Pdef.inc'
                                  
                                  ;
                                  
@@ -987,140 +985,162 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm(8): Inclu
                                  
                                  ; ***** END OF FILE ******************************************************
                                  
-                                 ; Test_BT.asm
+                                 ; avr_305_rxtx.asm
                                  ;
-                                 ; Created: 18/11/2016 09:51:43 p.m.
+                                 ; Created: 23/11/2016 04:44:26 p.m.
                                  ; Author : MarianoAgustÃ­n
                                  ;
-                                 ;Anda en TeraTERM pc http://www.instructables.com/id/Cheap-2-Way-Bluetooth-Connection-Between-Arduino-a/?ALLSTEPS pero no en android
-                                 .include "m328Pdef.inc"
                                  
-                                 ;***** Created: 2011-02-09 12:03 ******* Source: ATmega328P.xml **********
-                                 ;*************************************************************************
-                                 ;* A P P L I C A T I O N   N O T E   F O R   T H E   A V R   F A M I L Y
+                                 ;**** A P P L I C A T I O N   N O T E   A V R 3 0 5 ************************ 
                                  ;* 
-                                 ;* Number            : AVR000
-                                 ;* File Name         : "m328Pdef.inc"
-                                 ;* Title             : Register/Bit Definitions for the ATmega328P
-                                 ;* Date              : 2011-02-09
-                                 ;* Version           : 2.35
-                                 ;* Support E-mail    : avr@atmel.com
-                                 ;* Target MCU        : ATmega328P
+                                 ;* Title		: Half Duplex Interrupt Driven Software UART 
+                                 ;* Version		: 1.1 
+                                 ;* Last updated		: 97.08.27 
+                                 ;* Target		: AT90Sxxxx (All AVR Device) 
                                  ;* 
-                                 ;* DESCRIPTION
-                                 ;* When including this file in the assembly program file, all I/O register 
-                                 ;* names and I/O register bit names appearing in the data book can be used.
-                                 ;* In addition, the six registers forming the three data pointers X, Y and 
-                                 ;* Z have been assigned names XL - ZH. Highest RAM address for Internal 
-                                 ;* SRAM is also defined 
+                                 ;* Support email	: avr@atmel.com 
                                  ;* 
-                                 ;* The Register names are represented by their hexadecimal address.
+                                 ;* Code Size		: 32 Words 
+                                 ;* Low Register Usage	: 0 
+                                 ;* High Register Usage	: 4 
+                                 ;* Interrupt Usage	: None 
                                  ;* 
-                                 ;* The Register Bit names are represented by their bit number (0-7).
-                                 ;* 
-                                 ;* Please observe the difference in using the bit names with instructions
-                                 ;* such as "sbr"/"cbr" (set/clear bit in register) and "sbrs"/"sbrc"
-                                 ;* (skip if bit in register set/cleared). The following example illustrates
-                                 ;* this:
-                                 ;* 
-                                 ;* in    r16,PORTB             ;read PORTB latch
-                                 ;* sbr   r16,(1<<PB6)+(1<<PB5) ;set PB6 and PB5 (use masks, not bit#)
-                                 ;* out   PORTB,r16             ;output to PORTB
-                                 ;* 
-                                 ;* in    r16,TIFR              ;read the Timer Interrupt Flag Register
-                                 ;* sbrc  r16,TOV0              ;test the overflow flag (use bit#)
-                                 ;* rjmp  TOV0_is_set           ;jump if set
-                                 ;* ...                         ;otherwise do something else
-                                 ;*************************************************************************
+                                 ;* DESCRIPTION 
+                                 ;* This Application note contains a very code efficient software UART. 
+                                 ;* The example program receives one character and echoes it back. 
+                                 ;*************************************************************************** 
+                                  
+                                 ;.include "1200def.inc" 
+                                 ;.include "m328Pdef.inc"
+                                 ;***** Pin definitions 
+                                  
+                                 .equ	RxD	=0			;Receive pin is PD0 
+                                 .equ	TxD	=1			;Transmit pin is PD1 
+                                  .equ		sb	=1		;Number of stop bits (1, 2, ...) 
+                                 ;***** Global register variables 
+                                  
+                                 .def	bitcnt	=R16			;bit counter 
+                                 .def	temp	=R17			;temporary storage register 
+                                  
+                                 .def	Txbyte	=R18			;Data to be transmitted 
+                                 .def	RXbyte	=R19			;Received data 
+                                  
+                                 .cseg 
+                                 .org 0x00 
+000000 d000                      rcall reset
+                                  
                                  
-                                 #ifndef _M328PDEF_INC_
-                                 #endif  /* _M328PDEF_INC_ */
                                  
-                                 ; ***** END OF FILE ******************************************************
                                  
-                                 .cseg
-                                 .org 0x00
-000000 c000                      rjmp main
-                                 main:
-                                 
+                                 ;***** Program Execution Starts Here 
+                                  
+                                 ;***** Test program 
+                                  
+                                 reset:	
 000001 e058                      		LDI R21, HIGH(RAMEND)	; Configura el STACK
 000002 bf5e                      		OUT SPH, R21
 000003 ef5f                      		LDI R21, LOW(RAMEND)
 000004 bf5d                      		OUT SPL, R21
                                  
-000005 e340                      LDI R20, 0b00110000		; Hay LEDs conectados a los bits seteados en dichos puertos
-000006 b94a                      OUT DDRD, R20
-000007 e340                      LDI R20, 0b00110000		; Con un 1 quedan apagados por la logica de la placa Club de Robotica
-000008 b94b                      OUT PORTD, R20	
-                                 
-000009 d015                      RCALL RETARDO_BT
-00000a d01e                      RCALL USART_INIT
-00000b d013                      RCALL RETARDO_BT
-                                 
-00000c e030                      		LDI R19, 0b00000000	 ;
-00000d d028                      		RCALL USART_TRANSMISION
-00000e d010                      		RCALL RETARDO_BT
-                                 
-00000f e030                      		LDI R19, 0b00000000	 ;
-000010 d025                      		RCALL USART_TRANSMISION
-000011 d00d                      		RCALL RETARDO_BT
-                                 
-000012 e139                      		LDI R19,0b00011001 ;
-000013 d022                      		RCALL USART_TRANSMISION
-000014 d00a                      		RCALL RETARDO_BT
-                                 
-000015 e138                      		LDI R19,0b00011000 ;
-000016 d01f                      		RCALL USART_TRANSMISION
-000017 d007                      		RCALL RETARDO_BT
                                  		
-000018 e131                      		LDI R19,0b00010001 ;
-000019 d01c                      		RCALL USART_TRANSMISION
-00001a d004                      		RCALL RETARDO_BT
-                                 		
-00001b e136                      		LDI R19, 0b00010110;
-00001c d019                      		RCALL USART_TRANSMISION
-00001d d001                      		RCALL RETARDO_BT
+000005 9a59                      		sbi	PORTD,TxD	;Init port pins 
+000006 9a51                      		sbi	DDRD,TxD 
+                                  
+000007 e42d                      		ldi	Txbyte,0x4D	;Clear terminal 
+000008 d001                      		rcall	putchar 
+                                  
+                                 forever:	
+                                 		;LDI	Txbyte,0x4D 
+                                 		;rcall	putchar		;Echo received char 
+                                 		;rcall UART_delay
+                                 		;rcall UART_delay
+000009 cfff                      		rjmp	forever 
+                                  
                                  
+                                 ;*************************************************************************** 
+                                 ;* 
+                                 ;* "putchar" 
+                                 ;* 
+                                 ;* This subroutine transmits the byte stored in the "Txbyte" register 
+                                 ;* The number of stop bits used is set with the sb constant 
+                                 ;* 
+                                 ;* Number of words	:14 including return 
+                                 ;* Number of cycles	:Depens on bit rate 
+                                 ;* Low registers used	:None 
+                                 ;* High registers used	:2 (bitcnt,Txbyte) 
+                                 ;* Pointers used	:None 
+                                 ;* 
+                                 ;*************************************************************************** 
                                  
-00001e cfff                      TRANS2:		RJMP TRANS2
-                                 		
-                                 RETARDO_BT:
-00001f e104                      		LDI R16, 20
-000020 ef1f                      LOOP1:	LDI R17, 255
-000021 ef2f                      LOOP2:	LDI R18, 255
-000022 952a                      LOOP3:  DEC R18
-000023 f7f1                      		BRNE LOOP3			
-000024 951a                      		DEC R17
-000025 f7d9                      		BRNE LOOP2
-000026 950a                      		DEC R16
-000027 f7c1                      		BRNE LOOP1
-000028 9508                      		RET
+                                  
+                                 putchar:
+00000a e42d                      		ldi	Txbyte,0x4D	;Clear terminal 
+00000b e00a                      		ldi	bitcnt,9+sb	;1+8+sb (sb is # of stop bits) 
+00000c 9520                      		com	Txbyte		;Inverte everything 
+00000d 9408                      		sec			;Start bit 
+                                  
+00000e f410                      putchar0:	brcc	putchar1	;If carry set 
+00000f 9859                      		cbi	PORTD,TxD	;    send a '0' 
+000010 c002                      		rjmp	putchar2	;else	 
+                                  
+000011 9a59                      putchar1:	sbi	PORTD,TxD	;    send a '1' 
+000012 0000                      		nop 
+                                  
+000013 d005                      putchar2:	rcall UART_delay	;One bit delay 
+000014 d004                      		rcall UART_delay 
+                                  
+000015 1f22                      		rol	Txbyte		;Get next bit 
+000016 950a                      		dec	bitcnt		;If not all bit sent 
+000017 f7b1                      		brne	putchar0	;   send next 
+                                 					;else 
+000018 9508                      		ret			;   return 
+                                  
+                                  
+                                 ;*************************************************************************** 
+                                 ;* 
+                                 ;* "UART_delay" 
+                                 ;* 
+                                 ;* This delay subroutine generates the required delay between the bits when 
+                                 ;* transmitting and receiving bytes. The total execution time is set by the 
+                                 ;* constant "b": 
+                                 ;* 
+                                 ;*	3Â·b + 7 cycles (including rcall and ret) 
+                                 ;* 
+                                 ;* Number of words	:4 including return 
+                                 ;* Low registers used	:None 
+                                 ;* High registers used	:1 (temp) 
+                                 ;* Pointers used	:None 
+                                 ;* 
+                                 ;*************************************************************************** 
+                                 ; Some b values: 	(See also table in Appnote documentation) 
+                                 ; 
+                                 ; 1 MHz crystal: 
+                                 ;   9600 bps - b=14 
+                                 ;  19200 bps - b=5 
+                                 ;  28800 bps - b=2 
+                                 ; 
+                                 ; 2 MHz crystal: 
+                                 ;  19200 bps - b=14 
+                                 ;  28800 bps - b=8 
+                                 ;  57600 bps - b=2 
+                                  
+                                 ; 4 MHz crystal: 
+                                 ;  19200 bps - b=31 
+                                 ;  28800 bps - b=19 
+                                 ;  57600 bps - b=8 
+                                 ; 115200 bps - b=2 
                                  
-                                 
-                                 
-                                 USART_INIT:
-                                 ;configuro el baud rate en 9600
-000029 e607                      LDI R16, 0x67
-00002a e010                      LDI R17, 0x00
-00002b 9310 00c5                 STS UBRR0H, R17
-00002d 9300 00c4                 STS UBRR0L, R16
-                                 
-                                 ;habilito el tx  solamente ya que el modulo se encarga de enviar la fecha del evento, no de recibir cualquier tipo de informacion
-                                 
-00002f e008                      LDI R16, (1<<TXEN0)
-000030 9300 00c1                 STS UCSR0B, R16
-                                 
-000032 e00e                      LDI R16, (1<<USBS0)|(3<<UCSZ00); 8 bits por dato, 2bits de stop
-000033 9300 00c2                 STS UCSR0C, R16
-000035 9508                      RET
-                                 
-                                 
-                                 USART_TRANSMISION:
-000036 9110 00c0                 LDS	R17,UCSR0A		;se fija que el buffer este listo para la transmision
-000038 ff15                      SBRS	R17,UDRE0
-000039 cffc                      RJMP	USART_TRANSMISION
-00003a 9330 00c6                 STS	UDR0,R19		;manda la informacion que hay en el registro 19 al buffer para ser enviada
-00003c 9508                      RET
+                                  .equ	b	=255	;19200 bps @ 4 MHz crystal 
+                                  
+                                  
+000019 ef1f                      UART_delay:	ldi	temp,b 
+00001a 951a                      UART_delay1:	dec	temp 
+00001b f7f1                      		brne	UART_delay1 
+00001c e122                       	LDI R18, 18
+00001d 952a                      LOOP3:  DEC R18
+00001e f7f1                      		BRNE LOOP3
+00001f 9508                      		ret 
+                                  
 
 
 RESOURCE USE INFORMATION
@@ -1140,37 +1160,37 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   8 r17:   6 r18:   2 r19:   7 r20:   4 
+r13:   0 r14:   0 r15:   0 r16:   2 r17:   2 r18:   6 r19:   0 r20:   0 
 r21:   4 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 6 out of 35 (17.1%)
+Registers used: 4 out of 35 (11.4%)
 
 "ATmega328P" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
-brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
+brcc  :   1 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :   3 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   1 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
-clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
+clt   :   0 clv   :   0 clz   :   0 com   :   1 cp    :   0 cpc   :   0 
 cpi   :   0 cpse  :   0 dec   :   3 eor   :   0 fmul  :   0 fmuls :   0 
 fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   0 jmp   :   0 
-ld    :   0 ldd   :   0 ldi   :  17 lds   :   1 lpm   :   0 lsl   :   0 
+ld    :   0 ldd   :   0 ldi   :   7 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   4 pop   :   0 
-push  :   0 rcall :  15 ret   :   3 reti  :   0 rjmp  :   3 rol   :   0 
-ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
-sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   1 sec   :   0 seh   :   0 
+neg   :   0 nop   :   1 or    :   0 ori   :   0 out   :   2 pop   :   0 
+push  :   0 rcall :   4 ret   :   2 reti  :   0 rjmp  :   2 rol   :   1 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :   3 sbic  :   0 sbis  :   0 
+sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   1 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
-sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   5 
+sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 10 out of 113 (8.8%)
+Instructions used: 14 out of 113 (12.4%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00007a    122      0    122   32768   0.4%
+[.cseg] 0x000000 0x000040     64      0     64   32768   0.2%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 

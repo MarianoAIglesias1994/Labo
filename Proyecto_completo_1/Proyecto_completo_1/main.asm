@@ -1,11 +1,10 @@
 ;
-; Test_I2C.asm
+; Proyecto_completo_1.asm
 ;
-; Created: 18/11/2016 02:01:48 a.m.
+; Created: 24/11/2016 02:42:27 a.m.
 ; Author : MarianoAgustín
 ;
 
-; Este codigo esta andando en la placa CdR, hace titilar las ISR por separado OK
 
 /**************************************************************
 DIRECTIVAS

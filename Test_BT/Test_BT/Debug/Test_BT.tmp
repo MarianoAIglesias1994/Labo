@@ -10,6 +10,7 @@
  <SOURCE_FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328pdef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328Pdef.inc</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
   <FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\Debug\Test_BT.obj</FILE>
@@ -22,13 +23,13 @@
   <FILE>Test_BT.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <main><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>10</LINE></main>
-  <RETARDO_BT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>26</LINE></RETARDO_BT>
-  <USART_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>40</LINE></USART_INIT>
-  <TRANS><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>22</LINE></TRANS>
-  <USART_TRANSMISION><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>57</LINE></USART_TRANSMISION>
-  <LOOP1><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>28</LINE></LOOP1>
-  <LOOP2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>29</LINE></LOOP2>
-  <LOOP3><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>30</LINE></LOOP3>
+  <main><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>13</LINE></main>
+  <RETARDO_BT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>56</LINE></RETARDO_BT>
+  <USART_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>70</LINE></USART_INIT>
+  <USART_TRANSMISION><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>87</LINE></USART_TRANSMISION>
+  <TRANS2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>54</LINE></TRANS2>
+  <LOOP1><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>58</LINE></LOOP1>
+  <LOOP2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>59</LINE></LOOP2>
+  <LOOP3><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Test_BT\Test_BT\main.asm</FILE><LINE>60</LINE></LOOP3>
  </LABELS>
 </ASSEMBLER_INFO>
