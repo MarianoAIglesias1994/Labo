@@ -40,7 +40,7 @@ main:
 ; LEDs para las pruebas (Puerto C: Rojos; Puerto D: Verdes)
 LDI R20, 0b00000001		; Hay LEDs conectados a los bits seteados en dichos puertos
 OUT DDRC, R20			
-LDI R20, 0b00000000			; Con un 1 quedan apagados por la logica de la placa Club de Robotica
+LDI R20, 0b00000001			; Con un 1 quedan apagados por la logica de la placa Club de Robotica
 OUT PORTC, R20	
 
 LDI R20, 0b00110000		; Hay LEDs conectados a los bits seteados en dichos puertos
@@ -187,14 +187,7 @@ LDI R28, 0xA7		; Direccion del esclavo SLA(1010011) + Read(1)
 LDI R25, 0x30		; Direccion del registro a leer DEVID 
 LDI R26, 0b00000010	; Dato contra el que se debe comparar la lectura
 RCALL SINGLE_BYTE_READ
-
-CP	R26,R23
-BRNE NO_INACTi
-OKi:
-LDI R20, 0b00000001
-OUT PORTC, R20	
-
-NO_INACTi:		
+	
 
 
 /**************************************************************
@@ -507,13 +500,6 @@ LDI R25, 0x30		; Direccion del registro a leer DEVID
 LDI R26, 0b00000010	; Dato contra el que se debe comparar la lectura
 RCALL SINGLE_BYTE_READ
 
-CP	R26,R23
-BRNE NO_INACT
-OK:
-LDI R20, 0b00000001
-OUT PORTC, R20	
-NO_INACT:
-
 RET
 
 AUX:
@@ -745,4 +731,3 @@ LOOP3BT:  DEC R18
 		DEC R16
 		BRNE LOOP1BT
 		RET
-

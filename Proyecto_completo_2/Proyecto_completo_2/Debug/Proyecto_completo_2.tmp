@@ -1,0 +1,70 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.6</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328pdef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328Pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\Debug\Proyecto_completo_2.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Proyecto_completo_2.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Proyecto_completo_2.map</FILE>
+  <FILE>Proyecto_completo_2.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <main><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>111</LINE></main>
+  <ISR_INT0_INACTIVITY><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>387</LINE></ISR_INT0_INACTIVITY>
+  <ISR_INT1_BLUETOOTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>400</LINE></ISR_INT1_BLUETOOTH>
+  <CONFIG_INT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>143</LINE></CONFIG_INT>
+  <CONFIG_BAJO_CONSUMO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>164</LINE></CONFIG_BAJO_CONSUMO>
+  <I2C_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>509</LINE></I2C_INIT>
+  <CONFIG_ACELEROMETRO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>413</LINE></CONFIG_ACELEROMETRO>
+  <CLEAN_INACT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>452</LINE></CLEAN_INACT>
+  <CONFIG_RTC><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>465</LINE></CONFIG_RTC>
+  <RETARDO_BT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>616</LINE></RETARDO_BT>
+  <USART_INIT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>594</LINE></USART_INIT>
+  <SLEEP_MODE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>204</LINE></SLEEP_MODE>
+  <ALARMA><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>307</LINE></ALARMA>
+  <RETORNO_ALARMA><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>216</LINE></RETORNO_ALARMA>
+  <BLUETOOTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>227</LINE></BLUETOOTH>
+  <RETORNO_BLUETOOTH><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>219</LINE></RETORNO_BLUETOOTH>
+  <PARPADEO2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>230</LINE></PARPADEO2>
+  <RETARDO2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>279</LINE></RETARDO2>
+  <USART_TRANSMISION><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>609</LINE></USART_TRANSMISION>
+  <LOOP12><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>281</LINE></LOOP12>
+  <LOOP22><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>282</LINE></LOOP22>
+  <LOOP32><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>283</LINE></LOOP32>
+  <RETARDO3><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>291</LINE></RETARDO3>
+  <LOOP13><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>293</LINE></LOOP13>
+  <LOOP23><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>294</LINE></LOOP23>
+  <LOOP33><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>295</LINE></LOOP33>
+  <PARPADEO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>368</LINE></PARPADEO>
+  <SINGLE_BYTE_READ><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>574</LINE></SINGLE_BYTE_READ>
+  <RETARDO><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>356</LINE></RETARDO>
+  <LOOP1><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>358</LINE></LOOP1>
+  <LOOP2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>359</LINE></LOOP2>
+  <LOOP3><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>360</LINE></LOOP3>
+  <MULTIPLE_BYTE_WRITE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>561</LINE></MULTIPLE_BYTE_WRITE>
+  <I2C_START><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>519</LINE></I2C_START>
+  <WAIT1><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>523</LINE></WAIT1>
+  <I2C_WRITE><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>530</LINE></I2C_WRITE>
+  <WAIT2><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>535</LINE></WAIT2>
+  <I2C_READ><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>542</LINE></I2C_READ>
+  <WAIT3><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>546</LINE></WAIT3>
+  <I2C_STOP><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>554</LINE></I2C_STOP>
+  <LOOP1BT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>618</LINE></LOOP1BT>
+  <LOOP2BT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>619</LINE></LOOP2BT>
+  <LOOP3BT><FILE>C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm</FILE><LINE>620</LINE></LOOP3BT>
+ </LABELS>
+</ASSEMBLER_INFO>
