@@ -1,12 +1,12 @@
 
-AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm Tue Nov 29 02:52:17 2016
+AVRASM ver. 2.2.6  C:\Users\MarianoAgustín\Desktop\Detector_de_apneas\Detector_de_apneas\Detector_de_apneas\main.asm Tue Nov 29 05:30:10 2016
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328pdef.inc'
-C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm(11): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328Pdef.inc'
+C:\Users\MarianoAgustín\Desktop\Detector_de_apneas\Detector_de_apneas\Detector_de_apneas\main.asm(5): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328Pdef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328pdef.inc'
-C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_completo_2\main.asm(11): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328Pdef.inc'
+C:\Users\MarianoAgustín\Desktop\Detector_de_apneas\Detector_de_apneas\Detector_de_apneas\main.asm(5): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.106\avrasm\inc\m328Pdef.inc'
                                  
-                                 ;
+                                 /**************************************************************
                                  
                                  ;***** Created: 2011-02-09 12:03 ******* Source: ATmega328P.xml **********
                                  ;*************************************************************************
@@ -987,12 +987,6 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
                                  
                                  ; ***** END OF FILE ******************************************************
                                  
-                                 ; Proyecto_completo_2.asm
-                                 ;
-                                 ; Created: 25/11/2016 08:18:55 p.m.
-                                 ; Author : MarianoAgustÃ­n
-                                 ;
-                                 /**************************************************************
                                  DIRECTIVAS
                                  ***************************************************************/
                                  #define F_CPU 16000000UL 
@@ -1073,29 +1067,38 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
                                  .equ INACT_BT_LEDS = 0b00110000	
                                  .equ TODO_CAMBIO_LOGICO_INT0_INT1 = 0b00000101 
                                  .equ INT0_INT1_ENABLE = 0b00000011
-                                 .equ POWER_DOWN_MODE_SLEEP_OFF = 0b00000100 ; Nibble inferior D3D2D1 = 010 es de power down mode y el lsb D0 = 1 es para activar el sleep mode
+                                 .equ POWER_DOWN_MODE_SLEEP_OFF = 0b00000100 ; D3D2D1 = 010 es de
+                                 ; power down mode y el lsb D0 = 1 es para activar el sleep mode
                                  .equ POWER_DOWN_MODE_SLEEP_ON = 0b00000101
                                  .equ BT_LED_TIME = 10; Duracion LED titilando
                                  .equ INACT_LED_BUZZER_TIME = 200; Duracion LED y buzzer titilando
                                  .equ BT_LED = 0b00010000
                                  .equ INACT_LED = 0b00100000
                                  
-                                 .equ ACELEROMETRO_SLA_W = 0xA6; Direccion del esclavo SLA(1010011) + Write(0)
-                                 .equ ACELEROMETRO_SLA_R = 0xA7; Direccion del esclavo SLA(1010011) + Read(1)
+                                 .equ ACELEROMETRO_SLA_W = 0xA6
+                                 ; Direccion del esclavo SLA(1010011) + Write(0)
+                                 .equ ACELEROMETRO_SLA_R = 0xA7
+                                 ; Direccion del esclavo SLA(1010011) + Read(1)
                                  .equ THRESH_INACT = 0x25; Umbral de inactividad
-                                 .equ THRESH_INACT_VAL = 0b00000001; 8 bit unsigned. No dejar en 0x00 umbral de inactividad (62.5 mg/LSB)
+                                 .equ THRESH_INACT_VAL = 0b00000001
+                                 ; 8 bit unsigned. No dejar en 0x00 umbral de inactividad (62.5 mg/LSB)
                                  .equ TIME_INACT = 0x26; Umbral de tiempo de inactividad
-                                 .equ TIME_INACT_VAL = 0b0000100; (maximo 255 segundos) (1 sec/LSB)
+                                 .equ TIME_INACT_VAL = 0b00000100; (maximo 255 segundos) (1 sec/LSB)
                                  .equ ACT_INACT_CTL = 0x27; Controla los ejes que intervienen
-                                 .equ ACT_INACT_CTL_VAL = 0b00001111; (D3 en 1=ac coupled)(D2D1D0 = 111 enable en los tres ejes)
+                                 .equ ACT_INACT_CTL_VAL = 0b00001111
+                                 ; (D3 en 1=ac coupled)(D2D1D0 = 111 enable en los tres ejes)
                                  .equ BW_RATE = 0x2C; Data rate and power mode control
-                                 .equ BW_RATE_VAL = 0b00000110 ;(D4=0 sin Low Power)(Rate D3D2D1D0 = 0110 : BW=3.13Hz) 
+                                 .equ BW_RATE_VAL = 0b00000110 
+                                 ;(D4=0 sin Low Power)(Rate D3D2D1D0 = 0110 : BW=3.13Hz) 
                                  .equ INT_MAP = 0x2F; Interrupt mapping control
-                                 .equ INT_MAP_VAL = 0b11110111; Solo la inactividad conectada al pin INT1, el resto conectadas al pin INT2
+                                 .equ INT_MAP_VAL = 0b11110111
+                                 ; Solo la inactividad conectada al pin INT1, el resto al pin INT2
                                  .equ INT_ENABLE = 0x2E; Interrupt enable control
-                                 .equ INT_ENABLE_VAL = 0b00001000; Se habilita solo la interrupcion por inactividad
+                                 .equ INT_ENABLE_VAL = 0b00001000
+                                 ; Se habilita solo la interrupcion por inactividad
                                  .equ POWER_CTL = 0x2D; 
-                                 .equ POWER_CTL_VAL = 0b00001000	; MEASURE ON, por defecto se prende en modo standby
+                                 .equ POWER_CTL_VAL = 0b00001000	
+                                 ; MEASURE ON, por defecto se prende en modo standby
                                  .equ INT_SOURCE = 0x30; -Muestra la causa de interrupcion, read only
                                  
                                  .equ RTC_SLA_W = 0b11010000; Direccion del esclavo + Write(0)
@@ -1114,7 +1117,7 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
                                  .equ RTC_DIA_MES_REG_VAL = 0b00011000
                                  .equ RTC_MES_REG = 0b00000101; CONFIGURACION MES
                                  .equ RTC_MES_REG_VAL = 0b00010001
-                                 .equ RTC_ANIO_REG = 0b00000110; CONFIGURACION AÃ‘O
+                                 .equ RTC_ANIO_REG = 0b00000110; CONFIGURACION ANIO
                                  .equ RTC_ANIO_REG_VAL = 0b00010110
                                  
                                  .equ UBRR0L_VALUE = 0x67
@@ -1154,13 +1157,9 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
                                  /**************************************************************
                                  CONFIGURACION PUERTOS
                                  ***************************************************************/
-                                 /*
-                                 	LDI TEMP, BT_ENABLE		; Habilita Vcc a BT
-                                 	OUT DDRC, TEMP			
-                                 	LDI TEMP, BT_ENABLE		
-                                 	OUT PORTC, TEMP	
-                                 */
-000009 e310                      	LDI TEMP, INACT_BT_LEDS	; LEDs conectados a los bits seteados en dichos puertos
+                                 
+000009 e310                      	LDI TEMP, INACT_BT_LEDS	
+                                 	; LEDs conectados a los bits seteados en dichos puertos
 00000a b91a                      	OUT DDRD, TEMP
 00000b e010                      	LDI TEMP, NULL		; LEDs apagados
 00000c b91b                      	OUT PORTD, TEMP	
@@ -1173,14 +1172,16 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
                                  CONFIG_INT:
                                  
                                  	;EICRA: Configura por flanco o por nivel
-00000d e015                      	ldi TEMP, TODO_CAMBIO_LOGICO_INT0_INT1; Cualquier cambio logico en INT0 e INT1 
+00000d e015                      	ldi TEMP, TODO_CAMBIO_LOGICO_INT0_INT1
+                                 	; Cualquier cambio logico en INT0 e INT1 
 00000e 9310 0069                 	sts EICRA, TEMP		;
                                  
                                  	;EIMSK: Habilita las interrupciones seleccionadas
 000010 e013                      	ldi TEMP, INT0_INT1_ENABLE; Habilita INT0 e INT1 
 000011 bb1d                      	out EIMSK, TEMP		;
                                  
-                                 	;EIFR: Tiene que estar seteado junto con el bit de interrupcion global al momento de suceder la interrupcion 
+                                 	;EIFR: Tiene que estar seteado junto con el bit de 
+                                 	;interrupcion global al momento de suceder la interrupcion 
 000012 e013                      	ldi TEMP, INT0_INT1_ENABLE	; Para INT0 e INT1 
 000013 bb1c                      	out EIFR, TEMP		;
                                  
@@ -1222,9 +1223,8 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
                                  /**************************************************************
                                  CONFIGURACION BLUETOOTH
                                  ***************************************************************/
-                                 ;RCALL RETARDO_BT
+                                 
 00001b d0f4                      RCALL USART_INIT
-                                 ;RCALL RETARDO_BT
                                  
                                  
                                  /**************************************************************
@@ -1232,22 +1232,27 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
                                  ***************************************************************/
                                  
                                  SLEEP_MODE:
-00001c e015                      			ldi TEMP, POWER_DOWN_MODE_SLEEP_ON	; Activa el sleep mode
-00001d bf13                      			out SMCR, TEMP
-00001e 9588                      			SLEEP ; Entra en modo sleep, al suceder una interrupcion se despierta en la instruccion siguiente
-00001f e014                      			ldi TEMP, POWER_DOWN_MODE_SLEEP_OFF	; Desactiva el sleep mode
-000020 bf13                      			out SMCR, TEMP
+00001c e015                      		ldi TEMP, POWER_DOWN_MODE_SLEEP_ON	
+                                 		; Activa el sleep mode
+00001d bf13                      		out SMCR, TEMP
+00001e 9588                      		SLEEP 
+                                 		; Entra en modo sleep, al suceder una interrupcion
+                                 		; se despierta en la instruccion siguiente
+00001f e014                      		ldi TEMP, POWER_DOWN_MODE_SLEEP_OFF	
+                                 		; Desactiva el sleep mode
+000020 bf13                      		out SMCR, TEMP
                                  			
-                                 ; En las rutinas de interrupcion se usa SWITCH para almacenar un registro indicador del tipo de interrupcion ocurrida
+                                 ; En las rutinas de interrupcion se usa SWITCH para almacenar un 
+                                 ;registro indicador del tipo de interrupcion ocurrida
                                  ; Es una analogia del switch/case del lenguaje C
                                  
-000021 3031                      			CPI SWITCH, CASE_INACT
-000022 f1b9                      			BREQ ALARMA
+000021 3031                      		CPI SWITCH, CASE_INACT
+000022 f1b9                      		BREQ ALARMA
                                  RETORNO_ALARMA:
-000023 3032                      			CPI SWITCH, CASE_BT
-000024 f009                      			BREQ BLUETOOTH
+000023 3032                      		CPI SWITCH, CASE_BT
+000024 f009                      		BREQ BLUETOOTH
                                  RETORNO_BLUETOOTH:
-000025 cff6                      			RJMP SLEEP_MODE
+000025 cff6                      		RJMP SLEEP_MODE
                                  
                                  
                                  /**************************************************************
@@ -1257,14 +1262,10 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
                                  BLUETOOTH:
 000026 e05a                      LDI AUX1, BT_LED_TIME
                                  
-                                 ;
 000027 e011                      	LDI TEMP, BT_ENABLE		; Habilita Vcc a BT
 000028 b917                      	OUT DDRC, TEMP			
 000029 e011                      	LDI TEMP, BT_ENABLE		
 00002a b918                      	OUT PORTC, TEMP	
-                                 ;
-                                 
-                                 ;RCALL RETARDO4
                                  
                                  PARPADEO2:
 00002b e110                      		LDI TEMP, BT_LED; Prende LED
@@ -1281,37 +1282,30 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
                                  ; Envia los datos
 000034 2d22                      		MOV UART_DATA, SEGUNDOS;
 000035 d0e7                      		RCALL USART_TRANSMISION	;
-                                 		;RCALL RETARDO_BT
                                  
 000036 2d23                      		MOV UART_DATA, MINUTOS;
 000037 d0e5                      		RCALL USART_TRANSMISION	;
-                                 		;RCALL RETARDO_BT
                                  
 000038 2d24                      		MOV UART_DATA, HORA;
 000039 d0e3                      		RCALL USART_TRANSMISION	;
-                                 		;RCALL RETARDO_BT
                                  
 00003a 2d25                      		MOV UART_DATA, DIA_SEMANA;
 00003b d0e1                      		RCALL USART_TRANSMISION	;
-                                 		;RCALL RETARDO_BT
                                  
 00003c 2d26                      		MOV UART_DATA, DIA_MES;
 00003d d0df                      		RCALL USART_TRANSMISION	;
-                                 		;RCALL RETARDO_BT
                                  
 00003e 2d27                      		MOV UART_DATA, MES;
 00003f d0dd                      		RCALL USART_TRANSMISION	;
-                                 		;RCALL RETARDO_BT
                                  
 000040 2d28                      		MOV UART_DATA, ANIO;
 000041 d0db                      		RCALL USART_TRANSMISION	;
-                                 		;RCALL RETARDO_BT
                                  
                                  		
 000042 d06d                      		RCALL CLEAN_INACT
 000043 d054                      		RCALL CONFIG_ACELEROMETRO
                                  
-000044 e030                      		LDI SWITCH, CASE_NULL		; Se limpia el registro indicador
+000044 e030                      		LDI SWITCH, CASE_NULL	; Se limpia el registro indicador
 000045 cfdf                      		RJMP RETORNO_BLUETOOTH
                                  
                                  
@@ -1416,22 +1410,8 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
 00008d 3050                      	CPI AUX1, NULL
 00008e f7b9                      	BRNE PARPADEO
 00008f 9508                      	RET
-                                 	/*
-                                 RETARDO4:
-                                 		LDI R16, 1
-                                 LOOP14:	LDI R17, 20
-                                 LOOP24:	LDI R18, 255
-                                 LOOP34:	LDI R19, 255
-                                 LOOP44: DEC R19
-                                 		BRNE LOOP44
-                                 		DEC R18
-                                 		BRNE LOOP34			
-                                 		DEC R17
-                                 		BRNE LOOP24
-                                 		DEC R16
-                                 		BRNE LOOP14
-                                 		RET
-                                 		*/
+                                 
+                                 
                                  /**************************************************************
                                  RUTINA DE SERVICIO DE INTERRUPCION POR INACTIVIDAD DEL ACELEROMETRO
                                  ***************************************************************/
@@ -1468,7 +1448,8 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
 000098 ea46                      	LDI SLA_W, ACELEROMETRO_SLA_W		
 000099 ea07                      	LDI SLA_R, ACELEROMETRO_SLA_R		
                                  
-                                 ; Se comienza la secuencia de seteo del acelerometro en los valores necesarios
+                                 ; Se comienza la secuencia de seteo del 
+                                 ; acelerometro en los valores necesarios
                                  
 00009a e265                      	LDI REG_DIR, THRESH_INACT	
 00009b e071                      	LDI DATA_OUT, THRESH_INACT_VAL	
@@ -1563,7 +1544,7 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
 0000d0 e010                      	LDI TEMP, NULL		
 0000d1 9310 00b9                 	STS TWSR, TEMP		; Preescaler 1 en TWI Status Reg
 0000d3 eb10                      	LDI TEMP, 0xB0		; 0xB0
-0000d4 9310 00b8                 	STS TWBR, TEMP		; Setea la frecuencia a 50.087 kHz (16 MHz XTAL); Ver cuanto da con 16 MHz
+0000d4 9310 00b8                 	STS TWBR, TEMP		; Setea la frecuencia a 43.48 kHz(16 MHz XTAL)
 0000d6 e014                      	LDI TEMP, (1<<TWEN)	; 0x04 a TEMP (TWEN: Enable bit)
 0000d7 9310 00bc                 	STS TWCR, TEMP		; Habilita el TWI 
 0000d9 9508                      	RET
@@ -1575,7 +1556,8 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
                                  	
                                  WAIT1:
 0000dd 9110 00bc                 	LDS TEMP, TWCR		; Lee el registro
-0000df ff17                      	SBRS TEMP, TWINT		; Saltea siguiente linea si TWINT es 1 (==operacion finalizada)
+0000df ff17                      	SBRS TEMP, TWINT	
+                                 	; Saltea siguiente linea si TWINT es 1 (==operacion finalizada)
 0000e0 cffc                      	RJMP WAIT1			; TWINT esta en 0
 0000e1 9508                      	RET
                                  
@@ -1587,7 +1569,7 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
                                  
                                  WAIT2:
 0000e7 9110 00bc                 	LDS TEMP, TWCR		; Lee el registro de control a TEMP
-0000e9 ff17                      	SBRS TEMP, TWINT		; Saltea siguiente linea si TWINT es 1
+0000e9 ff17                      	SBRS TEMP, TWINT	; Saltea siguiente linea si TWINT es 1
 0000ea cffc                      	RJMP WAIT2			; TWINT esta en 0
 0000eb 9508                      	RET
                                  
@@ -1613,7 +1595,8 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
                                  ; Subrutina de escritura de registros de perifericos
                                  MULTIPLE_BYTE_WRITE:		
 0000fa dfdf                      	RCALL I2C_START		; Transmite la condicion de START
-0000fb 2f94                      	MOV AUX_I2C, SLA_W		; Carga la direccion del esclavo + configuracion W
+0000fb 2f94                      	MOV AUX_I2C, SLA_W	
+                                 	; Carga la direccion del esclavo + configuracion W
 0000fc dfe5                      	RCALL I2C_WRITE		; Escribe AUX_I2C al bus I2C
 0000fd 2f96                      	MOV AUX_I2C, REG_DIR	; Direccion del registro a escribir
 0000fe dfe3                      	RCALL I2C_WRITE		; Escribe AUX_I2C al bus I2C
@@ -1626,12 +1609,14 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
                                  ; Subrutina de lectura de registros de perifericos 
                                  SINGLE_BYTE_READ:
 000103 dfd6                      	RCALL I2C_START		; Transmite la condicion de START
-000104 2f94                      	MOV AUX_I2C, SLA_W		; Carga la direccion del esclavo + configuracion W
+000104 2f94                      	MOV AUX_I2C, SLA_W	
+                                 	; Carga la direccion del esclavo + configuracion W
 000105 dfdc                      	RCALL I2C_WRITE		; Escribe AUX_I2C al bus I2C
-000106 2f96                      	MOV AUX_I2C, REG_DIR	; Direccion del registro a leer
+000106 2f96                      	MOV AUX_I2C, REG_DIR; Direccion del registro a leer
 000107 dfda                      	RCALL I2C_WRITE		; Escribe AUX_I2C al bus I2C
 000108 dfd1                      	RCALL I2C_START		; Retransmite Start
-000109 2f90                      	MOV AUX_I2C, SLA_R		; Carga la direccion del esclavo + configuracion R
+000109 2f90                      	MOV AUX_I2C, SLA_R	
+                                 	; Carga la direccion del esclavo + configuracion R
 00010a dfd7                      	RCALL I2C_WRITE
 00010b e090                      	LDI AUX_I2C, NULL
 00010c dfdf                      	RCALL I2C_READ
@@ -1660,23 +1645,13 @@ C:\Users\MarianoAgustín\Documents\GitHub\Labo\Proyecto_completo_2\Proyecto_compl
                                  
                                  
                                  USART_TRANSMISION:
-00011d 9110 00c0                 	LDS	TEMP,UCSR0A		; Chequea que el buffer este listo para la transmision
+00011d 9110 00c0                 	LDS	TEMP,UCSR0A		
+                                 	; Chequea que el buffer este listo para la transmision
 00011f ff15                      	SBRS	TEMP,UDRE0
 000120 cffc                      	RJMP	USART_TRANSMISION
-000121 9320 00c6                 	STS	UDR0, UART_DATA		; EnvÃ­a la informacion que hay en el registro UART_DATA al buffer para ser enviada
-000123 9508                      RET
-                                 /*
-                                 RETARDO_BT:
-                                 		LDI R16, 20
-                                 LOOP1BT:LDI R17, 255
-                                 LOOP2BT:LDI R18, 255
-                                 LOOP3BT:DEC R18
-                                 		BRNE LOOP3BT			
-                                 		DEC R17
-                                 		BRNE LOOP2BT
-                                 		DEC R16
-                                 		BRNE LOOP1BT
-                                 RET
+000121 9320 00c6                 	STS	UDR0, UART_DATA	
+                                 	; Envia la informacion que hay en el 
+                                 	;registro UART_DATA al buffer para ser enviada
 
 
 RESOURCE USE INFORMATION
